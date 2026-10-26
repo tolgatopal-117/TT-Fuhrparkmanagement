@@ -18,7 +18,8 @@ Ziel: eine neue, hochwertige Website für TT Fuhrparkmanagement.
   - `animate`, `find-animation-opportunities`, `improve-animations`, `review-animations`,
     `animation-performance`, `animation-vocabulary` für Bewegung und Übergänge,
   - `break-ui` zum Stresstest der Oberfläche, `pick-ui-library` bei der Wahl von UI-Bibliotheken.
-  - Nicht relevant für diese Website (nur iOS/Expo/Swift): `animate-expo`, `mobile-native`, `write-swift`, `apple-design`.
+  - `mobile-native` für Smartphone-Details (Touch, Notch, 100vh, Zoom bei Eingabefeldern), `apple-design` für Gesten, Federanimationen und Typografie.
+  - Nicht relevant für diese Website (nur React Native/Swift): `animate-expo`, `write-swift`.
 - Reihenfolge: taste skill (Art Direction) → Emil-Skills (Bewegung, Detail) → impeccable (Prüfung, Feinschliff).
 
 ## Sprache
