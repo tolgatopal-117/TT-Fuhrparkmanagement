@@ -2,28 +2,32 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>AGB – TT Fuhrparkmanagement</title>
-    <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="/favicon-48x48.png" sizes="48x48">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
-<header class="bar">
-  <a class="bar__logo" href="index.html" aria-label="TT Fuhrparkmanagement, zur Startseite"><img src="assets/logo-tt.png" alt="TT Fuhrparkmanagement – Ihr Fuhrpark, unser Antrieb." width="600" height="167"></a>
-  <nav class="bar__nav" aria-label="Hauptnavigation">
+<header class="nav">
+  <a class="nav__logo" href="index.html" aria-label="TT Fuhrparkmanagement, zum Seitenanfang"><img src="assets/logo-tt.png" alt="TT Fuhrparkmanagement" width="600" height="167"></a>
+  <nav class="nav__links" aria-label="Hauptnavigation">
+    <a href="index.html#ueberblick">Überblick</a>
     <a href="index.html#leistungen">Leistungen</a>
     <a href="index.html#preis">Preis</a>
+    <a href="index.html#ablauf">Ablauf</a>
+    <a href="index.html#ueber-uns">Über uns</a>
     <a href="index.html#faq">FAQ</a>
-    <a class="button" href="index.html#kontakt">Kontakt</a>
+    <a class="button" href="index.html#kontakt">Analyse anfragen</a>
   </nav>
 </header>
 
 <main id="top" class="recht">
   <div class="recht__inner">
-    <h1 class="head">Allgemeine Geschäftsbedingungen</h1>
+    <h1 class="head" style="font-size:var(--step-head)">Allgemeine Geschäftsbedingungen</h1>
     <div class="recht__text">
       <p style="margin-top:12px">Allgemeine Geschäftsbedingungen von TT Fuhrparkmanagement, Inhaber Tolga Topal, Bottroper Str. 87, 46117 Oberhausen, E-Mail: <a href="mailto:tolga.topal@ttfuhrparkmanagement.com">tolga.topal@ttfuhrparkmanagement.com</a> – nachfolgend „Auftragnehmer“.</p>
       <h2>§ 1 Geltungsbereich</h2>
@@ -75,49 +79,35 @@
 </main>
 
 <footer class="fuss">
-  <svg class="marke" viewBox="0 0 1200 340" role="img" aria-label="TT">
-    <rect x="0" y="0" width="380" height="100" fill="#52e40e"/>
-    <rect x="142" y="104" width="96" height="236" fill="#52e40e"/>
-    <rect x="384" y="60" width="380" height="100" fill="#f1f6ee"/>
-    <rect x="526" y="164" width="96" height="176" fill="#f1f6ee"/>
-    <circle cx="1030" cy="170" r="170" fill="#52e40e"/>
-    <path d="M983.1 6.6 A170 170 0 0 1 1076.9 6.6 L1068.9 34.5 A141 141 0 0 0 991.1 34.5 Z" fill="#0e150b"/>
-  </svg>
-  <div class="grid fuss__spalten">
-    <div class="sp">
-      <h2>Seite</h2>
-      <ul>
-        <li><a href="index.html#fristen">Fristenrechner</a></li>
-        <li><a href="index.html#leistungen">Leistungen</a></li>
-        <li><a href="index.html#preis">Preis</a></li>
-        <li><a href="index.html#ablauf">Ablauf</a></li>
-        <li><a href="index.html#ueber-uns">Über uns</a></li>
-        <li><a href="index.html#faq">FAQ</a></li>
-      </ul>
-    </div>
-    <div class="sp">
-      <h2>Rechtliches</h2>
-      <ul>
-        <li><a href="impressum.html">Impressum</a></li>
-        <li><a href="datenschutz.html">Datenschutz</a></li>
-        <li><a href="agb.html">AGB</a></li>
-        <li><a href="impressum.html#bildnachweise">Bildnachweise</a></li>
-      </ul>
-    </div>
-    <div class="sp sp--kontakt">
-      <h2>TT Fuhrparkmanagement</h2>
-      <ul>
-        <li>Inhaber Tolga Topal</li>
-        <li>Bottroper Str. 87, 46117 Oberhausen</li>
-        <li><a class="nums" href="tel:+4915630158503">+49 156 30158503</a></li>
-        <li><a href="mailto:info@ttfuhrparkmanagement.com">info@ttfuhrparkmanagement.com</a></li>
-      </ul>
-    </div>
+  <div class="tile tile--satz">
+    <p>Ihr Fuhrpark, unser Antrieb.</p>
+    <small>© 2026 TT Fuhrparkmanagement · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="agb.html">AGB</a> · <a href="impressum.html#bildnachweise">Bildnachweise</a></small>
   </div>
-  <div class="fuss__zeile">
-    <p>© 2026 TT Fuhrparkmanagement. Fotos: Arne Müseler (CC BY-SA 4.0), giggel (CC BY 3.0), El. -(Bardo) (CC BY-SA 3.0), Ivan Radic, Pixelteufel und schoschie (CC BY 2.0), bearbeitet; <a class="link" href="impressum.html#bildnachweise">Einzelnachweise</a>.</p>
-    <a class="button" href="#top">Nach oben</a>
+  <div class="tile tile--nav">
+    <h2>Seite</h2>
+    <ul>
+      <li><a href="index.html#ueberblick">Überblick</a></li>
+      <li><a href="index.html#leistungen">Leistungen</a></li>
+      <li><a href="index.html#rechner">Terminrechner</a></li>
+      <li><a href="index.html#preis">Preis</a></li>
+      <li><a href="index.html#ablauf">Ablauf</a></li>
+      <li><a href="index.html#ueber-uns">Über uns</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
   </div>
+  <div class="tile tile--ort">
+    <h2>Oberhausen</h2>
+    <b>Bottroper Str. 87</b>
+  </div>
+  <div class="tile tile--mail">
+    <h2>E-Mail</h2>
+    <a href="mailto:info@ttfuhrparkmanagement.com">info@ttfuhrparkmanagement.com</a>
+  </div>
+  <div class="tile tile--marke" aria-hidden="true"><span>TT<b>.</b></span></div>
+  <a class="tile tile--cta" href="index.html#kontakt">
+    <p>Kostenlose Analyse anfragen</p>
+    <svg viewBox="0 0 56 56" aria-hidden="true"><path d="M14 42L42 14M20 14h22v22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
 </footer>
 
 </body>

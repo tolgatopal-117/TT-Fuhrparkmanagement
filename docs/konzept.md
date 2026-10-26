@@ -1,51 +1,48 @@
-# Konzept der neuen Website
+# Konzept der Website (Version 2)
+
+Version 1 (HU-Plakette als Motiv) wurde vom Kunden verworfen: zu schlicht, zu „KI-generiert“. Vorgabe für Version 2: Anspruch wie eine Apple-Produktseite.
 
 ## Richtung (taste skill)
 
-- Gezogen: **One motif** (Seed 178455108, Sektor „other“, Markenfarben behalten).
-- Neu gezogen: Hero („Tabbed folder stack“ widersprach der Komposition der Richtung, die einen riesigen, angeschnittenen Kreis verlangt; umgesetzt nach der Komposition der Richtung) und Preis („Plans that step up“ braucht drei Tarife, es gibt einen Festpreis pro Fahrzeug → „The itemised receipt“).
-- Die zugeteilten Wald-Fotos wurden nicht verwendet; stattdessen echte, frei lizenzierte Fotos aus Oberhausen und der Fuhrpark-Welt.
+- Gezogen: **The product performs** (Sektor „saas“, Ton „quiet“, Markenfarben behalten).
+- Neu gesetzt, weil der Kunde ausdrücklich Apple-Niveau verlangt: Hero (das Blatt sah eine winzige 27-px-Überschrift auf zu 80 % leerer Seite vor; ersetzt durch eine große, zentrierte Überschrift mit der Fuhrpark-Übersicht als „Produkt“), Preis (eine Leistung statt Tarifvergleich), Kontakt (vollständiges Netlify-Formular statt eines einzelnen Felds).
+- Bewusste Abweichungen von den Hausregeln: eine durchscheinende Navigationsleiste und iOS-artige Mitteilungen (Glas) als Teil der Apple-Anmutung. Rahmen und Schatten nur innerhalb der Oberflächen (`data-ui`).
 
 ## Idee
 
-> Auf dieser Seite wird **die HU-Plakette** – der runde Prüfstempel mit den zwölf Monaten am Rand, den jedes Firmenfahrzeug trägt – zum **einen Motiv**: riesig und angeschnitten im Hero (mit „TT“ in der Mitte und dem aktuellen Monat oben, wie der Fälligkeitsmonat auf der echten Plakette), als Maske jedes Fotos, als Punkt vor jeder Liste, als Knopfform, als Ergebnis des Fristenrechners und als Marke im Footer.
+> Auf dieser Seite wird **das, was TT jeden Monat liefert** – Fristenübersicht, Führerscheinkontrolle, Schadenakte, Kostenreport, Tankkarte – zu **echten, arbeitenden Oberflächen**, die wie Apple-Produkte inszeniert werden.
 
-Das lebendige Element: der **Fristenrechner**. Fahrzeuge und Fahrer:innen einstellen, die Zahl der Termine pro Jahr erscheint im Kreis, der Knopf darunter trägt die Fahrzeugzahl ins Kontaktformular.
+Das lebendige Element: der **Terminrechner** (Regler für Fahrzeuge und Fahrer:innen, die Zahl rollt zum neuen Wert und wandert per Knopf ins Formular).
 
-## Aufbau (Argument)
+## Bewegung (nach Emil Kowalski)
 
-1. Hero – was TT macht, eine Hauptaktion.
-2. Statement – Plakette, Reifenwechsel, Tankabrechnung.
-3. Fristenrechner – Beweis: mehr Termine, als man denkt.
-4. Leistungen – acht Leistungen, ein Paket.
-5. Preis – Leistungsübersicht als Beleg.
-6. Ablauf – vier Schritte als Akkordeon.
-7. Für wen – vier Branchen mit Vorschau.
-8. Über uns – Tolga Topal, Oberhausen, keine Hotline.
-9. FAQ – neun Fragen, alle aus Website, AGB und Datenschutz belegt.
-10. Kontakt – Coupon mit Netlify-Formular (`name="kontakt"`, Felder wie bisher).
+- Hero: Überschrift steigt gestaffelt auf, drei Mitteilungen treffen nacheinander ein, die Fuhrpark-Übersicht liegt geneigt und richtet sich beim Scrollen auf.
+- Statement: Wörter füllen sich beim Scrollen mit Farbe.
+- „Ein Jahr Fuhrpark“: festgehaltene Bühne, vier Ansichten wechseln mit dem Text.
+- Bento: Tankkarte neigt sich zum Zeiger; Balken wachsen.
+- Rechner: Zahl rollt; Ablauf: Fortschrittsbalken der Akte füllen sich; Luftbild zoomt beim Scrollen.
+- Nur `transform` und `opacity`, ease-out, maximal 0,9 s; bei reduzierter Bewegung bleibt alles sichtbar.
+- Ab dem Preis gleiten Inhalte nur in Position und sind nie unsichtbar (lange Seite, nichts soll versteckt bleiben).
 
 ## Kritik, letzte Runde
 
 ```
-ROUND 2
-Seen in one second: Ein riesiger grüner Prüfplaketten-Kreis mit TT, daneben „Ihr Fuhrpark. Einfach erledigt.“ und ein grüner Knopf.
-Idea (one sentence): Die HU-Plakette wird das eine Motiv, das die ganze Seite trägt.
-Live thing: Fristenrechner (Fahrzeuge/Fahrer:innen → Termine pro Jahr, übernimmt die Fahrzeugzahl ins Formular).
-Layout words by section: hero=angeschnittener Kreis / statement=Satz mit Rundbildern / fristen=Bedienung links, Zahlkreis rechts / leistungen=Kreisfoto links, Punkte rechts / preis=grünes Feld mit Beleg / ablauf=Akkordeon dunkel→hell / für wen=Index mit Vorschau / über uns=dunkles Feld mit Kreisfoto / faq=Kacheln mit stehender Überschrift / kontakt=Coupon / footer=TT aus Blöcken
-Scores: design 7.5 · usability 8 · creativity 7 · content 8 → overall 7.6.
-Caps applied: Kreativität auf 7 begrenzt (die Plakette passt auch zu einem Mitbewerber; TT, Oberhausen und die Bottroper Straße machen sie nur teilweise eigen).
-Top three problems (most visible first):
-1. Das größte Foto (Leistungen) ist eine winterliche Straße – ehrlich und vom eigenen Standort, aber das schwächste Bild. Lösung: eigenes Foto (Fahrzeug, Büro, Tolga Topal).
-2. Kein bewegtes Bild; im offenen Netz fand sich kein passender, frei lizenzierter Clip.
-3. Der Hero schneidet das „TT“ der Plakette am rechten Rand an; gewollt (die Richtung verlangt den Anschnitt).
+ROUND 3
+Seen in one second: „Ihr Fuhrpark. Einfach erledigt.“ groß und zentriert, darunter eine Fuhrpark-Übersicht mit eintreffenden Mitteilungen.
+Idea (one sentence): TTs Leistungen erscheinen als echte, arbeitende Oberflächen, inszeniert wie Apple-Produkte.
+Live thing: Terminrechner mit Reglern.
+Layout words by section: hero=zentriert + Produkt / statement=Füllsatz / story=festgehaltene Bühne / leistungen=Bento / rechner=schwarzes Feld mit Riesenzahl / preis=große Liste / ablauf=vier Farbfelder mit Akte / über uns=Luftbild + Brief / faq=Fragen links, Antwort rechts / kontakt=Formular auf Karte / footer=Kacheln
+Scores: design 8 · usability 8.5 · creativity 7.5 · content 8 → overall 8.0.
+Caps applied: keine harte Kappung; die Fotoqualität begrenzt den Eindruck (nur drei echte Fotos).
+Top three problems:
+1. Zu wenige und zu schwache Fotos. Lösung: eigene Fotos (Porträt, Fahrzeuge, Büro) oder Unsplash über API-Schlüssel.
+2. Kein bewegtes Bild (Video).
+3. Die Akte im Ablauf und die Bento-Kacheln sind auf dem Tablet sehr ähnlich (Warnung „card-rows“).
 ```
 
 ## Messung
 
-- `inspect.mjs`: **0 FAIL**, 2 WARN bei 1440/768/390 px.
-  - `no-footage`: kein frei lizenzierter Clip gefunden.
-  - `off-centre` (32 px links, 51 px rechts): Das Raster läuft von Rand zu Rand; der Messwert liest die Enden linksbündiger Zeilen.
-- Vorher (alte Seite): 8 FAIL, 8 WARN.
+- `inspect.mjs`: **0 FAIL**, 6 WARN (Glas, Schriftgrößen inkl. Oberflächen, wenige Fotos, kein Video, Randmessung, ähnliche Kacheln auf dem Tablet).
 - `lint.mjs`: 0 FAIL, 0 WARN.
-- impeccable `detect`: nur statische Fehlmeldungen (Abstände werden per CSS gesetzt) und der gewollte Zickzack-Rand des Belegs.
+- impeccable `detect`: verbleibend nur der gewollte Grauton des Füllsatzes und statische Fehlmeldungen zu Abständen.
+- Funktionstest: Rechner, Formular-Übernahme, FAQ per Maus und Tastatur, Geschichte, Rechtsseiten, ohne JavaScript und bei reduzierter Bewegung alles sichtbar.

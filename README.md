@@ -8,7 +8,7 @@ Neue Website für TT Fuhrparkmanagement, statisches HTML/CSS/JS ohne Build-Schri
 | `impressum.html`, `datenschutz.html`, `agb.html` | Rechtstexte (wörtlich übernommen, ein Satz zu Schriften angepasst) |
 | `danke.html` | Bestätigung, wenn das Formular ohne JavaScript gesendet wird |
 | `styles.css`, `main.js` | Gestaltung und Verhalten |
-| `assets/` | Logo, Schrift (Jost, lokal), Fotos mit Nachweisen in `assets/img/CREDITS.md` |
+| `assets/` | Logo, Schrift (Hanken Grotesk, lokal), Fotos mit Nachweisen in `assets/img/CREDITS.md` |
 | `docs/konzept.md` | Richtung, Idee, Aufbau, Kritik und Messwerte |
 
 ## Veröffentlichen
