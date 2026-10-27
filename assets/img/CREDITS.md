@@ -1,11 +1,11 @@
 # Bildnachweise
 
-Alle Bilder wurden bearbeitet (Farbe, Kontrast, Ausschnitt). Keines zeigt Kunden, Fahrzeuge oder Räume von TT Fuhrparkmanagement.
+Vorschaubilder von Wikimedia Commons, werden durch Fotos von Unsplash oder eigene Fotos ersetzt.
 
 | Datei | Titel | Urheber | Lizenz | Quelle |
 | --- | --- | --- | --- | --- |
-| oberhausen-farbe-*.jpg | Germany gasometer oberhausen neue mitte | Arne Müseler | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Germany_gasometer_oberhausen_neue_mitte.jpg |
-| bottroper-farbe-*.jpg | OB – Bottroper Straße – 10.01.09 | giggel | CC BY 3.0 | https://commons.wikimedia.org/wiki/File:OB_-_Bottroper_Stra%C3%9Fe_-_10.01.09_-_panoramio.jpg |
-| radmutter-farbe-600.jpg | Radmutter wird beim Reifenwechsel abgeschraubt | Ivan Radic | CC BY 2.0 | https://www.flickr.com/photos/26344495@N05/49999451377 |
+| transporter-grau.jpg | Ford Transit Custom, grau (Vorschaubild, wird ersetzt) | Harvey Bold | CC BY 4.0 | https://commons.wikimedia.org/wiki/File:2024_Ford_Transit_Custom_Limited_TDCi_-_1996cc_2.0_(136PS)_Diesel_-_Grey_Matter_-_05-2024,_Front.jpg |
+| transporter-weiss.jpg | Ford Transit Custom, weiß (Vorschaubild, wird ersetzt) | Alexander-93 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Ford_Transit_Custom_(2023)_1X7A1644.jpg |
+| dienstwagen.jpg | Volkswagen ID.4 (Vorschaubild, wird ersetzt) | Ssu | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:2021_Volkswagen_ID.4_Pro_(Oslo).jpg |
 
-Schrift: Hanken Grotesk (Alfredo Marco Pradil), SIL Open Font License 1.1, lokal eingebunden unter `assets/fonts/`.
+Schrift: Inter (Rasmus Andersson), SIL Open Font License 1.1. Symbole nach Lucide (ISC).

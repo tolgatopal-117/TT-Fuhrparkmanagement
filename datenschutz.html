@@ -2,43 +2,50 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Datenschutz – TT Fuhrparkmanagement</title>
+  <meta name="description" content="Datenschutzerklärung von TT Fuhrparkmanagement.">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="/favicon-48x48.png" sizes="48x48">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-
-<header class="nav">
-  <a class="nav__logo" href="index.html" aria-label="TT Fuhrparkmanagement, zum Seitenanfang"><img src="assets/logo-tt.png" alt="TT Fuhrparkmanagement" width="600" height="167"></a>
-  <nav class="nav__links" aria-label="Hauptnavigation">
-    <a href="index.html#ueberblick">Überblick</a>
-    <a href="index.html#leistungen">Leistungen</a>
-    <a href="index.html#preis">Preis</a>
-    <a href="index.html#ablauf">Ablauf</a>
-    <a href="index.html#ueber-uns">Über uns</a>
-    <a href="index.html#faq">FAQ</a>
-    <a class="button" href="index.html#kontakt">Analyse anfragen</a>
-  </nav>
+<header class="kopf" id="kopf">
+  <div class="container kopf__innen">
+    <a class="kopf__logo" href="index.html" aria-label="TT Fuhrparkmanagement, zur Startseite"><img src="assets/logo-tt.png" alt="TT Fuhrparkmanagement" width="600" height="167"></a>
+    <button class="menue-knopf" type="button" aria-expanded="false" aria-controls="hauptnav" aria-label="Menü"><span></span></button>
+    <nav class="kopf__nav" id="hauptnav" aria-label="Hauptnavigation">
+      <a href="leistungen.html">Leistungen</a><a href="so-arbeiten-wir.html">So arbeiten wir</a><a href="ueber-uns.html">Über uns</a><a href="faq.html">FAQ</a><a href="index.html#kontakt">Kontakt</a>
+      <a class="btn btn--primary" href="index.html#kontakt">Kostenlose Analyse</a>
+    </nav>
+  </div>
 </header>
+<main id="top">
+<section class="seitenkopf">
+  <div class="container">
+    <p class="krumen"><a href="index.html">Start</a> / Datenschutzerklärung</p>
+    <h1>Datenschutzerklärung</h1>
+    
+  </div>
+</section>
 
-<main id="top" class="recht">
-  <div class="recht__inner">
-    <h1 class="head" style="font-size:var(--step-head)">Datenschutzerklärung</h1>
-    <div class="recht__text">
+<section class="section" style="padding-top:1rem">
+  <div class="container"><article class="recht">
       <h2>Verantwortlicher</h2>
       <p>Tolga Topal – TT Fuhrparkmanagement<br>Bottroper Str. 87, 46117 Oberhausen<br>E-Mail: <a href="mailto:tolga.topal@ttfuhrparkmanagement.com">tolga.topal@ttfuhrparkmanagement.com</a></p>
       <h2>Hosting</h2>
       <p>Diese Website wird bei Netlify, Inc. gehostet. Beim Aufruf der Seite erfasst Netlify automatisch technische Zugriffsdaten (u. a. IP-Adresse, Browsertyp, Datum und Uhrzeit des Zugriffs) in Server-Log-Files. Diese Daten dienen ausschließlich dem technisch fehlerfreien Betrieb der Website (Art. 6 Abs. 1 lit. f DSGVO).</p>
-      <h2>Kontaktformular</h2>
-      <p>Wenn Sie das Kontaktformular nutzen, werden Ihre Angaben (Name, ggf. Firma, E-Mail-Adresse, Telefon, Anzahl Fahrzeuge, Nachricht) über den Formular-Dienst von Netlify, Inc. verarbeitet und per E-Mail an uns weitergeleitet, um Ihre Anfrage zu bearbeiten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO. Die Daten werden gelöscht, sobald sie für die Bearbeitung Ihrer Anfrage nicht mehr erforderlich sind.</p>
+      <h2>Kontakt- und Anfrageformulare</h2>
+      <p>Wenn Sie eines unserer Formulare (Kontaktformular oder Anfrage zur kostenlosen Analyse) nutzen, werden Ihre Angaben (Name, ggf. Firma, E-Mail-Adresse, Telefon, Anzahl Fahrzeuge, Nachricht) über den Formular-Dienst von Netlify, Inc. verarbeitet und per E-Mail an uns weitergeleitet, um Ihre Anfrage zu bearbeiten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO. Die Daten werden gelöscht, sobald sie für die Bearbeitung Ihrer Anfrage nicht mehr erforderlich sind.</p>
       <h2>Schriften und Inhalte Dritter</h2>
-      <p>Diese Website verwendet die Schrift Hanken Grotesk, die zusammen mit allen Bildern auf unserem eigenen Webspace gespeichert ist. Es werden keine Inhalte von Drittanbietern wie Google Fonts nachgeladen.</p>
-      <h2>Cookies und Tracking</h2>
-      <p>Diese Website setzt keine Cookies ein und verwendet keine Analyse- oder Tracking-Tools.</p>
+      <p>Diese Website verwendet die Schrift Inter, die zusammen mit allen Bildern auf unserem eigenen Webspace gespeichert ist. Es werden keine Inhalte von Drittanbietern wie Google Fonts nachgeladen.</p>
+      <h2 id="cookies">Cookies, Einwilligung und Tracking</h2>
+      <p>Diese Website setzt keine Cookies ein und verwendet derzeit keine Analyse-, Tracking- oder Marketing-Dienste.</p>
+      <p>Beim ersten Besuch fragen wir Sie in einem Hinweisfenster, ob wir solche Dienste künftig verwenden dürfen. Ihre Auswahl speichern wir im lokalen Speicher Ihres Browsers (Schlüssel „tt-einwilligung“, mit Datum der Auswahl), damit das Fenster nicht bei jedem Besuch erneut erscheint. Diese Speicherung ist für die von Ihnen gewünschte Funktion unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG). Die Angaben verlassen Ihr Gerät nicht.</p>
+      <p>Sie können Ihre Auswahl jederzeit über „Cookie-Einstellungen“ im Fußbereich jeder Seite ändern oder widerrufen. Sollten wir künftig Statistik- oder Marketing-Dienste einsetzen, werden diese nur nach Ihrer Einwilligung geladen (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG), und wir ergänzen diese Erklärung vorher.</p>
       <h2>Datenverarbeitung im Rahmen unserer Dienstleistungen</h2>
       <p>Wenn wir für Unternehmen den Fuhrpark verwalten, verarbeiten wir personenbezogene Daten der Fahrerinnen und Fahrer sowie der Ansprechpartner unserer Kunden. Dazu gehören Name und dienstliche Kontaktdaten, Führerscheindaten (Führerscheinklassen, Ausstellungs- und Ablaufdatum, Führerscheinnummer, Nachweis der Führerscheinkontrolle), die Zuordnung zu Fahrzeugen, Tankkarten- und Tankdaten sowie Angaben zu Schadensfällen.</p>
       <p>Bei dieser Verarbeitung handeln wir als Auftragsverarbeiter im Auftrag unserer Kunden (Art. 28 DSGVO). Verantwortlich ist das jeweilige Unternehmen, für das wir tätig sind. Wir verarbeiten die Daten ausschließlich nach dessen Weisung und auf Grundlage eines Auftragsverarbeitungsvertrags. Betroffene Fahrerinnen und Fahrer wenden sich mit Anfragen zu ihren Daten bitte an ihren Arbeitgeber; wir unterstützen diesen bei der Beantwortung.</p>
@@ -53,41 +60,70 @@
       <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer personenbezogenen Daten sowie ein Widerspruchsrecht. Zudem steht Ihnen ein Beschwerderecht bei der zuständigen Datenschutz-Aufsichtsbehörde zu.</p>
       <h2>SSL-/TLS-Verschlüsselung</h2>
       <p>Diese Seite nutzt eine SSL-/TLS-Verschlüsselung, erkennbar an „https://“ in der Adresszeile Ihres Browsers.</p>
-    </div>
-  </div>
+
+  </article></div>
+</section>
 </main>
-
 <footer class="fuss">
-  <div class="tile tile--satz">
-    <p>Ihr Fuhrpark, unser Antrieb.</p>
-    <small>© 2026 TT Fuhrparkmanagement · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="agb.html">AGB</a> · <a href="impressum.html#bildnachweise">Bildnachweise</a></small>
+  <div class="container">
+    <div class="fuss__raster">
+      <div>
+        <h2 class="sr-only">TT Fuhrparkmanagement</h2>
+        <p style="margin-top:0;color:#fff;font-weight:600;font-size:1.0625rem">TT Fuhrparkmanagement</p>
+        <p>Wir übernehmen die Verwaltung Ihrer Firmenfahrzeuge. Zum festen Preis pro Fahrzeug, mit festem Ansprechpartner.</p>
+      </div>
+      <div>
+        <h2>Unternehmen</h2>
+        <ul>
+          <li><a href="leistungen.html">Leistungen</a></li>
+          <li><a href="so-arbeiten-wir.html">So arbeiten wir</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Rechtliches</h2>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+          <li><a href="agb.html">AGB</a></li>
+          <li><button type="button" class="fuss__knopf" data-einwilligung-oeffnen>Cookie-Einstellungen</button></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Kontakt</h2>
+        <ul>
+          <li><a href="tel:+4915630158503">+49 156 30158503</a></li>
+          <li><a href="mailto:info@ttfuhrparkmanagement.com">info@ttfuhrparkmanagement.com</a></li>
+          <li>Bottroper Str. 87<br>46117 Oberhausen</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fuss__zeile"><span>© 2026 TT Fuhrparkmanagement</span><span>Ihr Fuhrpark, unser Antrieb.</span></div>
   </div>
-  <div class="tile tile--nav">
-    <h2>Seite</h2>
-    <ul>
-      <li><a href="index.html#ueberblick">Überblick</a></li>
-      <li><a href="index.html#leistungen">Leistungen</a></li>
-      <li><a href="index.html#rechner">Terminrechner</a></li>
-      <li><a href="index.html#preis">Preis</a></li>
-      <li><a href="index.html#ablauf">Ablauf</a></li>
-      <li><a href="index.html#ueber-uns">Über uns</a></li>
-      <li><a href="index.html#faq">FAQ</a></li>
-    </ul>
-  </div>
-  <div class="tile tile--ort">
-    <h2>Oberhausen</h2>
-    <b>Bottroper Str. 87</b>
-  </div>
-  <div class="tile tile--mail">
-    <h2>E-Mail</h2>
-    <a href="mailto:info@ttfuhrparkmanagement.com">info@ttfuhrparkmanagement.com</a>
-  </div>
-  <div class="tile tile--marke" aria-hidden="true"><span>TT<b>.</b></span></div>
-  <a class="tile tile--cta" href="index.html#kontakt">
-    <p>Kostenlose Analyse anfragen</p>
-    <svg viewBox="0 0 56 56" aria-hidden="true"><path d="M14 42L42 14M20 14h22v22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </a>
 </footer>
-
+<div class="einwilligung" id="einwilligung" role="region" aria-label="Cookie-Einstellungen" hidden>
+  <h2>Ihre Privatsphäre</h2>
+  <p>Wir verwenden nur, was für den Betrieb der Website nötig ist. Statistik- oder Marketing-Dienste setzen wir derzeit nicht ein. Sie entscheiden, ob wir sie künftig nutzen dürfen. Mehr in der <a href="datenschutz.html#cookies">Datenschutzerklärung</a>.</p>
+  <div class="einwilligung__knoepfe">
+    <button type="button" class="btn btn--ghost" data-einwilligung="nur-noetig">Nur notwendige</button>
+    <button type="button" class="btn btn--primary" data-einwilligung="alle">Alle akzeptieren</button>
+    <button type="button" class="einwilligung__link" data-einwilligung="einstellungen">Einstellungen</button>
+  </div>
+</div>
+<dialog class="einstellungen" id="einstellungen" aria-labelledby="einstellungen-titel">
+  <form method="dialog" class="einstellungen__form">
+    <h2 id="einstellungen-titel">Cookie-Einstellungen</h2>
+    <p>Wählen Sie, welche Dienste wir verwenden dürfen. Sie können Ihre Auswahl jederzeit über „Cookie-Einstellungen“ im Fußbereich ändern.</p>
+    <div class="kategorie"><div><b>Notwendig</b><p>Speichert Ihre Auswahl in diesem Fenster. Immer aktiv.</p></div><input type="checkbox" class="schalter-feld" checked disabled aria-label="Notwendig, immer aktiv"></div>
+    <div class="kategorie"><div><b>Statistik</b><p>Anonyme Auswertung, wie die Website genutzt wird. Derzeit nicht im Einsatz.</p></div><input type="checkbox" class="schalter-feld" name="statistik" aria-label="Statistik erlauben"></div>
+    <div class="kategorie"><div><b>Marketing</b><p>Messung von Werbeanzeigen. Derzeit nicht im Einsatz.</p></div><input type="checkbox" class="schalter-feld" name="marketing" aria-label="Marketing erlauben"></div>
+    <div class="einwilligung__knoepfe">
+      <button type="submit" class="btn btn--ghost" value="auswahl">Auswahl speichern</button>
+      <button type="submit" class="btn btn--primary" value="alle">Alle akzeptieren</button>
+    </div>
+  </form>
+</dialog>
+<script src="main.js" defer></script>
 </body>
 </html>

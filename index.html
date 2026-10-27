@@ -2,468 +2,207 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>TT Fuhrparkmanagement – Fuhrparkverwaltung aus Oberhausen</title>
-  <meta name="description" content="TT Fuhrparkmanagement übernimmt die Verwaltung Ihrer Firmenfahrzeuge: Fristen, Führerscheinkontrolle, Werkstatt, Schäden, Tankkarten und Kosten – in einem Paket, mit einem festen Ansprechpartner.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TT Fuhrparkmanagement – Fuhrparkverwaltung für Unternehmen</title>
+  <meta name="description" content="TT Fuhrparkmanagement übernimmt die Verwaltung Ihrer Firmenfahrzeuge: Fristen, Führerscheinkontrolle, Werkstatt, Schäden, Tankkarten und Kosten – zum festen Preis pro Fahrzeug, mit einem festen Ansprechpartner.">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="/favicon-48x48.png" sizes="48x48">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="preload" href="assets/fonts/hanken.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-
-<header class="nav">
-  <a class="nav__logo" href="#top" aria-label="TT Fuhrparkmanagement, zum Seitenanfang"><img src="assets/logo-tt.png" alt="TT Fuhrparkmanagement" width="600" height="167"></a>
-  <nav class="nav__links" aria-label="Hauptnavigation">
-    <a href="#ueberblick">Überblick</a>
-    <a href="#leistungen">Leistungen</a>
-    <a href="#preis">Preis</a>
-    <a href="#ablauf">Ablauf</a>
-    <a href="#ueber-uns">Über uns</a>
-    <a href="#faq">FAQ</a>
-    <a class="button" href="#kontakt">Analyse anfragen</a>
-  </nav>
-</header>
-
-<main id="top">
-
-  <!-- Hero -->
-  <section class="hero" aria-labelledby="hero-titel">
-    <h1 id="hero-titel" class="display"><span data-start style="--i:0;display:block">Ihr Fuhrpark.</span><span data-start style="--i:1;display:block">Einfach erledigt.</span></h1>
-    <p class="hero__lead lead" data-start style="--i:2">Fristen, Werkstatt, Schäden und Kosten Ihrer Firmenfahrzeuge. Betreut von einem festen Ansprechpartner.</p>
-    <div class="hero__aktion" data-start style="--i:3">
-      <a class="button" href="#kontakt">Kostenlose Analyse anfragen</a>
-      <a class="pfeil" href="#ueberblick">So behalten wir alles im Blick</a>
-    </div>
-
-    <div class="buehne" data-start style="--i:4">
-      <div class="mitteilungen" data-ui aria-label="Beispielhafte Mitteilungen von TT Fuhrparkmanagement">
-        <div class="mitteilung"><span class="mitteilung__app" aria-hidden="true">TT</span><div><b>HU-Termin gebucht</b><span>Transporter 07 · Freitag, 13.11., 8:30 Uhr</span></div><time>jetzt</time></div>
-        <div class="mitteilung"><span class="mitteilung__app" aria-hidden="true">TT</span><div><b>Führerscheine geprüft</b><span>26 von 30 Fahrer:innen, 4 folgen bis 30.11.</span></div><time>2 Std.</time></div>
-        <div class="mitteilung"><span class="mitteilung__app" aria-hidden="true">TT</span><div><b>Monatsbericht Oktober</b><span>Kosten je km: 0,31 € · liegt bereit</span></div><time>gestern</time></div>
-      </div>
-      <div class="buehne__panel">
-        <div class="ui" data-ui role="img" aria-label="Beispielhafte Fuhrpark-Übersicht für Oktober 2026 mit 24 Fahrzeugen, den nächsten Terminen und den Kosten je Monat">
-          <div class="ui__kopf">
-            <div><div class="ui__titel">Fuhrpark-Übersicht</div><div class="ui__sub">Beispiel GmbH · Oktober 2026</div></div>
-            <div class="ui__tabs" aria-hidden="true"><span class="an">Übersicht</span><span>Fahrzeuge</span><span>Fahrer</span><span>Kosten</span></div>
-          </div>
-          <div class="ui__kennz">
-            <div><b>24</b><span>Fahrzeuge</span></div>
-            <div><b>181</b><span>Termine im Jahr</span></div>
-            <div><b>3</b><span>Offen diese Woche</span></div>
-            <div><b>0,31 €</b><span>Kosten je km</span></div>
-          </div>
-          <div class="ui__body">
-            <div class="ui__liste">
-              <div class="ui__label">Nächste Termine</div>
-              <div class="zeile"><span class="zeile__icon">HU</span><div><b>HU und AU · Transporter 07</b><small>Fr, 13.11., 8:30 Uhr</small></div><span class="pill pill--ok">Gebucht</span></div>
-              <div class="zeile"><span class="zeile__icon">UVV</span><div><b>UVV-Prüfung · 6 Fahrzeuge</b><small>Fr, 20.11.</small></div><span class="pill pill--neu">Geplant</span></div>
-              <div class="zeile"><span class="zeile__icon">FS</span><div><b>Führerscheinkontrolle · 4 Personen</b><small>bis Mo, 30.11.</small></div><span class="pill pill--bald">Fällig</span></div>
-              <div class="zeile"><span class="zeile__icon"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="10" r="2.5" fill="currentColor"/></svg></span><div><b>Winterreifen · 18 Fahrzeuge</b><small>12.10. bis 23.10.</small></div><span class="pill pill--ok">Erledigt</span></div>
-            </div>
-            <div class="ui__chart">
-              <div class="ui__label">Kosten je Monat</div>
-              <div class="balken" aria-hidden="true"><i style="height:72%;--n:0"></i><i style="height:80%;--n:1"></i><i style="height:69%;--n:2"></i><i style="height:84%;--n:3"></i><i style="height:76%;--n:4"></i><i class="an" style="height:71%;--n:5"></i></div>
-              <div class="balken__x" aria-hidden="true"><span>Mai</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Okt</span></div>
-              <p>Oktober: <b>9.420 €</b> für alle Fahrzeuge, <b>0,31 €</b> je Kilometer.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p class="buehne__hinweis">So sieht Ihr Monat mit uns aus. Beispielansicht mit erfundenen Daten.</p>
-    </div>
-  </section>
-
-  <!-- Statement -->
-  <section class="statement wrap" aria-label="Was wir übernehmen">
-    <p id="fuellsatz">Jedes Firmenfahrzeug bringt Pflichten mit. Wir übernehmen sie. Sie fahren.</p>
-  </section>
-
-  <!-- Geschichte: ein Jahr Fuhrpark -->
-  <section class="story wrap" id="ueberblick" aria-labelledby="story-titel">
-    <div class="inner">
-      <div class="story__kopf center">
-        <h2 id="story-titel" class="head" data-auf>Ein Jahr Fuhrpark.<br>Alles im Blick.</h2>
-        <p class="lead muted" data-auf style="--i:1">Was im Alltag liegen bleibt, erledigen wir. Und Sie sehen jederzeit, wo alles steht.</p>
-      </div>
-      <div class="story__lauf">
-        <div class="story__texte">
-          <article class="schritt an" data-schritt="0">
-            <h3>Jeder Führerschein geprüft.</h3>
-            <p>Wir prüfen regelmäßig die Fahrerlaubnis aller Fahrer:innen und dokumentieren jede Kontrolle. Das sichert Sie in der Halterhaftung ab.</p>
-            <div class="schritt__ui" hidden></div>
-          </article>
-          <article class="schritt" data-schritt="1">
-            <h3>Jede Frist im Blick.</h3>
-            <p>HU und AU, UVV-Prüfung, Wartung und Reifenwechsel: Wir behalten die Termine im Blick und vereinbaren sie rechtzeitig.</p>
-            <div class="schritt__ui" hidden></div>
-          </article>
-          <article class="schritt" data-schritt="2">
-            <h3>Jeder Schaden geregelt.</h3>
-            <p>Aufnahme, Meldung an Versicherung und Werkstatt, Dokumentation und Nachverfolgung. Sie wissen immer, wo der Fall steht.</p>
-            <div class="schritt__ui" hidden></div>
-          </article>
-          <article class="schritt" data-schritt="3">
-            <h3>Jeder Euro erfasst.</h3>
-            <p>Regelmäßige Kostenreports je Fahrzeug, inklusive Kosten pro Kilometer. So sehen Sie, wo Ihr Geld hinfährt.</p>
-            <div class="schritt__ui" hidden></div>
-          </article>
-        </div>
-        <div class="story__buehne">
-          <div>
-            <div class="ansichten">
-              <div class="ansicht an" data-ansicht="0">
-                <div class="ui" data-ui role="img" aria-label="Beispiel: Führerscheinkontrolle mit 26 von 30 geprüften Fahrer:innen">
-                  <div class="ui__kopf"><div><div class="ui__titel">Führerscheinkontrolle</div><div class="ui__sub">2. Halbjahr 2026</div></div><span class="pill pill--ok">26 von 30</span></div>
-                  <div class="fahrer">
-                    <div class="zeile"><span class="zeile__icon">AB</span><div><b>Anna Becker</b><small>Klasse B · geprüft am 02.10.</small></div><span class="haken"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.9" fill="none" stroke="#0c1a06" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-                    <div class="zeile"><span class="zeile__icon">MY</span><div><b>Mehmet Yıldız</b><small>Klassen B, BE · geprüft am 02.10.</small></div><span class="haken"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.9" fill="none" stroke="#0c1a06" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-                    <div class="zeile"><span class="zeile__icon">JK</span><div><b>Jonas Krüger</b><small>Klasse B · geprüft am 06.10.</small></div><span class="haken"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.9" fill="none" stroke="#0c1a06" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-                    <div class="zeile"><span class="zeile__icon">LW</span><div><b>Lea Wagner</b><small>Klasse C1 · fällig bis 30.11.</small></div><span class="pill pill--bald">Fällig</span></div>
-                    <div class="zeile"><span class="zeile__icon">PS</span><div><b>Peter Schmitt</b><small>Klasse B · Erinnerung gesendet</small></div><span class="pill pill--neu">Erinnert</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="ansicht" data-ansicht="1">
-                <div class="ui" data-ui role="img" aria-label="Beispiel: Kalender November 2026 mit HU-Termin am 13. November">
-                  <div class="ui__kopf"><div><div class="ui__titel">November 2026</div><div class="ui__sub">4 Termine</div></div><span class="pill pill--neu">Kalender</span></div>
-                  <div class="kal">
-                    <div class="kal__tage"><span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span></div>
-                    <div class="kal__feld">
-                      <span class="leer">26</span><span class="leer">27</span><span class="leer">28</span><span class="leer">29</span><span class="leer">30</span><span class="leer">31</span><span>1</span>
-                      <span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span>
-                      <span>9</span><span>10</span><span>11</span><span>12</span><span class="gewaehlt term">13</span><span>14</span><span>15</span>
-                      <span>16</span><span>17</span><span>18</span><span>19</span><span class="term">20</span><span>21</span><span>22</span>
-                      <span>23</span><span class="term">24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span>
-                      <span class="term">30</span><span class="leer">1</span><span class="leer">2</span><span class="leer">3</span><span class="leer">4</span><span class="leer">5</span><span class="leer">6</span>
-                    </div>
-                    <div class="kal__karte"><b>HU und AU · Transporter 07</b><small>Freitag, 13. November, 8:30 Uhr · Prüfstelle Oberhausen</small><span class="pill pill--ok">Gebucht</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="ansicht" data-ansicht="2">
-                <div class="ui" data-ui role="img" aria-label="Beispiel: Schadenfall mit Status Werkstatt">
-                  <div class="ui__kopf"><div><div class="ui__titel">Schadenfall S-2026-031</div><div class="ui__sub">Kombi 12 · Parkschaden hinten links</div></div><span class="pill pill--bald">In Arbeit</span></div>
-                  <div class="schaden">
-                    <div class="schaden__foto"><img src="assets/img/radmutter-farbe-600.jpg" alt="" width="600" height="400"><span>Werkstatt · Radwechsel nach Schaden</span></div>
-                    <div class="stepper" id="schaden-stepper">
-                      <div class="fertig"><i style="--fill:1"></i><span>Gemeldet</span></div>
-                      <div class="fertig"><i style="--fill:1"></i><span>Versicherung</span></div>
-                      <div class="fertig"><i style="--fill:.55"></i><span>Werkstatt</span></div>
-                      <div><i style="--fill:0"></i><span>Abgeschlossen</span></div>
-                    </div>
-                    <div class="schaden__log">
-                      <div><time>08.10.</time><span>Schaden per Foto vom Fahrer gemeldet</span></div>
-                      <div><time>08.10.</time><span>An die Versicherung übermittelt</span></div>
-                      <div><time>10.10.</time><span>Gutachten liegt vor, Freigabe erteilt</span></div>
-                      <div><time>13.10.</time><span>Werkstatttermin bestätigt, Ersatzwagen organisiert</span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="ansicht" data-ansicht="3">
-                <div class="ui" data-ui role="img" aria-label="Beispiel: Kosten je Kilometer im Oktober 0,31 Euro">
-                  <div class="ui__kopf"><div><div class="ui__titel">Kostenreport</div><div class="ui__sub">Oktober 2026 · 24 Fahrzeuge</div></div><span class="pill pill--ok">Bereit</span></div>
-                  <div class="kosten">
-                    <div class="kosten__zahl"><b>0,31 €</b><span>je Kilometer</span></div>
-                    <div class="balken" aria-hidden="true"><i style="height:66%;--n:0"></i><i style="height:74%;--n:1"></i><i style="height:63%;--n:2"></i><i style="height:78%;--n:3"></i><i style="height:70%;--n:4"></i><i class="an" style="height:65%;--n:5"></i></div>
-                    <div class="balken__x" aria-hidden="true"><span>Mai</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Okt</span></div>
-                    <div class="kosten__fuss"><span>Gesamt Oktober <b>9.420 €</b></span><span>Vormonat <b>9.880 €</b></span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="punkte" aria-hidden="true"><i class="an"></i><i></i><i></i><i></i></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Leistungen -->
-  <section class="leistungen section wrap" id="leistungen" aria-labelledby="leistungen-titel">
-    <div class="inner">
-      <h2 id="leistungen-titel" class="head" data-auf>Acht Leistungen.<br>Ein Paket.</h2>
-      <div class="bento">
-        <article class="kachel k-tank" data-auf>
-          <div><h3>Tankkartenverwaltung</h3><p>Jede Karte einem Fahrzeug und einer Person zugeordnet. Die Monatsabrechnung prüfen wir Zeile für Zeile.</p></div>
-          <div class="karte-raum" data-ui>
-            <div class="tankkarte" role="img" aria-label="Beispiel einer Tankkarte für Transporter 07">
-              <div class="tankkarte__oben"><span>Tankkarte</span><span>TT</span></div>
-              <div class="chip" aria-hidden="true"></div>
-              <div class="tankkarte__nr">•••• •••• •••• 4821</div>
-              <div class="tankkarte__unten"><div>Fahrzeug<b>Transporter 07</b></div><div>Gültig bis<b>08/28</b></div></div>
-            </div>
-            <div class="abrechnung">
-              <div><span>21.10. · 64,2 l Diesel</span><span>112,48 €</span></div>
-              <div><span>14.10. · 58,9 l Diesel</span><span>103,19 €</span></div>
-            </div>
-          </div>
-        </article>
-        <article class="kachel k-kosten" data-auf style="--i:1">
-          <div><h3>Kosten-Reporting</h3><p>Regelmäßige Aufstellung der Kosten je Fahrzeug, inklusive Kosten pro Kilometer.</p></div>
-          <div class="kachel__ui mini" data-ui>
-            <div class="mini__zahl"><b>0,31 €</b><span>je km im Oktober</span></div>
-            <div class="balken" aria-hidden="true"><i style="height:62%"></i><i style="height:70%"></i><i style="height:58%"></i><i style="height:76%"></i><i style="height:66%"></i><i class="an" style="height:60%"></i></div>
-            <div class="balken__x" aria-hidden="true"><span>Mai</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Okt</span></div>
-          </div>
-        </article>
-        <article class="kachel k-fs" data-auf>
-          <div><h3>Führerscheinkontrolle</h3><p>Dokumentierte Prüfung aller Fahrer:innen zur Absicherung der Halterhaftung.</p></div>
-          <div class="kachel__ui mini" data-ui>
-            <div class="zeile"><span class="zeile__icon">AB</span><div><b>Anna Becker</b><small>geprüft am 02.10.</small></div><span class="pill pill--ok">Gültig</span></div>
-            <div class="zeile"><span class="zeile__icon">LW</span><div><b>Lea Wagner</b><small>fällig bis 30.11.</small></div><span class="pill pill--bald">Fällig</span></div>
-          </div>
-        </article>
-        <article class="kachel k-term" data-auf style="--i:1">
-          <div><h3>Terminüberwachung</h3><p>HU und AU, UVV-Prüfung, Wartung und Reifenwechsel, rechtzeitig erinnert und vereinbart.</p></div>
-          <div class="kachel__ui mini" data-ui>
-            <div class="zeile"><span class="zeile__icon">HU</span><div><b>Transporter 07</b><small>Fr, 13.11.</small></div><span class="pill pill--ok">Gebucht</span></div>
-            <div class="zeile"><span class="zeile__icon">UVV</span><div><b>6 Fahrzeuge</b><small>Fr, 20.11.</small></div><span class="pill pill--neu">Geplant</span></div>
-          </div>
-        </article>
-        <article class="kachel k-doc" data-auf style="--i:2">
-          <div><h3>Dokumentenverwaltung</h3><p>Fahrzeugscheine, Policen, Leasing- und Kaufverträge, digital und an einem Ort.</p></div>
-          <div class="kachel__ui mini" data-ui>
-            <div class="zeile"><span class="zeile__icon">PDF</span><div><b>Zulassungsbescheinigung</b><small>Transporter 07 · Teil I</small></div></div>
-            <div class="zeile"><span class="zeile__icon">PDF</span><div><b>Leasingvertrag</b><small>Kombi 12 · bis 03/2028</small></div></div>
-          </div>
-        </article>
-        <article class="kachel k-werk" data-auf>
-          <div><h3>Werkstattkoordination</h3><p>Termine, Angebote und Rechnungen, auf Plausibilität geprüft, bevor Sie zahlen.</p></div>
-          <div class="kachel__ui mini" data-ui>
-            <div class="rechnung" role="img" aria-label="Beispiel einer geprüften Werkstattrechnung mit einer doppelt berechneten Position">
-              <div><span>Inspektion nach Herstellerplan</span><span>389,00 €</span></div>
-              <div><span>Bremsbeläge vorne</span><span>214,50 €</span></div>
-              <div class="markiert"><span>Bremsbeläge vorne</span><span>214,50 €</span></div>
-              <div><span><b>Korrigierte Summe</b></span><span><b>603,50 €</b></span></div>
-            </div>
-          </div>
-        </article>
-        <article class="kachel k-schaden" data-auf style="--i:1">
-          <div><h3>Schadenmanagement</h3><p>Von der Meldung bis zum Abschluss.</p></div>
-          <div class="kachel__ui mini" data-ui>
-            <div class="stepper" style="padding:8px 6px">
-              <div class="fertig"><i style="--fill:1"></i><span>Meldung</span></div>
-              <div class="fertig"><i style="--fill:1"></i><span>Versich.</span></div>
-              <div class="fertig"><i style="--fill:.55"></i><span>Werkstatt</span></div>
-              <div><i style="--fill:0"></i><span>Fertig</span></div>
-            </div>
-          </div>
-        </article>
-        <article class="kachel k-vers" data-auf style="--i:2">
-          <div><h3>Versicherungsmanagement</h3><p>Bestehende Verträge verwalten, jedes Jahr die Tarife vergleichen.</p></div>
-          <div class="kachel__ui mini vergleich" data-ui>
-            <div><span>Aktueller Tarif</span><b>1.284 € / Jahr</b></div>
-            <div class="besser"><span>Vergleichsangebot</span><b>1.106 € / Jahr</b></div>
-          </div>
-        </article>
-      </div>
-      <p class="beispiel">Alle Ansichten zeigen Beispieldaten.</p>
-    </div>
-  </section>
-
-  <!-- Rechner -->
-  <section class="night wrap" id="rechner" aria-labelledby="rechner-titel">
-    <div class="inner rechner">
-      <div>
-        <h2 id="rechner-titel" class="head" data-auf>Wie viele Termine hat Ihr Fuhrpark?</h2>
-        <form class="regler" id="rechner-form" data-ui data-auf style="--i:1" onsubmit="return false">
-          <div class="regler__feld">
-            <div class="regler__kopf"><label for="r-fahrzeuge">Fahrzeuge</label><output id="o-fahrzeuge" for="r-fahrzeuge">10</output></div>
-            <input type="range" id="r-fahrzeuge" min="1" max="150" value="10">
-          </div>
-          <div class="regler__feld">
-            <div class="regler__kopf"><label for="r-fahrer">Fahrer:innen</label><output id="o-fahrer" for="r-fahrer">12</output></div>
-            <input type="range" id="r-fahrer" min="1" max="200" value="12">
-          </div>
-        </form>
-      </div>
-      <div></div>
-      <div class="rechner__fuss">
-        <div class="ergebnis" aria-live="polite"><output id="r-summe">82</output><span>Termine im Jahr</span></div>
-        <div class="rechner__erkl">
-          <p>So rechnen wir: <b>HU und AU</b> alle 24 Monate, <b>UVV-Prüfung</b> und <b>Wartung</b> jährlich, <b>zwei Reifenwechsel</b>, <b>Führerscheinkontrolle</b> halbjährlich je Person, dazu die monatliche <b>Tankabrechnung</b> und der jährliche <b>Versicherungsvergleich</b>.</p>
-          <a class="button" id="r-cta" href="#kontakt">Analyse für 10 Fahrzeuge anfragen</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Preis -->
-  <section class="preis section wrap center" id="preis" aria-labelledby="preis-titel">
-    <div class="inner">
-      <h2 id="preis-titel" class="head" data-heb>Ein Preis pro Fahrzeug.</h2>
-      <p class="preis__lead lead muted" data-heb style="--i:1">Alle acht Leistungen. Immer. Ohne Einzelbuchung, ohne Aufpreis.</p>
-      <div class="tabelle" data-heb style="--i:2" role="table" aria-label="Was im Preis enthalten ist">
-        <div role="row"><span role="cell">Führerscheinkontrolle</span><span role="cell">Inklusive</span></div>
-        <div role="row"><span role="cell">Terminüberwachung</span><span role="cell">Inklusive</span></div>
-        <div role="row"><span role="cell">Dokumentenverwaltung</span><span role="cell">Inklusive</span></div>
-        <div role="row"><span role="cell">Werkstattkoordination</span><span role="cell">Inklusive</span></div>
-        <div role="row"><span role="cell">Schadenmanagement</span><span role="cell">Inklusive</span></div>
-        <div role="row"><span role="cell">Versicherungsmanagement</span><span role="cell">Inklusive</span></div>
-        <div role="row"><span role="cell">Tankkartenverwaltung</span><span role="cell">Inklusive</span></div>
-        <div role="row"><span role="cell">Kosten-Reporting</span><span role="cell">Inklusive</span></div>
-        <div role="row"><span role="cell">Fester Ansprechpartner</span><span role="cell">Inklusive</span></div>
-        <div role="row"><span role="cell">Einzelbuchung oder Aufpreis</span><span role="cell">Entfällt</span></div>
-        <div class="summe" role="row"><span role="cell">Ihr Preis pro Fahrzeug: nach der kostenlosen Analyse</span><span role="cell"><a class="button" href="#kontakt">Analyse anfragen</a></span></div>
-      </div>
-      <p class="preis__fuss" data-heb>Abrechnung monatlich. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet. Fremdkosten wie Werkstatt-, Gutachter- und Prüfgebühren trägt der Auftraggeber.</p>
-    </div>
-  </section>
-
-  <!-- Ablauf -->
-  <section class="ablauf section wrap" id="ablauf" aria-labelledby="ablauf-titel">
-    <div class="inner">
-      <h2 id="ablauf-titel" class="head center" data-heb>In vier Schritten startklar.</h2>
-      <div class="felder">
-        <div class="feld" data-heb>
-          <div class="akte" data-ui aria-hidden="true"><div class="akte__kopf"><b>Beispiel GmbH</b><span class="pill pill--neu">Analyse</span></div><dl><dt>Fahrzeuge</dt><dd>24</dd><dt>Fristen</dt><dd>werden geprüft</dd></dl><div class="akte__balken"><i style="--w:15%"></i></div></div>
-          <p class="feld__satz">Zuerst schauen wir uns alles an.</p>
-          <p class="feld__text">Wir sichten Bestand, laufende Fristen und Verträge. Kostenlos und unverbindlich.</p>
-        </div>
-        <div class="feld" data-heb style="--i:1">
-          <div class="akte" data-ui aria-hidden="true"><div class="akte__kopf"><b>Beispiel GmbH</b><span class="pill pill--neu">Vertrag</span></div><dl><dt>Fahrzeuge</dt><dd>24</dd><dt>Leistungen</dt><dd>8 von 8</dd><dt>Preis je Fahrzeug</dt><dd>vereinbart</dd></dl><div class="akte__balken"><i style="--w:40%"></i></div></div>
-          <p class="feld__satz">Dann steht Ihr Paket.</p>
-          <p class="feld__text">Alle acht Leistungen zum festen Preis pro Fahrzeug, festgehalten im Rahmenvertrag.</p>
-        </div>
-        <div class="feld" data-heb style="--i:2">
-          <div class="akte" data-ui aria-hidden="true"><div class="akte__kopf"><b>Beispiel GmbH</b><span class="pill pill--bald">Übergabe</span></div><dl><dt>Dokumente</dt><dd>72 von 72</dd><dt>Fahrer:innen</dt><dd>30</dd><dt>Tankkarten</dt><dd>24 zugeordnet</dd></dl><div class="akte__balken"><i style="--w:75%"></i></div></div>
-          <p class="feld__satz">Dann übernehmen wir die Unterlagen.</p>
-          <p class="feld__text">Fahrzeugscheine, Policen und Verträge werden digitalisiert und zentral hinterlegt.</p>
-        </div>
-        <div class="feld" data-heb style="--i:3">
-          <div class="akte" data-ui aria-hidden="true"><div class="akte__kopf"><b>Beispiel GmbH</b><span class="pill pill--ok">Laufend</span></div><dl><dt>Fristen</dt><dd>alle aktuell</dd><dt>Nächster Bericht</dt><dd>01.11.</dd><dt>Ansprechpartner</dt><dd>Tolga Topal</dd></dl><div class="akte__balken"><i style="--w:100%"></i></div></div>
-          <p class="feld__satz">Ab jetzt läuft es.</p>
-          <p class="feld__text">Wir überwachen Fristen, koordinieren Werkstätten und liefern regelmäßige Kostenreports.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Über uns -->
-  <section class="ueber section wrap" id="ueber-uns" aria-labelledby="ueber-titel">
-    <div class="inner">
-      <figure>
-        <div class="ueber__bild"><img src="assets/img/oberhausen-farbe-1920.jpg" srcset="assets/img/oberhausen-farbe-1000.jpg 1000w, assets/img/oberhausen-farbe-1920.jpg 1920w" sizes="(min-width: 1440px) 1380px, 100vw" alt="Luftbild von Oberhausen mit dem Gasometer am Rhein-Herne-Kanal und der Autobahn" width="1920" height="1438"></div>
-        <figcaption class="ueber__unterschrift-bild">Oberhausen, unser Standort. Foto: Arne Müseler, CC BY-SA 4.0</figcaption>
-      </figure>
-      <div class="brief">
-        <div class="brief__marke" aria-hidden="true">TT</div>
-        <h2 id="ueber-titel" data-heb>Persönlich statt Hotline.</h2>
-        <p data-heb>Ich bin Tolga Topal, zertifizierter Fuhrparkverwalter, und habe TT Fuhrparkmanagement in Oberhausen gegründet.</p>
-        <p data-heb>Ich kenne die Pflichten, die an einem Fuhrpark hängen: Halterhaftung, Führerscheinkontrolle, HU, AU und UVV-Prüfung, saubere Dokumentation. Genau diese Aufgaben bleiben im Alltag schnell liegen.</p>
-        <p data-heb>Wir sind ein kleines Team, und das ist ein Vorteil. Bei uns gibt es keine Hotline und kein Ticketsystem, sondern <mark>einen festen Ansprechpartner</mark>, der Ihren Fuhrpark, Ihre Fahrer und Ihre Fristen kennt.</p>
-        <p data-heb>Wenn Sie wissen möchten, wie das bei Ihrem Fuhrpark aussehen könnte: Die Analyse ist kostenlos. Rufen Sie mich an oder schreiben Sie mir.</p>
-        <div class="brief__gruss" data-heb><b>Tolga Topal</b><span>Inhaber, zertifizierter Fuhrparkverwalter</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq section wrap" id="faq" aria-labelledby="faq-titel">
-    <div class="inner">
-      <h2 id="faq-titel" class="head" data-heb>Häufige Fragen.</h2>
-      <div class="faq__raster">
-        <div class="fragen" role="tablist" aria-orientation="vertical" aria-label="Fragen">
-          <button class="frage-knopf" role="tab" id="q1" aria-selected="true" aria-controls="antworten">Welche Leistungen sind im Paket enthalten?</button>
-          <div class="antwort-inline">Alle acht: Führerscheinkontrolle, Terminüberwachung, Dokumentenverwaltung, Werkstattkoordination, Schadenmanagement, Versicherungsmanagement, Tankkartenverwaltung und Kosten-Reporting. Sie erhalten immer das komplette Paket.</div>
-          <button class="frage-knopf" role="tab" id="q2" aria-selected="false" aria-controls="antworten">Was kostet die Fuhrparkverwaltung?</button>
-          <div class="antwort-inline">Sie zahlen einen festen Preis pro Fahrzeug. Das genaue Angebot erhalten Sie nach der kostenlosen Fuhrpark-Analyse.</div>
-          <button class="frage-knopf" role="tab" id="q3" aria-selected="false" aria-controls="antworten">Lohnt sich das auch für wenige Fahrzeuge?</button>
-          <div class="antwort-inline">Ja. Auch bei wenigen Fahrzeugen fallen Fristen, Führerscheinkontrollen, Schäden und Unterlagen an. Wir nehmen Ihnen diese Arbeit ab, unabhängig von der Größe Ihres Fuhrparks.</div>
-          <button class="frage-knopf" role="tab" id="q4" aria-selected="false" aria-controls="antworten">Wie läuft der Start ab?</button>
-          <div class="antwort-inline">Nach Ihrer Anfrage vereinbaren wir ein Erstgespräch und analysieren Ihren Fuhrpark. Danach übergeben Sie uns Fahrzeugscheine, Policen und Verträge. Wir digitalisieren alles und übernehmen die laufende Verwaltung.</div>
-          <button class="frage-knopf" role="tab" id="q5" aria-selected="false" aria-controls="antworten">Wie schnell bekomme ich eine Antwort?</button>
-          <div class="antwort-inline">Ihre Anfrage wird persönlich und zeitnah bearbeitet. Sie erhalten die Rückmeldung direkt von Ihrem Ansprechpartner, ohne Warteschleife und Callcenter.</div>
-          <button class="frage-knopf" role="tab" id="q6" aria-selected="false" aria-controls="antworten">Bleibe ich Halter meiner Fahrzeuge?</button>
-          <div class="antwort-inline">Ja. Die Halter- und Unternehmerpflichten bleiben bei Ihnen. Wir übernehmen die organisatorischen und koordinierenden Aufgaben und sorgen dafür, dass nichts liegen bleibt.</div>
-          <button class="frage-knopf" role="tab" id="q7" aria-selected="false" aria-controls="antworten">Vermitteln Sie Versicherungen?</button>
-          <div class="antwort-inline">Nein. Wir verwalten Ihre bestehenden Verträge und vergleichen einmal im Jahr die Tarife. Versicherungsvermittlung sowie Rechts- oder Steuerberatung bieten wir nicht an.</div>
-          <button class="frage-knopf" role="tab" id="q8" aria-selected="false" aria-controls="antworten">Wie lange läuft der Vertrag?</button>
-          <div class="antwort-inline">Laufzeit und Kündigungsfristen stehen in Ihrem Rahmenvertrag. Ist nichts anderes vereinbart, können Sie mit einer Frist von einem Monat zum Monatsende kündigen.</div>
-          <button class="frage-knopf" role="tab" id="q9" aria-selected="false" aria-controls="antworten">Was passiert mit den Daten meiner Fahrer?</button>
-          <div class="antwort-inline">Wir verarbeiten sie als Auftragsverarbeiter nach Art. 28 DSGVO, nur nach Ihrer Weisung und auf Grundlage eines Auftragsverarbeitungsvertrags. Nach Vertragsende geben wir die Daten zurück oder löschen sie innerhalb von 30 Tagen, sofern keine Aufbewahrungspflicht besteht.</div>
-        </div>
-        <div class="antworten" id="antworten" role="tabpanel" aria-labelledby="q1" aria-live="polite">
-          <p class="antwort">Alle acht: Führerscheinkontrolle, Terminüberwachung, Dokumentenverwaltung, Werkstattkoordination, Schadenmanagement, Versicherungsmanagement, Tankkartenverwaltung und Kosten-Reporting. Sie erhalten immer das komplette Paket.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Kontakt -->
-  <section class="kontakt section wrap" id="kontakt" aria-labelledby="kontakt-titel">
-    <div class="inner kontakt__raster">
-      <div class="kontakt__text">
-        <h2 id="kontakt-titel" class="head" data-heb>Lassen Sie uns sprechen.</h2>
-        <p class="lead muted" data-heb style="--i:1">Erzählen Sie uns kurz von Ihrem Fuhrpark. Analyse und Erstgespräch sind kostenlos und unverbindlich.</p>
-        <div class="direkt" data-heb style="--i:2">
-          <div><span>E-Mail</span><a href="mailto:info@ttfuhrparkmanagement.com">info@ttfuhrparkmanagement.com</a></div>
-          <div><span>Telefon</span><a class="nums" href="tel:+4915630158503">+49 156 30158503</a></div>
-          <div><span>Adresse</span><p>Bottroper Str. 87, 46117 Oberhausen</p></div>
-        </div>
-        <figure data-heb style="--i:3">
-          <div class="kontakt__foto"><img src="assets/img/bottroper-farbe-1000.jpg" alt="Die Bottroper Straße in Oberhausen an einem Wintertag" width="1000" height="750" loading="lazy"></div>
-          <figcaption>Die Bottroper Straße in Oberhausen. Foto: giggel, CC BY 3.0</figcaption>
-        </figure>
-      </div>
-      <form class="formular" name="kontakt" id="kontakt-form" method="POST" action="/danke.html" data-netlify="true" netlify-honeypot="bot-field" data-heb style="--i:1">
-        <input type="hidden" name="form-name" value="kontakt">
-        <p class="hp"><label>Bitte nicht ausfüllen: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-        <div class="zwei">
-          <div class="feldbox"><input id="f-name" name="name" placeholder=" " autocomplete="name" required><label for="f-name">Name</label></div>
-          <div class="feldbox"><input id="f-firma" name="firma" placeholder=" " autocomplete="organization"><label for="f-firma">Firma (optional)</label></div>
-        </div>
-        <div class="zwei">
-          <div class="feldbox"><input id="f-mail" name="email" type="email" placeholder=" " autocomplete="email" required><label for="f-mail">E-Mail</label></div>
-          <div class="feldbox"><input id="f-tel" name="telefon" type="tel" placeholder=" " autocomplete="tel"><label for="f-tel">Telefon (optional)</label></div>
-        </div>
-        <div class="feldbox"><input id="f-anz" name="fahrzeuge" placeholder=" " inputmode="numeric"><label for="f-anz">Anzahl Fahrzeuge (optional)</label></div>
-        <div class="feldbox"><textarea id="f-msg" name="nachricht" placeholder=" " required></textarea><label for="f-msg">Ihre Nachricht</label></div>
-        <button class="button button--dark" type="submit">Anfrage senden</button>
-        <p class="form-hinweis" id="form-hinweis" aria-live="polite">Hinweise zum Datenschutz finden Sie in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
-      </form>
-    </div>
-  </section>
-
-</main>
-
-<footer class="fuss">
-  <div class="tile tile--satz">
-    <p>Ihr Fuhrpark, unser Antrieb.</p>
-    <small>© 2026 TT Fuhrparkmanagement · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="agb.html">AGB</a> · <a href="impressum.html#bildnachweise">Bildnachweise</a></small>
+<header class="kopf" id="kopf">
+  <div class="container kopf__innen">
+    <a class="kopf__logo" href="index.html" aria-label="TT Fuhrparkmanagement, zur Startseite"><img src="assets/logo-tt.png" alt="TT Fuhrparkmanagement" width="600" height="167"></a>
+    <button class="menue-knopf" type="button" aria-expanded="false" aria-controls="hauptnav" aria-label="Menü"><span></span></button>
+    <nav class="kopf__nav" id="hauptnav" aria-label="Hauptnavigation">
+      <a href="leistungen.html">Leistungen</a><a href="so-arbeiten-wir.html">So arbeiten wir</a><a href="ueber-uns.html">Über uns</a><a href="faq.html">FAQ</a><a href="index.html#kontakt">Kontakt</a>
+      <a class="btn btn--primary" href="index.html#kontakt">Kostenlose Analyse</a>
+    </nav>
   </div>
-  <div class="tile tile--nav">
-    <h2>Seite</h2>
-    <ul>
-      <li><a href="#ueberblick">Überblick</a></li>
-      <li><a href="#leistungen">Leistungen</a></li>
-      <li><a href="#rechner">Terminrechner</a></li>
-      <li><a href="#preis">Preis</a></li>
-      <li><a href="#ablauf">Ablauf</a></li>
-      <li><a href="#ueber-uns">Über uns</a></li>
-      <li><a href="#faq">FAQ</a></li>
+</header>
+<main id="top">
+<section class="hero">
+  <div class="container hero__raster">
+    <div>
+      <p class="marke" data-auf>Fuhrparkverwaltung aus Oberhausen</p>
+      <h1 data-auf style="--i:1">Fuhrpark&shy;management, das Ihnen Arbeit abnimmt.</h1>
+      <p class="lead" data-auf style="--i:2">Wir übernehmen Fristen, Führerscheinkontrolle, Werkstatt, Schäden, Tankkarten und Kosten Ihrer Firmenfahrzeuge. Zum festen Preis pro Fahrzeug, mit einem festen Ansprechpartner.</p>
+      <div class="hero__aktionen" data-auf style="--i:3">
+        <a class="btn btn--primary" href="#kontakt">Kostenlose Analyse anfragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="btn btn--ghost" href="#leistungen">Leistungen ansehen</a>
+      </div>
+      <ul class="haken-liste" data-auf style="--i:4">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Fester Preis pro Fahrzeug</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Alle Leistungen inklusive</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Analyse kostenlos</li>
+      </ul>
+    </div>
+    <div class="hero__bild" data-auf style="--i:2">
+      <div class="hero__foto"><img src="assets/img/transporter-grau.jpg" alt="Grauer Transporter auf einem Parkplatz" width="1280" height="750"></div>
+      <div class="schwebe schwebe--2"><span class="schwebe__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></span><div><b>Fristen im Blick</b><span>HU, AU und UVV rechtzeitig vereinbart</span></div></div>
+      <div class="schwebe schwebe--1"><span class="schwebe__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></span><div><b>Fester Ansprechpartner</b><span>Persönlich statt Hotline</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Worauf Sie sich verlassen können">
+  <div class="container">
+    <ul class="fakten">
+      <li class="fakt" data-auf><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12"/><path d="M4 14h9"/><path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"/></svg></span><div><b>Fester Preis pro Fahrzeug</b><span>Ohne Einzelbuchung, ohne Aufpreis</span></div></li>
+      <li class="fakt" data-auf style="--i:1"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></span><div><b>Fester Ansprechpartner</b><span>Kein Callcenter, kein Ticketsystem</span></div></li>
+      <li class="fakt" data-auf style="--i:2"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><div><b>Datenschutz nach DSGVO</b><span>Mit Auftragsverarbeitungsvertrag</span></div></li>
+      <li class="fakt" data-auf style="--i:3"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg></span><div><b>Zertifizierte Verwaltung</b><span>Fachwissen zu Halterhaftung und Prüfpflichten</span></div></li>
     </ul>
   </div>
-  <div class="tile tile--ort">
-    <h2>Oberhausen</h2>
-    <b id="uhr">–:–</b>
-  </div>
-  <div class="tile tile--mail">
-    <h2>E-Mail</h2>
-    <a href="mailto:info@ttfuhrparkmanagement.com">info@ttfuhrparkmanagement.com</a>
-  </div>
-  <div class="tile tile--marke" aria-hidden="true"><span>TT<b>.</b></span></div>
-  <a class="tile tile--cta" href="#kontakt">
-    <p>Kostenlose Analyse anfragen</p>
-    <svg viewBox="0 0 56 56" aria-hidden="true"><path d="M14 42L42 14M20 14h22v22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </a>
-</footer>
+</section>
 
+<section class="section" id="leistungen" aria-labelledby="leistungen-titel">
+  <div class="container">
+    <div class="section__kopf section__kopf--mitte" data-auf>
+      <p class="marke">Leistungen</p>
+      <h2 id="leistungen-titel">Acht Leistungen. Ein Paket.</h2>
+      <p class="lead">Alle Bausteine sind immer enthalten. Sie geben die Arbeit ab, wir kümmern uns.</p>
+    </div>
+    <div class="karten">
+      <a class="karte" href="leistungen.html#fuehrerschein" data-auf style="--i:0"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M15 8h2"/><path d="M15 12h2"/><path d="M7 16h10"/></svg></span><h3>Führerscheinkontrolle</h3><p>Regelmäßige, dokumentierte Prüfung der Fahrerlaubnis aller Fahrer:innen zur Absicherung der Halterhaftung.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a class="karte" href="leistungen.html#termine" data-auf style="--i:1"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg></span><h3>Terminüberwachung</h3><p>Erinnerung an gesetzliche und technische Fristen, damit kein Termin verstreicht.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a class="karte" href="leistungen.html#dokumente" data-auf style="--i:2"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg></span><h3>Dokumentenverwaltung</h3><p>Digitale Ablage aller Unterlagen, getrennt je Kunde und jederzeit auffindbar.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a class="karte" href="leistungen.html#werkstatt" data-auf style="--i:3"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span><h3>Werkstattkoordination</h3><p>Wir kümmern uns um Werkstatttermine und behalten die Kosten im Griff.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a class="karte" href="leistungen.html#schaden" data-auf style="--i:0"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span><h3>Schadenmanagement</h3><p>Vom ersten Foto bis zum abgeschlossenen Fall, ohne dass Sie hinterhertelefonieren müssen.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a class="karte" href="leistungen.html#versicherung" data-auf style="--i:1"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>Versicherungsmanagement</h3><p>Verwaltung Ihrer bestehenden Versicherungsverträge. Eine Versicherungsvermittlung bieten wir nicht an.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a class="karte" href="leistungen.html#tankkarten" data-auf style="--i:2"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 22h12"/><path d="M4 9h10"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5"/></svg></span><h3>Tankkartenverwaltung</h3><p>Jede Tankkarte ist einem Fahrzeug und einer Person zugeordnet.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a class="karte" href="leistungen.html#kosten" data-auf style="--i:3"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span><h3>Kosten-Reporting</h3><p>Sie sehen jederzeit, was Ihr Fuhrpark kostet und wo das Geld hinfährt.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft" id="analyse" aria-labelledby="analyse-titel">
+  <div class="container teilung">
+    <div class="teilung__bild" data-auf><img src="assets/img/transporter-weiss.jpg" alt="Weißer Transporter von hinten auf einem Parkplatz" width="1280" height="720" loading="lazy"></div>
+    <div data-auf style="--i:1">
+      <p class="marke">Kostenlos und unverbindlich</p>
+      <h2 id="analyse-titel">Die kostenlose Fuhrpark-Analyse</h2>
+      <p class="lead">Bevor Sie sich entscheiden, schauen wir uns Ihren Fuhrpark an und zeigen Ihnen, wo Sie Aufwand sparen.</p>
+      <ul class="punkte">
+        <li><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><div><b>Bestand und Fristen sichten</b><span>Welche Fahrzeuge, welche Termine stehen an?</span></div></li>
+        <li><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg></span><div><b>Verträge und Policen prüfen</b><span>Leasing, Versicherungen, Tankkarten</span></div></li>
+        <li><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12"/><path d="M4 14h9"/><path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"/></svg></span><div><b>Ihr Angebot zum Festpreis</b><span>Ein Preis pro Fahrzeug, alles inklusive</span></div></li>
+      </ul>
+      <a class="btn btn--primary" href="#kontakt">Analyse anfragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="start-titel">
+  <div class="container">
+    <div class="section__kopf section__kopf--mitte" data-auf>
+      <p class="marke">So einfach geht's</p>
+      <h2 id="start-titel">In vier Schritten startklar</h2>
+    </div>
+    <ol class="schritte">
+      <li class="schritt" data-auf style="--i:0"><span class="schritt__nr">1</span><h3>Fuhrpark-Analyse</h3><p>Wir sichten Ihren Bestand, laufende Fristen und Verträge. Kostenlos und unverbindlich.</p></li>
+      <li class="schritt" data-auf style="--i:1"><span class="schritt__nr">2</span><h3>Ihr Rundum-Paket</h3><p>Sie erhalten alle acht Leistungen zum festen Preis pro Fahrzeug, festgehalten im Rahmenvertrag.</p></li>
+      <li class="schritt" data-auf style="--i:2"><span class="schritt__nr">3</span><h3>Übergabe</h3><p>Fahrzeugscheine, Policen und Verträge werden digitalisiert und zentral hinterlegt.</p></li>
+      <li class="schritt" data-auf style="--i:3"><span class="schritt__nr">4</span><h3>Laufender Betrieb</h3><p>Wir überwachen Fristen, koordinieren Werkstätten und liefern regelmäßige Kostenreports.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section--soft" id="kontakt" aria-labelledby="kontakt-titel">
+  <div class="container kontakt__raster">
+    <div data-auf>
+      <p class="marke">Kontakt</p>
+      <h2 id="kontakt-titel">Lassen Sie uns sprechen</h2>
+      <p class="lead" style="margin-top:1rem">Erzählen Sie uns kurz von Ihrem Fuhrpark. Analyse und Erstgespräch sind kostenlos und unverbindlich.</p>
+      <div class="kontakt__daten">
+        <a href="tel:+4915630158503"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span><small>Telefon</small><b>+49 156 30158503</b></span></a>
+        <a href="mailto:info@ttfuhrparkmanagement.com"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><span><small>E-Mail</small><b>info@ttfuhrparkmanagement.com</b></span></a>
+        <div><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span><span><small>Adresse</small><b>Bottroper Str. 87, 46117 Oberhausen</b></span></div>
+      </div>
+    </div>
+    <form class="formular" name="kontakt" id="kontakt-form" method="POST" action="/danke.html" data-netlify="true" netlify-honeypot="bot-field" data-senden data-auf style="--i:1">
+      <h3>Kostenlose Analyse anfragen</h3>
+      <input type="hidden" name="form-name" value="kontakt">
+      <p class="hp"><label>Bitte nicht ausfüllen: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <div class="zwei">
+        <div class="feld"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="feld"><label for="f-firma">Firma <span class="muted">(optional)</span></label><input id="f-firma" name="firma" autocomplete="organization"></div>
+      </div>
+      <div class="zwei">
+        <div class="feld"><label for="f-mail">E-Mail</label><input id="f-mail" name="email" type="email" autocomplete="email" required></div>
+        <div class="feld"><label for="f-tel">Telefon <span class="muted">(optional)</span></label><input id="f-tel" name="telefon" type="tel" autocomplete="tel"></div>
+      </div>
+      <div class="feld"><label for="f-anz">Anzahl Fahrzeuge <span class="muted">(optional)</span></label><input id="f-anz" name="fahrzeuge" inputmode="numeric"></div>
+      <div class="feld"><label for="f-msg">Ihre Nachricht</label><textarea id="f-msg" name="nachricht" required></textarea></div>
+      <button class="btn btn--primary" type="submit">Anfrage senden</button>
+      <p class="form-hinweis" aria-live="polite">Hinweise zum Datenschutz finden Sie in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+    </form>
+  </div>
+</section>
+</main>
+<footer class="fuss">
+  <div class="container">
+    <div class="fuss__raster">
+      <div>
+        <h2 class="sr-only">TT Fuhrparkmanagement</h2>
+        <p style="margin-top:0;color:#fff;font-weight:600;font-size:1.0625rem">TT Fuhrparkmanagement</p>
+        <p>Wir übernehmen die Verwaltung Ihrer Firmenfahrzeuge. Zum festen Preis pro Fahrzeug, mit festem Ansprechpartner.</p>
+      </div>
+      <div>
+        <h2>Unternehmen</h2>
+        <ul>
+          <li><a href="leistungen.html">Leistungen</a></li>
+          <li><a href="so-arbeiten-wir.html">So arbeiten wir</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Rechtliches</h2>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+          <li><a href="agb.html">AGB</a></li>
+          <li><button type="button" class="fuss__knopf" data-einwilligung-oeffnen>Cookie-Einstellungen</button></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Kontakt</h2>
+        <ul>
+          <li><a href="tel:+4915630158503">+49 156 30158503</a></li>
+          <li><a href="mailto:info@ttfuhrparkmanagement.com">info@ttfuhrparkmanagement.com</a></li>
+          <li>Bottroper Str. 87<br>46117 Oberhausen</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fuss__zeile"><span>© 2026 TT Fuhrparkmanagement</span><span>Ihr Fuhrpark, unser Antrieb.</span></div>
+  </div>
+</footer>
+<div class="einwilligung" id="einwilligung" role="region" aria-label="Cookie-Einstellungen" hidden>
+  <h2>Ihre Privatsphäre</h2>
+  <p>Wir verwenden nur, was für den Betrieb der Website nötig ist. Statistik- oder Marketing-Dienste setzen wir derzeit nicht ein. Sie entscheiden, ob wir sie künftig nutzen dürfen. Mehr in der <a href="datenschutz.html#cookies">Datenschutzerklärung</a>.</p>
+  <div class="einwilligung__knoepfe">
+    <button type="button" class="btn btn--ghost" data-einwilligung="nur-noetig">Nur notwendige</button>
+    <button type="button" class="btn btn--primary" data-einwilligung="alle">Alle akzeptieren</button>
+    <button type="button" class="einwilligung__link" data-einwilligung="einstellungen">Einstellungen</button>
+  </div>
+</div>
+<dialog class="einstellungen" id="einstellungen" aria-labelledby="einstellungen-titel">
+  <form method="dialog" class="einstellungen__form">
+    <h2 id="einstellungen-titel">Cookie-Einstellungen</h2>
+    <p>Wählen Sie, welche Dienste wir verwenden dürfen. Sie können Ihre Auswahl jederzeit über „Cookie-Einstellungen“ im Fußbereich ändern.</p>
+    <div class="kategorie"><div><b>Notwendig</b><p>Speichert Ihre Auswahl in diesem Fenster. Immer aktiv.</p></div><input type="checkbox" class="schalter-feld" checked disabled aria-label="Notwendig, immer aktiv"></div>
+    <div class="kategorie"><div><b>Statistik</b><p>Anonyme Auswertung, wie die Website genutzt wird. Derzeit nicht im Einsatz.</p></div><input type="checkbox" class="schalter-feld" name="statistik" aria-label="Statistik erlauben"></div>
+    <div class="kategorie"><div><b>Marketing</b><p>Messung von Werbeanzeigen. Derzeit nicht im Einsatz.</p></div><input type="checkbox" class="schalter-feld" name="marketing" aria-label="Marketing erlauben"></div>
+    <div class="einwilligung__knoepfe">
+      <button type="submit" class="btn btn--ghost" value="auswahl">Auswahl speichern</button>
+      <button type="submit" class="btn btn--primary" value="alle">Alle akzeptieren</button>
+    </div>
+  </form>
+</dialog>
 <script src="main.js" defer></script>
 </body>
 </html>

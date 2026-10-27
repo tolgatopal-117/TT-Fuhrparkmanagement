@@ -3,15 +3,21 @@
 Ziel: eine neue, hochwertige Website für TT Fuhrparkmanagement.
 
 ## Design
-- Bei jeder Gestaltung, Überarbeitung oder Prüfung von Seiten, Sektionen, Landingpages oder App-Screens
-  immer zuerst den Skill `design-taste-frontend` (`.claude/skills/taste-skill`) laden und seinem Ablauf folgen
-  (Richtungen ziehen, Inspector laufen lassen, Look-and-fix-Schleife auf Screenshots).
-- Arbeitsdateien des Skills liegen in `.taste-skill/` und werden nicht eingecheckt.
+- Vorgabe des Kunden (Oktober 2026): hell, seriös und modern wie die Fuhrpark-Anbieter Avrios und Geotab.
+  Echte Fotos, Icons, weiche Karten mit leichten Schatten und dezente Verläufe sind ausdrücklich erlaubt.
+  Experimentelle Layouts (Kachel-Bretter, riesige Namensbänder, Poster-Typografie) wurden abgelehnt.
+- Nicht erwähnen, dass TT Fuhrparkmanagement von einer Person betrieben wird (Wir-Form). Impressum und AGB
+  nennen den Inhaber, weil das gesetzlich vorgeschrieben ist.
+- Keine erfundenen Kundenlogos, Bewertungen oder Kennzahlen.
+- Der Skill `design-taste-frontend` (`.claude/skills/taste-skill`) dient als Werkzeugkasten: Inspector
+  (`scripts/inspect.mjs`), Lint und Kritik-Ablauf nutzen; seine Stil-Verbote (Icons, Schatten, Verläufe,
+  Karten-Reihen, Eyebrows) gelten für diese Website nicht. Arbeitsdateien liegen in `.taste-skill/` und
+  werden nicht eingecheckt.
+- Seiten werden mit `python3 tools/build.py` aus gemeinsamen Bausteinen gebaut.
 - Zusätzlich ist `impeccable` (`.claude/skills/impeccable`) installiert. Einsatz:
   - auf Befehl `/impeccable <befehl> <ziel>` (z. B. `audit`, `critique`, `polish`, `typeset`, `harden`),
   - für Prüfung, Barrierefreiheit, Responsiveness und Feinschliff fertiger Seiten.
-- Rollenverteilung: Art Direction neuer Seiten (Richtung, Typo, Palette, Bilder) kommt aus dem taste skill;
-  impeccable prüft und verfeinert. Bei widersprüchlichen Regeln gilt der taste skill.
+- Rollenverteilung: Die Kundenvorgabe oben bestimmt den Stil; impeccable prüft und verfeinert.
 - Außerdem sind die Skills von Emil Kowalski installiert (`.claude/skills/`, Quelle: github.com/emilkowalski/skills).
   Zuständig für Animationen und Interaktions-Details:
   - `emil-design-eng` für Details wie Schatten, Rahmen, Abstände, Zustände,
@@ -20,7 +26,7 @@ Ziel: eine neue, hochwertige Website für TT Fuhrparkmanagement.
   - `break-ui` zum Stresstest der Oberfläche, `pick-ui-library` bei der Wahl von UI-Bibliotheken.
   - `mobile-native` für Smartphone-Details (Touch, Notch, 100vh, Zoom bei Eingabefeldern), `apple-design` für Gesten, Federanimationen und Typografie.
   - Nicht relevant für diese Website (nur React Native/Swift): `animate-expo`, `write-swift`.
-- Reihenfolge: taste skill (Art Direction) → Emil-Skills (Bewegung, Detail) → impeccable (Prüfung, Feinschliff).
+- Reihenfolge: Kundenvorgabe (Stil) → Emil-Skills (Bewegung, Detail) → impeccable (Prüfung, Feinschliff).
 
 ## Sprache
 - Website-Texte auf Deutsch, sofern nicht anders gewünscht.

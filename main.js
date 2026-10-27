@@ -1,189 +1,69 @@
-// TT Fuhrparkmanagement v2 – Bewegung und Verhalten ohne Bibliotheken.
-// Regeln (nach Emil Kowalski): nur transform und opacity, ease-out für alles, was erscheint,
-// nichts über 1 s, und bei reduzierter Bewegung bleibt der Inhalt, nur der Weg entfällt.
+// TT Fuhrparkmanagement v4 – Navigation, Einblenden, Rechner, Formulare, Cookie-Einstellungen.
 
 const ruhig = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const fein = matchMedia('(hover: hover) and (pointer: fine)');
-const clamp01 = (v) => Math.min(1, Math.max(0, v));
 
-// Scroll-Schleife: alle scrollgebundenen Effekte in einem rAF.
-const beimScrollen = [];
-let geplant = false;
-const lauf = () => { geplant = false; for (const f of beimScrollen) f(); };
-addEventListener('scroll', () => { if (!geplant) { geplant = true; requestAnimationFrame(lauf); } }, { passive: true });
-addEventListener('resize', () => requestAnimationFrame(lauf));
-
-// Einblenden: einmal, nie dauerhaft versteckt.
+// Mobiles Menü
 (() => {
-  const ziele = document.querySelectorAll('[data-auf], [data-heb]');
-  document.querySelectorAll('.tabelle div').forEach((d, i) => d.style.setProperty('--r', i));
+  const kopf = document.getElementById('kopf');
+  const knopf = kopf && kopf.querySelector('.menue-knopf');
+  if (!knopf) return;
+  const setze = (offen) => { kopf.classList.toggle('menue-offen', offen); knopf.setAttribute('aria-expanded', String(offen)); };
+  knopf.addEventListener('click', () => setze(!kopf.classList.contains('menue-offen')));
+  kopf.querySelectorAll('.kopf__nav a').forEach((a) => a.addEventListener('click', () => setze(false)));
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') setze(false); });
+  const schatten = () => kopf.classList.toggle('gescrollt', scrollY > 8);
+  addEventListener('scroll', schatten, { passive: true });
+  schatten();
+})();
+
+// Einblenden beim Scrollen; was oberhalb der Fensterkante liegt, ist immer sichtbar.
+(() => {
+  const ziele = [...document.querySelectorAll('[data-auf], .schwebe')];
   const zeigen = (el) => el.classList.add('da');
-  if (!('IntersectionObserver' in window)) { ziele.forEach(zeigen); return; }
+  if (ruhig || !('IntersectionObserver' in window)) { ziele.forEach(zeigen); return; }
   const io = new IntersectionObserver((eintraege) => {
     for (const e of eintraege) if (e.isIntersecting) { zeigen(e.target); io.unobserve(e.target); }
-  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
   ziele.forEach((el) => io.observe(el));
-  // Sicherheitsnetz für Sprünge: alles oberhalb der Fensterunterkante ist sichtbar.
-  beimScrollen.push(() => ziele.forEach((el) => { if (!el.classList.contains('da') && el.getBoundingClientRect().top < innerHeight) { zeigen(el); io.unobserve(el); } }));
-  addEventListener('load', () => setTimeout(lauf, 1500));
+  let geplant = false;
+  const nachziehen = () => { geplant = false; ziele.forEach((el) => { if (!el.classList.contains('da') && el.getBoundingClientRect().top < innerHeight) { zeigen(el); io.unobserve(el); } }); };
+  addEventListener('scroll', () => { if (!geplant) { geplant = true; requestAnimationFrame(nachziehen); } }, { passive: true });
+  addEventListener('load', () => setTimeout(nachziehen, 1200));
+  // die schwebenden Karten im Startbild kommen kurz nach dem Foto
+  document.querySelectorAll('.schwebe').forEach((el, i) => setTimeout(() => zeigen(el), 600 + i * 250));
 })();
 
-// Hero: Mitteilungen treffen nacheinander ein.
-(() => {
-  const m = document.querySelectorAll('.mitteilung');
-  if (ruhig) { m.forEach((el) => el.classList.add('da')); return; }
-  m.forEach((el, i) => setTimeout(() => el.classList.add('da'), 1100 + i * 650));
-})();
-
-// Hero: die Übersicht liegt zuerst geneigt und richtet sich beim Scrollen auf.
-(() => {
-  const panel = document.querySelector('.buehne__panel');
-  if (!panel || ruhig) return;
-  const setzen = () => {
-    const r = panel.getBoundingClientRect();
-    const p = clamp01(1 - (r.top - innerHeight * 0.18) / (innerHeight * 0.62));
-    panel.style.transform = `rotateX(${(1 - p) * 16}deg) scale(${0.9 + p * 0.1}) translateY(${(1 - p) * 24}px)`;
-  };
-  beimScrollen.push(setzen);
-  setzen();
-})();
-
-// Statement: Wörter füllen sich mit Farbe, während der Satz durchs Bild läuft.
-(() => {
-  const p = document.getElementById('fuellsatz');
-  if (!p) return;
-  const woerter = p.textContent.trim().split(/\s+/);
-  p.setAttribute('aria-label', p.textContent.trim());
-  p.innerHTML = woerter.map((w) => `<span class="wort" aria-hidden="true">${w}</span>`).join(' ');
-  const spans = [...p.querySelectorAll('.wort')];
-  if (ruhig) { spans.forEach((s) => s.classList.add('an')); return; }
-  const setzen = () => {
-    const r = p.getBoundingClientRect();
-    const fortschritt = clamp01((innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.35));
-    const n = Math.round(fortschritt * spans.length);
-    spans.forEach((s, i) => s.classList.toggle('an', i < n));
-  };
-  beimScrollen.push(setzen);
-  setzen();
-})();
-
-// Geschichte: Schritte rechts schalten die festgehaltene Ansicht um. Auf dem Telefon steht jede Ansicht beim Text.
-(() => {
-  const schritte = [...document.querySelectorAll('.schritt')];
-  const ansichten = [...document.querySelectorAll('.ansicht')];
-  const punkte = [...document.querySelectorAll('.punkte i')];
-  if (!schritte.length) return;
-  // Kopien der Ansichten für die schmale Darstellung
-  schritte.forEach((s, i) => {
-    const ziel = s.querySelector('.schritt__ui');
-    const quelle = ansichten[i] && ansichten[i].querySelector('.ui');
-    if (ziel && quelle) { ziel.appendChild(quelle.cloneNode(true)); ziel.hidden = false; }
-  });
-  let aktiv = 0;
-  const setze = (i) => {
-    if (i === aktiv) return;
-    aktiv = i;
-    schritte.forEach((s, k) => s.classList.toggle('an', k === i));
-    ansichten.forEach((a, k) => a.classList.toggle('an', k === i));
-    punkte.forEach((d, k) => d.classList.toggle('an', k === i));
-  };
-  beimScrollen.push(() => {
-    const mitte = innerHeight * 0.5;
-    let best = 0, abstand = Infinity;
-    schritte.forEach((s, k) => { const r = s.getBoundingClientRect(); const d = Math.abs(r.top + r.height / 2 - mitte); if (d < abstand) { abstand = d; best = k; } });
-    setze(best);
-  });
-})();
-
-// Tankkarte: neigt sich leicht zum Zeiger.
-(() => {
-  const kachel = document.querySelector('.k-tank');
-  const karte = document.querySelector('.tankkarte');
-  if (!kachel || !karte || ruhig) return;
-  kachel.addEventListener('pointermove', (e) => {
-    if (!fein.matches) return;
-    const r = kachel.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
-    karte.style.setProperty('--ry', `${x * 22}deg`);
-    karte.style.setProperty('--rx', `${-y * 16}deg`);
-  });
-  kachel.addEventListener('pointerleave', () => { karte.style.removeProperty('--ry'); karte.style.removeProperty('--rx'); });
-})();
-
-// Rechner: typische Intervalle je Fahrzeug bzw. Person und Jahr. Die Zahl rollt zum neuen Wert.
+// Terminrechner: typische Intervalle je Fahrzeug bzw. Person und Jahr.
 (() => {
   const fz = document.getElementById('r-fahrzeuge');
   const fa = document.getElementById('r-fahrer');
   if (!fz || !fa) return;
-  const oFz = document.getElementById('o-fahrzeuge'), oFa = document.getElementById('o-fahrer');
-  const summe = document.getElementById('r-summe'), cta = document.getElementById('r-cta'), anz = document.getElementById('f-anz');
-  const fuellung = (el) => el.style.setProperty('--p', `${((el.value - el.min) / (el.max - el.min)) * 100}%`);
-  let gezeigt = Number(summe.textContent), ziel = gezeigt, start = 0, von = gezeigt, rolle = 0;
-  const rollen = (t) => {
-    if (!start) start = t;
-    const k = clamp01((t - start) / 420), e = 1 - Math.pow(1 - k, 3);
-    gezeigt = Math.round(von + (ziel - von) * e);
-    summe.textContent = gezeigt.toLocaleString('de-DE');
-    if (k < 1) rolle = requestAnimationFrame(rollen);
-  };
+  const summe = document.getElementById('r-summe'), cta = document.getElementById('r-cta');
   const rechnen = () => {
     const f = Number(fz.value), p = Number(fa.value);
-    oFz.textContent = f; oFa.textContent = p;
-    fuellung(fz); fuellung(fa);
-    const neu = Math.ceil(f / 2) + f + f + f * 2 + p * 2 + 12 + 1;
+    document.getElementById('o-fahrzeuge').textContent = f;
+    document.getElementById('o-fahrer').textContent = p;
+    summe.textContent = (Math.ceil(f / 2) + f + f + f * 2 + p * 2 + 12 + 1).toLocaleString('de-DE');
     cta.textContent = `Analyse für ${f} ${f === 1 ? 'Fahrzeug' : 'Fahrzeuge'} anfragen`;
-    cta.dataset.fahrzeuge = String(f);
-    if (ruhig) { summe.textContent = neu.toLocaleString('de-DE'); gezeigt = neu; return; }
-    cancelAnimationFrame(rolle); von = gezeigt; ziel = neu; start = 0; rolle = requestAnimationFrame(rollen);
+    cta.href = `index.html?fahrzeuge=${f}#kontakt`;
   };
   fz.addEventListener('input', rechnen); fa.addEventListener('input', rechnen);
-  cta.addEventListener('click', () => { if (anz) { anz.value = cta.dataset.fahrzeuge || ''; anz.dispatchEvent(new Event('input')); } });
   rechnen();
 })();
 
-// Über uns: das Luftbild zoomt beim Durchscrollen langsam heraus.
+// Fahrzeugzahl aus dem Rechner ins Formular übernehmen.
 (() => {
-  const bild = document.querySelector('.ueber__bild img');
-  if (!bild || ruhig) return;
-  beimScrollen.push(() => {
-    const r = bild.parentElement.getBoundingClientRect();
-    const p = clamp01((innerHeight - r.top) / (innerHeight + r.height));
-    bild.style.setProperty('--s', (1.14 - p * 0.14).toFixed(4));
-  });
+  const anz = document.getElementById('f-anz');
+  const n = new URLSearchParams(location.search).get('fahrzeuge');
+  if (anz && n && /^\d{1,4}$/.test(n)) anz.value = n;
 })();
 
-// FAQ: Fragen links, die Antwort rechts. Auf dem Telefon klappt sie unter der Frage auf.
-(() => {
-  const knoepfe = [...document.querySelectorAll('.frage-knopf')];
-  const pane = document.getElementById('antworten');
-  if (!knoepfe.length || !pane) return;
-  const antwort = pane.querySelector('.antwort');
-  const waehle = (k, fokus) => {
-    knoepfe.forEach((b) => { const an = b === k; b.setAttribute('aria-selected', String(an)); b.tabIndex = an ? 0 : -1; });
-    pane.setAttribute('aria-labelledby', k.id);
-    const text = k.nextElementSibling.textContent;
-    if (antwort.textContent !== text) { antwort.textContent = text; antwort.classList.remove('wechsel'); void antwort.offsetWidth; antwort.classList.add('wechsel'); }
-    if (fokus) k.focus();
-  };
-  knoepfe.forEach((k, i) => {
-    k.tabIndex = i === 0 ? 0 : -1;
-    k.addEventListener('click', () => waehle(k));
-    k.addEventListener('pointerenter', () => { if (fein.matches) waehle(k); });
-    k.addEventListener('keydown', (e) => {
-      const n = e.key === 'ArrowDown' ? 1 : e.key === 'ArrowUp' ? -1 : 0;
-      if (!n) return;
-      e.preventDefault();
-      waehle(knoepfe[(i + n + knoepfe.length) % knoepfe.length], true);
-    });
-  });
-})();
-
-// Kontaktformular: an Netlify senden, ohne die Seite zu verlassen. Ohne Skript greift action="/danke.html".
-(() => {
-  const form = document.getElementById('kontakt-form');
-  if (!form || !window.fetch) return;
-  const hinweis = document.getElementById('form-hinweis');
+// Formulare: an Netlify senden, ohne die Seite zu verlassen. Ohne Skript greift action="/danke.html".
+document.querySelectorAll('form[data-senden]').forEach((form) => {
+  if (!window.fetch) return;
+  const hinweis = form.querySelector('[aria-live]');
   const knopf = form.querySelector('button[type="submit"]');
+  const text = knopf.textContent;
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!form.reportValidity()) return;
@@ -192,23 +72,57 @@ addEventListener('resize', () => requestAnimationFrame(lauf));
       const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() });
       if (!res.ok) throw new Error(res.status);
       form.reset();
-      hinweis.textContent = 'Danke, Ihre Anfrage ist angekommen. Sie hören in Kürze persönlich von uns.';
+      hinweis.textContent = 'Danke, Ihre Anfrage ist angekommen. Wir melden uns persönlich und zeitnah.';
       hinweis.classList.add('form-status');
-      knopf.textContent = 'Anfrage gesendet';
+      knopf.textContent = 'Gesendet';
     } catch {
       hinweis.innerHTML = 'Das hat leider nicht geklappt. Schreiben Sie uns bitte direkt an <a href="mailto:info@ttfuhrparkmanagement.com">info@ttfuhrparkmanagement.com</a>.';
-      knopf.disabled = false; knopf.textContent = 'Erneut senden';
+      knopf.disabled = false; knopf.textContent = text;
     }
   });
-})();
+});
 
-// Footer: Uhrzeit in Oberhausen.
+// Cookie-Einstellungen: Auswahl im lokalen Speicher, kein Cookie. Künftige Dienste stehen als
+// <script type="text/plain" data-kategorie="statistik|marketing" data-src="…"> im HTML und laden erst nach Zustimmung.
 (() => {
-  const uhr = document.getElementById('uhr');
-  if (!uhr) return;
-  const fmt = new Intl.DateTimeFormat('de-DE', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Berlin' });
-  const stellen = () => { uhr.textContent = `${fmt.format(new Date())} Uhr`; };
-  stellen(); setInterval(stellen, 30000);
+  const SCHLUESSEL = 'tt-einwilligung';
+  const banner = document.getElementById('einwilligung');
+  const dialog = document.getElementById('einstellungen');
+  if (!banner || !dialog) return;
+  const lesen = () => { try { return JSON.parse(localStorage.getItem(SCHLUESSEL)); } catch { return null; } };
+  const anwenden = (w) => {
+    document.querySelectorAll('script[type="text/plain"][data-kategorie]').forEach((alt) => {
+      if (!w[alt.dataset.kategorie]) return;
+      const neu = document.createElement('script');
+      if (alt.dataset.src) neu.src = alt.dataset.src; else neu.textContent = alt.textContent;
+      alt.replaceWith(neu);
+    });
+    document.dispatchEvent(new CustomEvent('tt:einwilligung', { detail: w }));
+  };
+  const speichern = (statistik, marketing) => {
+    const w = { v: 1, notwendig: true, statistik, marketing, datum: new Date().toISOString() };
+    try { localStorage.setItem(SCHLUESSEL, JSON.stringify(w)); } catch { /* privater Modus */ }
+    banner.hidden = true;
+    anwenden(w);
+  };
+  const oeffnen = () => {
+    const w = lesen() || {};
+    dialog.querySelector('[name="statistik"]').checked = !!w.statistik;
+    dialog.querySelector('[name="marketing"]').checked = !!w.marketing;
+    if (typeof dialog.showModal === 'function') dialog.showModal(); else dialog.setAttribute('open', '');
+  };
+  banner.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-einwilligung]');
+    if (!b) return;
+    if (b.dataset.einwilligung === 'alle') speichern(true, true);
+    else if (b.dataset.einwilligung === 'nur-noetig') speichern(false, false);
+    else oeffnen();
+  });
+  dialog.addEventListener('close', () => {
+    if (dialog.returnValue === 'alle') speichern(true, true);
+    else if (dialog.returnValue === 'auswahl') speichern(dialog.querySelector('[name="statistik"]').checked, dialog.querySelector('[name="marketing"]').checked);
+  });
+  document.querySelectorAll('[data-einwilligung-oeffnen]').forEach((b) => b.addEventListener('click', oeffnen));
+  const gespeichert = lesen();
+  if (gespeichert) anwenden(gespeichert); else banner.hidden = false;
 })();
-
-lauf();
