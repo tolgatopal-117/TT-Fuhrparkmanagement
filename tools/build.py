@@ -437,19 +437,9 @@ def startseite():
   </div>
 </section>
 
-<section class="section" id="ansprechpartner" aria-labelledby="ansprechpartner-titel">
-  <div class="container teilung">
-    <div class="foto-platzhalter" data-auf>{icon('person')}{todo('Foto von Tolga Topal einfügen (Hochformat oder 4:3, mind. 1000 px breit)')}</div>
-    <div data-auf style="--i:1">
-      <p class="marke">Ihr Ansprechpartner</p>
-      <h2 id="ansprechpartner-titel">Ein fester Ansprechpartner statt Hotline</h2>
-      <p class="lead">Ihr Ansprechpartner ist Tolga Topal, zertifizierter Fuhrparkverwalter. Er kennt Ihren Fuhrpark, Ihre Fahrer:innen und Ihre Fristen.</p>
-      <p style="margin-top:1rem;color:var(--ink-2)">Vieles klären wir schnell per Telefon oder E-Mail, ohne Ticketsystem und Warteschleife. Wir kennen die Pflichten rund um Halterhaftung, Führerscheinkontrolle, HU, AU und UVV-Prüfung und sorgen dafür, dass nichts liegen bleibt.</p>
-      <a class="link" href="ueber-uns.html" style="margin-top:1.25rem">Mehr über uns {icon('pfeil')}</a>
-    </div>
-  </div>
+<section class="section" id="flottero" aria-label="Unser Werkzeug: Flottero" style="padding-block:clamp(2.5rem, 5vw, 4rem)">
   <div class="container">
-    <div class="werkzeug" data-auf>
+    <div class="werkzeug" data-auf style="margin-top:0">
       {icon_box('monitor')}
       <div>
         <h3>Unser Werkzeug: Flottero</h3>
