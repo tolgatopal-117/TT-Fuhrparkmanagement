@@ -25,7 +25,7 @@ Texte ändern: in `tools/build.py` (bzw. `src/recht/*.html`) und danach `python3
 
 ## Cookie-Einstellungen
 
-- Die Seite setzt keine Cookies und keine Tracking-Dienste ein. Das Fenster fragt trotzdem nach, damit künftige Dienste nur mit Einwilligung geladen werden.
+- Seit November 2026: Google Ads Conversion-Tracking mit Consent Mode v2 (siehe README). Ohne Einwilligung keine Werbe- oder Analyse-Cookies; Kategorie „Marketing“ schaltet `ad_*` frei, „Statistik“ `analytics_storage`.
 - Gespeichert wird die Auswahl im lokalen Speicher (`tt-einwilligung`), nicht als Cookie; Datenschutzerklärung ist angepasst.
 - Künftige Dienste einbinden: `<script type="text/plain" data-kategorie="statistik" data-src="…">` – wird erst nach Zustimmung aktiv.
 - „Nur notwendige“ und „Alle akzeptieren“ sind gleich gewichtet; über „Cookie-Einstellungen“ im Fuß jederzeit änderbar.

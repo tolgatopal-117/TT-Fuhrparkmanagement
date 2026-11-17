@@ -2,24 +2,51 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500});
+    gtag('set', 'ads_data_redaction', true);
+    try {
+      var w = JSON.parse(localStorage.getItem('tt-einwilligung'));
+      if (w) gtag('consent', 'update', {
+        ad_storage: w.marketing ? 'granted' : 'denied', ad_user_data: w.marketing ? 'granted' : 'denied',
+        ad_personalization: w.marketing ? 'granted' : 'denied', analytics_storage: w.statistik ? 'granted' : 'denied'
+      });
+    } catch (e) {}
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18501646213"></script>
+  <script>gtag('js', new Date());gtag('config','AW-18501646213');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TT Fuhrparkmanagement – Fuhrparkverwaltung für Unternehmen</title>
-  <meta name="description" content="TT Fuhrparkmanagement übernimmt die Verwaltung Ihrer Firmenfahrzeuge: Fristen, Führerscheinkontrolle, Werkstatt, Schäden, Tankkarten und Kosten – zum festen Preis pro Fahrzeug, mit einem festen Ansprechpartner.">
+  <title>Fuhrparkverwaltung für kleine Betriebe in Duisburg | TT Fuhrparkmanagement</title>
+  <meta name="description" content="Externes Fuhrparkmanagement für kleine Betriebe in Duisburg, im Ruhrgebiet und am Niederrhein: Wir übernehmen Ihre Fuhrparkverwaltung mit festem Ansprechpartner. Jetzt kostenlosen Fuhrpark-Check anfragen.">
+  <link rel="canonical" href="https://ttfuhrparkmanagement.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="TT Fuhrparkmanagement">
+  <meta property="og:title" content="Fuhrparkverwaltung für kleine Betriebe in Duisburg | TT Fuhrparkmanagement">
+  <meta property="og:description" content="Externes Fuhrparkmanagement für kleine Betriebe in Duisburg, im Ruhrgebiet und am Niederrhein: Wir übernehmen Ihre Fuhrparkverwaltung mit festem Ansprechpartner. Jetzt kostenlosen Fuhrpark-Check anfragen.">
+  <meta property="og:url" content="https://ttfuhrparkmanagement.com/">
+  <meta property="og:image" content="https://ttfuhrparkmanagement.com/assets/img/transporter-grau.jpg">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="750">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="/favicon-48x48.png" sizes="48x48">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
   <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "TT Fuhrparkmanagement", "url": "https://ttfuhrparkmanagement.com/", "logo": "https://ttfuhrparkmanagement.com/assets/logo-tt.png", "image": "https://ttfuhrparkmanagement.com/assets/img/transporter-grau.jpg", "telephone": "+49 156 30158503", "address": {"@type": "PostalAddress", "streetAddress": "Bottroper Str. 87", "postalCode": "46117", "addressLocality": "Oberhausen", "addressCountry": "DE"}, "areaServed": [{"@type": "City", "name": "Duisburg"}, {"@type": "Place", "name": "Ruhrgebiet"}, {"@type": "Place", "name": "Niederrhein"}], "description": "Externes Fuhrparkmanagement für kleine Betriebe in Duisburg, im Ruhrgebiet und am Niederrhein: Wir übernehmen Ihre Fuhrparkverwaltung mit festem Ansprechpartner. Jetzt kostenlosen Fuhrpark-Check anfragen."}</script>
 </head>
 <body>
 <header class="kopf" id="kopf">
   <div class="container kopf__innen">
-    <a class="kopf__logo" href="index.html" aria-label="TT Fuhrparkmanagement, zur Startseite"><img src="assets/logo-tt.png" alt="TT Fuhrparkmanagement" width="600" height="167"></a>
+    <a class="kopf__logo" href="/" aria-label="TT Fuhrparkmanagement, zur Startseite"><img src="/assets/logo-tt.png" alt="TT Fuhrparkmanagement" width="600" height="167"></a>
     <button class="menue-knopf" type="button" aria-expanded="false" aria-controls="hauptnav" aria-label="Menü"><span></span></button>
     <nav class="kopf__nav" id="hauptnav" aria-label="Hauptnavigation">
-      <a href="leistungen.html">Leistungen</a><a href="so-arbeiten-wir.html">So arbeiten wir</a><a href="ueber-uns.html">Über uns</a><a href="faq.html">FAQ</a><a href="index.html#kontakt">Kontakt</a>
-      <a class="btn btn--primary" href="index.html#kontakt">Kostenlose Analyse</a>
+      <a href="/leistungen.html">Leistungen</a><a href="/so-arbeiten-wir.html">So arbeiten wir</a><a href="/ueber-uns.html">Über uns</a><a href="/faq.html">FAQ</a><a href="/#kontakt">Kontakt</a>
+      <a class="btn btn--primary" href="/#kontakt">Fuhrpark-Check anfragen</a>
     </nav>
   </div>
 </header>
@@ -27,21 +54,21 @@
 <section class="hero">
   <div class="container hero__raster">
     <div>
-      <p class="marke" data-auf>Fuhrparkverwaltung aus Oberhausen</p>
-      <h1 data-auf style="--i:1">Fuhrpark&shy;management, das Ihnen Arbeit abnimmt.</h1>
-      <p class="lead" data-auf style="--i:2">Wir übernehmen Fristen, Führerscheinkontrolle, Werkstatt, Schäden, Tankkarten und Kosten Ihrer Firmenfahrzeuge. Zum festen Preis pro Fahrzeug, mit einem festen Ansprechpartner.</p>
+      <p class="marke" data-auf>Externes Fuhrparkmanagement für Duisburg, Ruhrgebiet und Niederrhein</p>
+      <h1 data-auf style="--i:1">Wir übernehmen die Fuhrpark&shy;verwaltung für Ihren Betrieb.</h1>
+      <p class="lead" data-auf style="--i:2">Für Handwerk, Pflegedienste und Bau mit 5 bis 50 Fahrzeugen: Führerscheinkontrolle, Fristen, Werkstatt, Schäden und Kosten in einer Hand, mit festem Ansprechpartner. So bleibt Ihnen mehr Zeit fürs Kerngeschäft.</p>
       <div class="hero__aktionen" data-auf style="--i:3">
-        <a class="btn btn--primary" href="#kontakt">Kostenlose Analyse anfragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-        <a class="btn btn--ghost" href="#leistungen">Leistungen ansehen</a>
+        <a class="btn btn--primary" href="#kontakt">Kostenlosen Fuhrpark-Check anfragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="btn btn--ghost" href="tel:+4915630158503"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +49 156 30158503</a>
       </div>
       <ul class="haken-liste" data-auf style="--i:4">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Fester Preis pro Fahrzeug</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Alle Leistungen inklusive</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Analyse kostenlos</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Kostenloser Fuhrpark-Check</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Fester Ansprechpartner</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Mehr Zeit fürs Kerngeschäft</li>
       </ul>
     </div>
     <div class="hero__bild" data-auf style="--i:2">
-      <div class="hero__foto"><img src="assets/img/transporter-grau.jpg" alt="Grauer Transporter auf einem Parkplatz" width="1280" height="750"></div>
+      <div class="hero__foto"><picture><source type="image/webp" srcset="/assets/img/transporter-grau-768.webp 768w, /assets/img/transporter-grau-1280.webp 1280w" sizes="(max-width: 64em) 100vw, 50vw"><img src="/assets/img/transporter-grau.jpg" alt="Grauer Transporter auf einem Parkplatz" width="1280" height="750" fetchpriority="high"></picture></div>
       <div class="schwebe schwebe--2"><span class="schwebe__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></span><div><b>Fristen im Blick</b><span>HU, AU und UVV rechtzeitig vereinbart</span></div></div>
       <div class="schwebe schwebe--1"><span class="schwebe__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></span><div><b>Fester Ansprechpartner</b><span>Persönlich statt Hotline</span></div></div>
     </div>
@@ -59,64 +86,120 @@
   </div>
 </section>
 
-<section class="section" id="leistungen" aria-labelledby="leistungen-titel">
+<section class="section" id="fuer-wen" aria-labelledby="fuer-wen-titel">
+  <div class="container">
+    <div class="section__kopf section__kopf--mitte" data-auf>
+      <p class="marke">Für wen</p>
+      <h2 id="fuer-wen-titel">Für Betriebe mit 5 bis 50 Fahrzeugen</h2>
+      <p class="lead">Zu groß, um den Fuhrpark nebenbei zu verwalten, zu klein für eine eigene Fuhrparkabteilung.</p>
+    </div>
+    <div class="karten">
+      <div class="karte" data-auf style="--i:0"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/></svg></span><h3>Handwerk</h3><p>Transporter, die nicht ausfallen dürfen: Werkstatttermine, HU und UVV-Prüfung rechtzeitig geregelt.</p></div>
+      <div class="karte" data-auf style="--i:1"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span><h3>Pflegedienste</h3><p>Viele Fahrzeuge, wechselnde Fahrer:innen: Führerscheinkontrolle und Schäden sauber dokumentiert.</p></div>
+      <div class="karte" data-auf style="--i:2"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M14 6a6 6 0 0 1 6 6v3"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><rect x="2" y="15" width="20" height="4" rx="1"/></svg></span><h3>Bau</h3><p>Fahrzeuge im harten Einsatz: Schäden, Werkstatt und Fristen, ohne dass die Baustelle wartet.</p></div>
+      <div class="karte" data-auf style="--i:3"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span><h3>Weitere Betriebe</h3><p>Außendienst, Service oder Verwaltung: Dieselben Pflichten, auch bei wenigen Fahrzeugen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft" id="leistungen" aria-labelledby="leistungen-titel">
   <div class="container">
     <div class="section__kopf section__kopf--mitte" data-auf>
       <p class="marke">Leistungen</p>
-      <h2 id="leistungen-titel">Acht Leistungen. Ein Paket.</h2>
+      <h2 id="leistungen-titel">Neun Bausteine. Ein Paket.</h2>
       <p class="lead">Alle Bausteine sind immer enthalten. Sie geben die Arbeit ab, wir kümmern uns.</p>
     </div>
-    <div class="karten">
-      <a class="karte" href="leistungen.html#fuehrerschein" data-auf style="--i:0"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M15 8h2"/><path d="M15 12h2"/><path d="M7 16h10"/></svg></span><h3>Führerscheinkontrolle</h3><p>Regelmäßige, dokumentierte Prüfung der Fahrerlaubnis aller Fahrer:innen zur Absicherung der Halterhaftung.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
-      <a class="karte" href="leistungen.html#termine" data-auf style="--i:1"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg></span><h3>Terminüberwachung</h3><p>Erinnerung an gesetzliche und technische Fristen, damit kein Termin verstreicht.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
-      <a class="karte" href="leistungen.html#dokumente" data-auf style="--i:2"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg></span><h3>Dokumentenverwaltung</h3><p>Digitale Ablage aller Unterlagen, getrennt je Kunde und jederzeit auffindbar.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
-      <a class="karte" href="leistungen.html#werkstatt" data-auf style="--i:3"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span><h3>Werkstattkoordination</h3><p>Wir kümmern uns um Werkstatttermine und behalten die Kosten im Griff.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
-      <a class="karte" href="leistungen.html#schaden" data-auf style="--i:0"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span><h3>Schadenmanagement</h3><p>Vom ersten Foto bis zum abgeschlossenen Fall, ohne dass Sie hinterhertelefonieren müssen.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
-      <a class="karte" href="leistungen.html#versicherung" data-auf style="--i:1"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>Versicherungsmanagement</h3><p>Verwaltung Ihrer bestehenden Versicherungsverträge. Eine Versicherungsvermittlung bieten wir nicht an.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
-      <a class="karte" href="leistungen.html#tankkarten" data-auf style="--i:2"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 22h12"/><path d="M4 9h10"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5"/></svg></span><h3>Tankkartenverwaltung</h3><p>Jede Tankkarte ist einem Fahrzeug und einer Person zugeordnet.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
-      <a class="karte" href="leistungen.html#kosten" data-auf style="--i:3"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span><h3>Kosten-Reporting</h3><p>Sie sehen jederzeit, was Ihr Fuhrpark kostet und wo das Geld hinfährt.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+    <div class="karten karten--drei">
+      <a class="karte" href="/leistungen.html#fuehrerschein" data-auf style="--i:0"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M15 8h2"/><path d="M15 12h2"/><path d="M7 16h10"/></svg></span><h3>Führerscheinkontrolle</h3><p>Regelmäßige, dokumentierte Prüfung der Fahrerlaubnis aller Fahrer:innen zur Absicherung der Halterhaftung.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a class="karte" href="/leistungen.html#termine" data-auf style="--i:1"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg></span><h3>Terminüberwachung</h3><p>Erinnerung an gesetzliche und technische Fristen, damit kein Termin verstreicht.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a class="karte" href="/leistungen.html#dokumente" data-auf style="--i:2"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg></span><h3>Dokumentenverwaltung</h3><p>Digitale Ablage aller Unterlagen, getrennt je Kunde und jederzeit auffindbar.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a class="karte" href="/leistungen.html#werkstatt" data-auf style="--i:3"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span><h3>Werkstattkoordination</h3><p>Wir kümmern uns um Werkstatttermine und behalten die Kosten im Griff.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a class="karte" href="/leistungen.html#schaden" data-auf style="--i:0"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span><h3>Schadenmanagement</h3><p>Vom ersten Foto bis zum abgeschlossenen Fall, ohne dass Sie hinterhertelefonieren müssen.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a class="karte" href="/leistungen.html#versicherung" data-auf style="--i:1"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>Versicherungsmanagement</h3><p>Wir behalten die Fristen Ihrer bestehenden Versicherungsverträge im Blick und übernehmen im Schadenfall die Kommunikation mit dem Versicherer.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a class="karte" href="/leistungen.html#tankkarten" data-auf style="--i:2"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 22h12"/><path d="M4 9h10"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5"/></svg></span><h3>Tankkartenverwaltung</h3><p>Jede Tankkarte ist einem Fahrzeug und einer Person zugeordnet.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a class="karte" href="/leistungen.html#kosten" data-auf style="--i:3"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span><h3>Kosten-Reporting</h3><p>Sie sehen jederzeit, was Ihr Fuhrpark kostet und wo das Geld hinfährt.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a class="karte" href="/leistungen.html#beschaffung" data-auf style="--i:0"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></svg></span><h3>Firmenwagen-Beschaffung</h3><p>Sie brauchen ein neues Fahrzeug? Wir holen in Ihrem Auftrag Angebote ein, für Kauf oder Leasing, und stellen sie übersichtlich gegenüber. Die Entscheidung treffen Sie.</p><span class="link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
     </div>
   </div>
 </section>
 
-<section class="section section--soft" id="analyse" aria-labelledby="analyse-titel">
-  <div class="container teilung">
-    <div class="teilung__bild" data-auf><img src="assets/img/transporter-weiss.jpg" alt="Weißer Transporter von hinten auf einem Parkplatz" width="1280" height="720" loading="lazy"></div>
-    <div data-auf style="--i:1">
-      <p class="marke">Kostenlos und unverbindlich</p>
-      <h2 id="analyse-titel">Die kostenlose Fuhrpark-Analyse</h2>
-      <p class="lead">Bevor Sie sich entscheiden, schauen wir uns Ihren Fuhrpark an und zeigen Ihnen, wo Sie Aufwand sparen.</p>
-      <ul class="punkte">
-        <li><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><div><b>Bestand und Fristen sichten</b><span>Welche Fahrzeuge, welche Termine stehen an?</span></div></li>
-        <li><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg></span><div><b>Verträge und Policen prüfen</b><span>Leasing, Versicherungen, Tankkarten</span></div></li>
-        <li><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12"/><path d="M4 14h9"/><path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"/></svg></span><div><b>Ihr Angebot zum Festpreis</b><span>Ein Preis pro Fahrzeug, alles inklusive</span></div></li>
-      </ul>
-      <a class="btn btn--primary" href="#kontakt">Analyse anfragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-    </div>
-  </div>
-</section>
-
-<section class="section" aria-labelledby="start-titel">
+<section class="section" id="ablauf" aria-labelledby="start-titel">
   <div class="container">
     <div class="section__kopf section__kopf--mitte" data-auf>
-      <p class="marke">So einfach geht's</p>
-      <h2 id="start-titel">In vier Schritten startklar</h2>
+      <p class="marke">Ablauf</p>
+      <h2 id="start-titel">In drei Schritten zur externen Fuhrparkverwaltung</h2>
     </div>
     <ol class="schritte">
-      <li class="schritt" data-auf style="--i:0"><span class="schritt__nr">1</span><h3>Fuhrpark-Analyse</h3><p>Wir sichten Ihren Bestand, laufende Fristen und Verträge. Kostenlos und unverbindlich.</p></li>
-      <li class="schritt" data-auf style="--i:1"><span class="schritt__nr">2</span><h3>Ihr Rundum-Paket</h3><p>Sie erhalten alle acht Leistungen zum festen Preis pro Fahrzeug, festgehalten im Rahmenvertrag.</p></li>
-      <li class="schritt" data-auf style="--i:2"><span class="schritt__nr">3</span><h3>Übergabe</h3><p>Fahrzeugscheine, Policen und Verträge werden digitalisiert und zentral hinterlegt.</p></li>
-      <li class="schritt" data-auf style="--i:3"><span class="schritt__nr">4</span><h3>Laufender Betrieb</h3><p>Wir überwachen Fristen, koordinieren Werkstätten und liefern regelmäßige Kostenreports.</p></li>
+      <li class="schritt" data-auf style="--i:0"><span class="schritt__nr">1</span><h3>Erstgespräch</h3><p>Sie rufen an oder schreiben uns. Im kurzen Gespräch klären wir, wie Ihr Fuhrpark aufgestellt ist und wo es im Alltag hakt.</p></li>
+      <li class="schritt" data-auf style="--i:1"><span class="schritt__nr">2</span><h3>Fuhrpark-Check</h3><p>Wir sichten kostenlos Fahrzeuge, Fristen, Verträge und Unterlagen und zeigen Ihnen, was wir übernehmen können. Danach erhalten Sie Ihr Angebot.</p></li>
+      <li class="schritt" data-auf style="--i:2"><span class="schritt__nr">3</span><h3>Laufende Betreuung</h3><p>Wir digitalisieren Ihre Unterlagen und übernehmen die Verwaltung: Fristen, Werkstatt, Schäden und Kosten-Reporting, mit festem Ansprechpartner.</p></li>
     </ol>
   </div>
 </section>
 
-<section class="section section--soft" id="kontakt" aria-labelledby="kontakt-titel">
+<section class="section section--soft" id="check" aria-labelledby="analyse-titel">
+  <div class="container teilung">
+    <div class="teilung__bild" data-auf><picture><source type="image/webp" srcset="/assets/img/transporter-weiss-768.webp 768w, /assets/img/transporter-weiss-1280.webp 1280w" sizes="(max-width: 64em) 100vw, 50vw"><img src="/assets/img/transporter-weiss.jpg" alt="Weißer Transporter von hinten auf einem Parkplatz" width="1280" height="720" loading="lazy" decoding="async"></picture></div>
+    <div data-auf style="--i:1">
+      <p class="marke">Kostenlos und unverbindlich</p>
+      <h2 id="analyse-titel">Der kostenlose Fuhrpark-Check</h2>
+      <p class="lead">Bevor Sie sich entscheiden, schauen wir uns Ihren Fuhrpark an und zeigen Ihnen, wo Sie Aufwand sparen.</p>
+      <ul class="punkte">
+        <li><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><div><b>Bestand und Fristen sichten</b><span>Welche Fahrzeuge, welche Termine stehen an?</span></div></li>
+        <li><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg></span><div><b>Verträge und Unterlagen sichten</b><span>Leasing, Versicherungen, Tankkarten</span></div></li>
+        <li><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12"/><path d="M4 14h9"/><path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"/></svg></span><div><b>Ihr Angebot zum Festpreis</b><span>Ein Preis pro Fahrzeug, alles inklusive</span></div></li>
+      </ul>
+      <a class="btn btn--primary" href="#kontakt">Kostenlosen Fuhrpark-Check anfragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ansprechpartner" aria-labelledby="ansprechpartner-titel">
+  <div class="container teilung">
+    <div class="foto-platzhalter" data-auf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><mark class="todo">TODO: Foto von Tolga Topal einfügen (Hochformat oder 4:3, mind. 1000 px breit)</mark></div>
+    <div data-auf style="--i:1">
+      <p class="marke">Ihr Ansprechpartner</p>
+      <h2 id="ansprechpartner-titel">Ein fester Ansprechpartner statt Hotline</h2>
+      <p class="lead">Ihr Ansprechpartner ist Tolga Topal, zertifizierter Fuhrparkverwalter. Er kennt Ihren Fuhrpark, Ihre Fahrer:innen und Ihre Fristen.</p>
+      <p style="margin-top:1rem;color:var(--ink-2)">Vieles klären wir schnell per Telefon oder E-Mail, ohne Ticketsystem und Warteschleife. Wir kennen die Pflichten rund um Halterhaftung, Führerscheinkontrolle, HU, AU und UVV-Prüfung und sorgen dafür, dass nichts liegen bleibt.</p>
+      <a class="link" href="/ueber-uns.html" style="margin-top:1.25rem">Mehr über uns <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="werkzeug" data-auf>
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span>
+      <div>
+        <h3>Unser Werkzeug: Flottero</h3>
+        <p>Für die Verwaltung setzen wir unsere eigene Fuhrparksoftware Flottero ein. Darin laufen Fahrzeuge, Fristen, Dokumente und Kosten Ihres Fuhrparks an einer Stelle zusammen.</p>
+      </div>
+      <a class="btn btn--ghost" href="https://flottero.de" target="_blank" rel="noopener">flottero.de <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft" id="fragen" aria-labelledby="fragen-titel">
+  <div class="container">
+    <div class="section__kopf section__kopf--mitte" data-auf>
+      <p class="marke">FAQ</p>
+      <h2 id="fragen-titel">Häufige Fragen</h2>
+    </div>
+    <div class="faq">
+    <details class="frage" open data-auf><summary>Was kostet das?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Sie zahlen einen festen Preis pro Fahrzeug, alle neun Leistungsbausteine sind enthalten. Ihr genaues Angebot erhalten Sie nach dem Fuhrpark-Check. Der Check selbst ist kostenlos und unverbindlich.</p></details>
+    <details class="frage" data-auf><summary>Bin ich an einen Versicherer gebunden?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Nein. Sie behalten Ihre bestehenden Versicherungsverträge und entscheiden selbst, bei wem Sie versichert sind. Wir vermitteln keine Versicherungen. Wir überwachen die Fristen Ihrer Verträge und übernehmen im Schadenfall die Kommunikation mit dem Versicherer.</p></details>
+    <details class="frage" data-auf><summary>Holen Sie auch Angebote für neue Firmenwagen ein?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Ja. Wenn Sie ein Fahrzeug brauchen, holen wir in Ihrem Auftrag Angebote ein, für Kauf oder Leasing, und stellen sie übersichtlich nebeneinander. Ob und wo Sie abschließen, entscheiden Sie selbst. Fahrzeuge oder Leasingverträge vermitteln wir nicht.</p></details>
+    <details class="frage" data-auf><summary>Wie schnell geht der Start?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Auf Ihre Anfrage melden wir uns innerhalb eines Werktags und vereinbaren das Erstgespräch. Danach folgt der kostenlose Fuhrpark-Check. Wie schnell die laufende Betreuung beginnt, hängt vor allem davon ab, wie schnell Fahrzeugscheine, Policen und Verträge vorliegen. <mark class="todo">TODO: typische Dauer vom Erstgespräch bis zum Start ergänzen</mark></p></details>
+    <details class="frage" data-auf><summary>Arbeiten Sie auch außerhalb von Duisburg?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Ja. Wir betreuen Betriebe in Duisburg und im Umkreis von rund 70 Kilometern, also im Ruhrgebiet und am Niederrhein. Vieles läuft ohnehin per Telefon und E-Mail.</p></details>
+      <a class="link" href="/faq.html" style="justify-self:center;margin-top:.75rem">Alle Fragen ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="kontakt" aria-labelledby="kontakt-titel">
   <div class="container kontakt__raster">
     <div data-auf>
       <p class="marke">Kontakt</p>
-      <h2 id="kontakt-titel">Lassen Sie uns sprechen</h2>
-      <p class="lead" style="margin-top:1rem">Erzählen Sie uns kurz von Ihrem Fuhrpark. Analyse und Erstgespräch sind kostenlos und unverbindlich.</p>
+      <h2 id="kontakt-titel">Kostenlosen Fuhrpark-Check anfragen</h2>
+      <p class="lead" style="margin-top:1rem">Erzählen Sie uns kurz von Ihrem Fuhrpark. Wir melden uns innerhalb eines Werktags. Fuhrpark-Check und Erstgespräch sind kostenlos und unverbindlich.</p>
       <div class="kontakt__daten">
         <a href="tel:+4915630158503"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span><small>Telefon</small><b>+49 156 30158503</b></span></a>
         <a href="mailto:info@ttfuhrparkmanagement.com"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><span><small>E-Mail</small><b>info@ttfuhrparkmanagement.com</b></span></a>
@@ -124,21 +207,22 @@
       </div>
     </div>
     <form class="formular" name="kontakt" id="kontakt-form" method="POST" action="/danke.html" data-netlify="true" netlify-honeypot="bot-field" data-senden data-auf style="--i:1">
-      <h3>Kostenlose Analyse anfragen</h3>
+      <h3>Ihre Anfrage</h3>
       <input type="hidden" name="form-name" value="kontakt">
       <p class="hp"><label>Bitte nicht ausfüllen: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
       <div class="zwei">
         <div class="feld"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
-        <div class="feld"><label for="f-firma">Firma <span class="muted">(optional)</span></label><input id="f-firma" name="firma" autocomplete="organization"></div>
+        <div class="feld"><label for="f-firma">Firma</label><input id="f-firma" name="firma" autocomplete="organization" required></div>
       </div>
       <div class="zwei">
-        <div class="feld"><label for="f-mail">E-Mail</label><input id="f-mail" name="email" type="email" autocomplete="email" required></div>
-        <div class="feld"><label for="f-tel">Telefon <span class="muted">(optional)</span></label><input id="f-tel" name="telefon" type="tel" autocomplete="tel"></div>
+        <div class="feld"><label for="f-kontakt">E-Mail oder Telefon</label><input id="f-kontakt" name="email_oder_telefon" required data-mail-oder-tel></div>
+        <div class="feld"><label for="f-anz">Anzahl Fahrzeuge</label><select id="f-anz" name="fahrzeuge" required>
+          <option value="" disabled selected>Bitte wählen</option><option>1–4</option><option>5–15</option><option>16–50</option><option>über 50</option>
+        </select></div>
       </div>
-      <div class="feld"><label for="f-anz">Anzahl Fahrzeuge <span class="muted">(optional)</span></label><input id="f-anz" name="fahrzeuge" inputmode="numeric"></div>
-      <div class="feld"><label for="f-msg">Ihre Nachricht</label><textarea id="f-msg" name="nachricht" required></textarea></div>
-      <button class="btn btn--primary" type="submit">Anfrage senden</button>
-      <p class="form-hinweis" aria-live="polite">Hinweise zum Datenschutz finden Sie in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+      <div class="feld"><label for="f-msg">Nachricht <span class="muted">(optional)</span></label><textarea id="f-msg" name="nachricht"></textarea></div>
+      <button class="btn btn--primary" type="submit">Kostenlosen Fuhrpark-Check anfragen</button>
+      <p class="form-hinweis" aria-live="polite">Ihre Angaben verwenden wir nur zur Bearbeitung Ihrer Anfrage. Mehr in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
     </form>
   </div>
 </section>
@@ -154,18 +238,18 @@
       <div>
         <h2>Unternehmen</h2>
         <ul>
-          <li><a href="leistungen.html">Leistungen</a></li>
-          <li><a href="so-arbeiten-wir.html">So arbeiten wir</a></li>
-          <li><a href="ueber-uns.html">Über uns</a></li>
-          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="/leistungen.html">Leistungen</a></li>
+          <li><a href="/so-arbeiten-wir.html">So arbeiten wir</a></li>
+          <li><a href="/ueber-uns.html">Über uns</a></li>
+          <li><a href="/faq.html">FAQ</a></li>
         </ul>
       </div>
       <div>
         <h2>Rechtliches</h2>
         <ul>
-          <li><a href="impressum.html">Impressum</a></li>
-          <li><a href="datenschutz.html">Datenschutz</a></li>
-          <li><a href="agb.html">AGB</a></li>
+          <li><a href="/impressum.html">Impressum</a></li>
+          <li><a href="/datenschutz.html">Datenschutz</a></li>
+          <li><a href="/agb.html">AGB</a></li>
           <li><button type="button" class="fuss__knopf" data-einwilligung-oeffnen>Cookie-Einstellungen</button></li>
         </ul>
       </div>
@@ -181,28 +265,32 @@
     <div class="fuss__zeile"><span>© 2026 TT Fuhrparkmanagement</span><span>Ihr Fuhrpark, unser Antrieb.</span></div>
   </div>
 </footer>
+<nav class="mobil-leiste" aria-label="Schnellkontakt">
+  <a class="btn btn--ghost" href="tel:+4915630158503"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Anrufen</a>
+  <a class="btn btn--primary" href="/#kontakt">Anfragen</a>
+</nav>
 <div class="einwilligung" id="einwilligung" role="region" aria-label="Cookie-Einstellungen" hidden>
   <h2>Ihre Privatsphäre</h2>
-  <p>Wir verwenden nur, was für den Betrieb der Website nötig ist. Statistik- oder Marketing-Dienste setzen wir derzeit nicht ein. Sie entscheiden, ob wir sie künftig nutzen dürfen. Mehr in der <a href="datenschutz.html#cookies">Datenschutzerklärung</a>.</p>
+  <p>Mit Ihrer Einwilligung setzen wir Cookies von Google Ads ein, um zu messen, ob eine Anfrage über unsere Anzeigen zustande kam. Ohne Einwilligung werden keine Werbe- oder Analyse-Cookies gesetzt. Sie können Ihre Wahl jederzeit unter „Cookie-Einstellungen“ ändern. Mehr in der <a href="/datenschutz.html#cookies">Datenschutzerklärung</a>.</p>
   <div class="einwilligung__knoepfe">
-    <button type="button" class="btn btn--ghost" data-einwilligung="nur-noetig">Nur notwendige</button>
-    <button type="button" class="btn btn--primary" data-einwilligung="alle">Alle akzeptieren</button>
+    <button type="button" class="btn btn--wahl" data-einwilligung="nur-noetig">Nur notwendige</button>
+    <button type="button" class="btn btn--wahl" data-einwilligung="alle">Alle akzeptieren</button>
     <button type="button" class="einwilligung__link" data-einwilligung="einstellungen">Einstellungen</button>
   </div>
 </div>
 <dialog class="einstellungen" id="einstellungen" aria-labelledby="einstellungen-titel">
   <form method="dialog" class="einstellungen__form">
     <h2 id="einstellungen-titel">Cookie-Einstellungen</h2>
-    <p>Wählen Sie, welche Dienste wir verwenden dürfen. Sie können Ihre Auswahl jederzeit über „Cookie-Einstellungen“ im Fußbereich ändern.</p>
-    <div class="kategorie"><div><b>Notwendig</b><p>Speichert Ihre Auswahl in diesem Fenster. Immer aktiv.</p></div><input type="checkbox" class="schalter-feld" checked disabled aria-label="Notwendig, immer aktiv"></div>
-    <div class="kategorie"><div><b>Statistik</b><p>Anonyme Auswertung, wie die Website genutzt wird. Derzeit nicht im Einsatz.</p></div><input type="checkbox" class="schalter-feld" name="statistik" aria-label="Statistik erlauben"></div>
-    <div class="kategorie"><div><b>Marketing</b><p>Messung von Werbeanzeigen. Derzeit nicht im Einsatz.</p></div><input type="checkbox" class="schalter-feld" name="marketing" aria-label="Marketing erlauben"></div>
+    <p>Wählen Sie, welche Dienste wir verwenden dürfen. Sie können Ihre Auswahl jederzeit über „Cookie-Einstellungen“ im Fußbereich ändern oder widerrufen.</p>
+    <div class="kategorie"><div><b>Notwendig</b><p>Speichert Ihre Auswahl im lokalen Speicher Ihres Browsers. Immer aktiv.</p></div><input type="checkbox" class="schalter-feld" checked disabled aria-label="Notwendig, immer aktiv"></div>
+    <div class="kategorie"><div><b>Statistik</b><p>Auswertung, wie die Website genutzt wird. Derzeit nicht im Einsatz.</p></div><input type="checkbox" class="schalter-feld" name="statistik" aria-label="Statistik erlauben"></div>
+    <div class="kategorie"><div><b>Marketing</b><p>Google Ads Conversion-Tracking (Google Ireland Ltd.): misst, ob eine Anfrage oder ein Anruf über eine Anzeige zustande kam. Setzt Cookies.</p></div><input type="checkbox" class="schalter-feld" name="marketing" aria-label="Marketing erlauben"></div>
     <div class="einwilligung__knoepfe">
-      <button type="submit" class="btn btn--ghost" value="auswahl">Auswahl speichern</button>
-      <button type="submit" class="btn btn--primary" value="alle">Alle akzeptieren</button>
+      <button type="submit" class="btn btn--wahl" value="auswahl">Auswahl speichern</button>
+      <button type="submit" class="btn btn--wahl" value="alle">Alle akzeptieren</button>
     </div>
   </form>
 </dialog>
-<script src="main.js" defer></script>
+<script src="/main.js" defer></script>
 </body>
 </html>

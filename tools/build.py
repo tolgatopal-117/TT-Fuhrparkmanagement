@@ -3,13 +3,32 @@
 Aufruf aus dem Projektordner:  python3 tools/build.py
 Texte hier ändern (Rechtstexte in src/recht/*.html) und danach neu bauen.
 """
+import json
+import re
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
+SITE = "https://ttfuhrparkmanagement.com"
 TELEFON = "+49 156 30158503"
 TEL_LINK = "tel:+4915630158503"
 MAIL = "info@ttfuhrparkmanagement.com"
+FLOTTERO = "https://flottero.de"
+
+# Google-Tag (Google Ads). Weitere IDs (z. B. ein späteres GA4 „G-…“) hier ergänzen:
+# gtag.js wird nur einmal geladen, jede ID bekommt ihr eigenes gtag('config', …).
+GTAG_IDS = ["AW-18501646213"]
+
+# Conversion „Anfrage gesendet“, nur auf danke.html (Snippet aus Google Ads, unverändert)
+CONVERSION = """  <script>
+    gtag('event', 'conversion', {
+        'send_to': 'AW-18501646213/328CCKjTnLodEIXvovZE',
+        'value': 1.0,
+        'currency': 'EUR'
+    });
+  </script>
+"""
 
 NAV = [
     ("leistungen.html", "Leistungen"),
@@ -18,6 +37,10 @@ NAV = [
     ("faq.html", "FAQ"),
     ("index.html#kontakt", "Kontakt"),
 ]
+
+# Sichtbarer Platzhalter für Inhalte, die der Inhaber noch liefern muss
+def todo(text):
+    return f'<mark class="todo">TODO: {text}</mark>'
 
 # Symbole nach Lucide (ISC-Lizenz), als Pfade eines 24er-Rasters
 ICONS = {
@@ -47,6 +70,11 @@ ICONS = {
     "hammer": '<path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/>',
     "koffer": '<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
     "gebaeude": '<rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/>',
+    "schluessel": '<path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/>',
+    "herz": '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
+    "helm": '<path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M14 6a6 6 0 0 1 6 6v3"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><rect x="2" y="15" width="20" height="4" rx="1"/>',
+    "monitor": '<rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>',
+    "extern": '<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
 }
 
 
@@ -70,44 +98,112 @@ LEISTUNGEN = [
      ["Termine vereinbaren", "Angebote einholen", "Rechnungen auf Plausibilität prüfen"]),
     ("schaden", "auto", "Schadenmanagement", "Vom ersten Foto bis zum abgeschlossenen Fall, ohne dass Sie hinterhertelefonieren müssen.",
      ["Aufnahme und Dokumentation", "Meldung an Versicherung und Werkstatt", "Nachverfolgung bis zum Abschluss"]),
-    ("versicherung", "schild", "Versicherungsmanagement", "Verwaltung Ihrer bestehenden Versicherungsverträge. Eine Versicherungsvermittlung bieten wir nicht an.",
-     ["Verwaltung bestehender Verträge", "Jährlicher Tarifvergleich", "Unterlagen für Schadenfälle"]),
+    ("versicherung", "schild", "Versicherungsmanagement", "Wir behalten die Fristen Ihrer bestehenden Versicherungsverträge im Blick und übernehmen im Schadenfall die Kommunikation mit dem Versicherer.",
+     ["Überwachung von Fristen und Laufzeiten", "Kommunikation mit dem Versicherer im Schadenfall", "Unterlagen griffbereit"]),
     ("tankkarten", "tank", "Tankkartenverwaltung", "Jede Tankkarte ist einem Fahrzeug und einer Person zugeordnet.",
      ["Zuordnung zu Fahrzeugen und Fahrer:innen", "Prüfung der Monatsabrechnung", "Auffälligkeiten klären"]),
     ("kosten", "diagramm", "Kosten-Reporting", "Sie sehen jederzeit, was Ihr Fuhrpark kostet und wo das Geld hinfährt.",
      ["Kosten je Fahrzeug", "Kosten pro Kilometer", "Regelmäßige Aufstellung"]),
+    ("beschaffung", "schluessel", "Firmenwagen-Beschaffung", "Sie brauchen ein neues Fahrzeug? Wir holen in Ihrem Auftrag Angebote ein, für Kauf oder Leasing, und stellen sie übersichtlich gegenüber. Die Entscheidung treffen Sie.",
+     ["Angebote einholen, Kauf oder Leasing", "Übersichtlicher Vergleich", "Die Entscheidung bleibt bei Ihnen"]),
 ]
 
 SCHRITTE = [
-    ("Fuhrpark-Analyse", "Wir sichten Ihren Bestand, laufende Fristen und Verträge. Kostenlos und unverbindlich."),
-    ("Ihr Rundum-Paket", "Sie erhalten alle acht Leistungen zum festen Preis pro Fahrzeug, festgehalten im Rahmenvertrag."),
-    ("Übergabe", "Fahrzeugscheine, Policen und Verträge werden digitalisiert und zentral hinterlegt."),
-    ("Laufender Betrieb", "Wir überwachen Fristen, koordinieren Werkstätten und liefern regelmäßige Kostenreports."),
+    ("Erstgespräch", "Sie rufen an oder schreiben uns. Im kurzen Gespräch klären wir, wie Ihr Fuhrpark aufgestellt ist und wo es im Alltag hakt."),
+    ("Fuhrpark-Check", "Wir sichten kostenlos Fahrzeuge, Fristen, Verträge und Unterlagen und zeigen Ihnen, was wir übernehmen können. Danach erhalten Sie Ihr Angebot."),
+    ("Laufende Betreuung", "Wir digitalisieren Ihre Unterlagen und übernehmen die Verwaltung: Fristen, Werkstatt, Schäden und Kosten-Reporting, mit festem Ansprechpartner."),
 ]
 
 BRANCHEN = [
-    ("lkw", "Logistik und Transport", "Viele Kilometer, viele Termine: HU, UVV und Reifen im Takt der Touren."),
-    ("hammer", "Handwerk und Service", "Transporter, die nicht ausfallen dürfen: Werkstatt und Schäden schnell geregelt."),
-    ("koffer", "Außendienst", "Dienstwagen, die mehr auf der Straße als auf dem Hof stehen: Tankkarten und Kosten im Blick."),
-    ("gebaeude", "Verwaltung", "Wenige Fahrzeuge, dieselben Pflichten: Führerscheinkontrolle und Fristen, ohne dass im Büro jemand daran denken muss."),
+    ("hammer", "Handwerk", "Transporter, die nicht ausfallen dürfen: Werkstatttermine, HU und UVV-Prüfung rechtzeitig geregelt."),
+    ("herz", "Pflegedienste", "Viele Fahrzeuge, wechselnde Fahrer:innen: Führerscheinkontrolle und Schäden sauber dokumentiert."),
+    ("helm", "Bau", "Fahrzeuge im harten Einsatz: Schäden, Werkstatt und Fristen, ohne dass die Baustelle wartet."),
+    ("koffer", "Weitere Betriebe", "Außendienst, Service oder Verwaltung: Dieselben Pflichten, auch bei wenigen Fahrzeugen."),
 ]
 
+# (Frage, Antwort, auf der Startseite zeigen)
 FRAGEN = [
-    ("Welche Leistungen sind im Paket enthalten?", "Alle acht: Führerscheinkontrolle, Terminüberwachung, Dokumentenverwaltung, Werkstattkoordination, Schadenmanagement, Versicherungsmanagement, Tankkartenverwaltung und Kosten-Reporting. Sie erhalten immer das komplette Paket."),
-    ("Was kostet die Fuhrparkverwaltung?", "Sie zahlen einen festen Preis pro Fahrzeug. Das genaue Angebot erhalten Sie nach der kostenlosen Fuhrpark-Analyse."),
-    ("Lohnt sich das auch für wenige Fahrzeuge?", "Ja. Auch bei wenigen Fahrzeugen fallen Fristen, Führerscheinkontrollen, Schäden und Unterlagen an. Wir nehmen Ihnen diese Arbeit ab, unabhängig von der Größe Ihres Fuhrparks."),
-    ("Wie läuft der Start ab?", "Nach Ihrer Anfrage vereinbaren wir ein Erstgespräch und analysieren Ihren Fuhrpark. Danach übergeben Sie uns Fahrzeugscheine, Policen und Verträge. Wir digitalisieren alles und übernehmen die laufende Verwaltung."),
-    ("Wie schnell bekomme ich eine Antwort?", "Ihre Anfrage wird persönlich und zeitnah bearbeitet. Sie erhalten die Rückmeldung direkt von Ihrem Ansprechpartner, ohne Warteschleife und Callcenter."),
-    ("Bleibe ich Halter meiner Fahrzeuge?", "Ja. Die Halter- und Unternehmerpflichten bleiben bei Ihnen. Wir übernehmen die organisatorischen und koordinierenden Aufgaben und sorgen dafür, dass nichts liegen bleibt."),
-    ("Vermitteln Sie Versicherungen?", "Nein. Wir verwalten Ihre bestehenden Verträge und vergleichen einmal im Jahr die Tarife. Versicherungsvermittlung sowie Rechts- oder Steuerberatung bieten wir nicht an."),
-    ("Wie lange läuft der Vertrag?", "Laufzeit und Kündigungsfristen stehen in Ihrem Rahmenvertrag. Ist nichts anderes vereinbart, können Sie mit einer Frist von einem Monat zum Monatsende kündigen."),
-    ("Was passiert mit den Daten meiner Fahrer?", "Wir verarbeiten sie als Auftragsverarbeiter nach Art. 28 DSGVO, nur nach Ihrer Weisung und auf Grundlage eines Auftragsverarbeitungsvertrags. Nach Vertragsende geben wir die Daten zurück oder löschen sie innerhalb von 30 Tagen, sofern keine Aufbewahrungspflicht besteht."),
+    ("Was kostet das?", "Sie zahlen einen festen Preis pro Fahrzeug, alle neun Leistungsbausteine sind enthalten. Ihr genaues Angebot erhalten Sie nach dem Fuhrpark-Check. Der Check selbst ist kostenlos und unverbindlich.", True),
+    ("Bin ich an einen Versicherer gebunden?", "Nein. Sie behalten Ihre bestehenden Versicherungsverträge und entscheiden selbst, bei wem Sie versichert sind. Wir vermitteln keine Versicherungen. Wir überwachen die Fristen Ihrer Verträge und übernehmen im Schadenfall die Kommunikation mit dem Versicherer.", True),
+    ("Holen Sie auch Angebote für neue Firmenwagen ein?", "Ja. Wenn Sie ein Fahrzeug brauchen, holen wir in Ihrem Auftrag Angebote ein, für Kauf oder Leasing, und stellen sie übersichtlich nebeneinander. Ob und wo Sie abschließen, entscheiden Sie selbst. Fahrzeuge oder Leasingverträge vermitteln wir nicht.", True),
+    ("Wie schnell geht der Start?", f"Auf Ihre Anfrage melden wir uns innerhalb eines Werktags und vereinbaren das Erstgespräch. Danach folgt der kostenlose Fuhrpark-Check. Wie schnell die laufende Betreuung beginnt, hängt vor allem davon ab, wie schnell Fahrzeugscheine, Policen und Verträge vorliegen. {todo('typische Dauer vom Erstgespräch bis zum Start ergänzen')}", True),
+    ("Arbeiten Sie auch außerhalb von Duisburg?", "Ja. Wir betreuen Betriebe in Duisburg und im Umkreis von rund 70 Kilometern, also im Ruhrgebiet und am Niederrhein. Vieles läuft ohnehin per Telefon und E-Mail.", True),
+    ("Welche Leistungen sind im Paket enthalten?", "Alle neun: Führerscheinkontrolle, Terminüberwachung, Dokumentenverwaltung, Werkstattkoordination, Schadenmanagement, Versicherungsmanagement, Tankkartenverwaltung, Kosten-Reporting und die Beschaffung von Firmenwagen-Angeboten. Sie erhalten immer das komplette Paket.", False),
+    ("Lohnt sich das auch für wenige Fahrzeuge?", "Ja. Auch bei wenigen Fahrzeugen fallen Fristen, Führerscheinkontrollen, Schäden und Unterlagen an. Wir nehmen Ihnen diese Arbeit ab, unabhängig von der Größe Ihres Fuhrparks.", False),
+    ("Bleibe ich Halter meiner Fahrzeuge?", "Ja. Die Halter- und Unternehmerpflichten bleiben bei Ihnen. Wir übernehmen die organisatorischen und koordinierenden Aufgaben und sorgen dafür, dass nichts liegen bleibt.", False),
+    ("Wie lange läuft der Vertrag?", "Laufzeit und Kündigungsfristen stehen in Ihrem Rahmenvertrag. Ist nichts anderes vereinbart, können Sie mit einer Frist von einem Monat zum Monatsende kündigen.", False),
+    ("Was passiert mit den Daten meiner Fahrer?", "Wir verarbeiten sie als Auftragsverarbeiter nach Art. 28 DSGVO, nur nach Ihrer Weisung und auf Grundlage eines Auftragsverarbeitungsvertrags. Nach Vertragsende geben wir die Daten zurück oder löschen sie innerhalb von 30 Tagen, sofern keine Aufbewahrungspflicht besteht.", False),
 ]
+
+
+def bild(name, alt, w, h, lazy=True, sizes="(max-width: 64em) 100vw, 50vw"):
+    """Foto als <picture>: WebP in zwei Breiten, JPEG als Rückfall."""
+    laden = 'loading="lazy" decoding="async"' if lazy else 'fetchpriority="high"'
+    return (f'<picture><source type="image/webp" srcset="/assets/img/{name}-768.webp 768w, /assets/img/{name}-1280.webp 1280w" sizes="{sizes}">'
+            f'<img src="/assets/img/{name}.jpg" alt="{alt}" width="{w}" height="{h}" {laden}></picture>')
+
+
+def faq_liste(fragen):
+    return "\n".join(f'    <details class="frage"{" open" if i == 0 else ""} data-auf><summary>{q}{icon("runter")}</summary><p>{a}</p></details>' for i, (q, a, _) in enumerate(fragen))
 
 
 # ---------------------------------------------------------------- Rahmen
-def kopf(titel, beschreibung, aktiv, robots=False):
+def google_tag():
+    """Consent Mode v2: erst alles auf „denied“, dann eine gespeicherte Einwilligung übernehmen, dann gtag.js laden.
+    Ohne Einwilligung setzt Google keine Cookies (nur cookielose Pings). Schlüssel und Felder wie in main.js."""
+    configs = "".join(f"gtag('config','{i}');" for i in GTAG_IDS)
+    return f"""  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('consent', 'default', {{ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500}});
+    gtag('set', 'ads_data_redaction', true);
+    try {{
+      var w = JSON.parse(localStorage.getItem('tt-einwilligung'));
+      if (w) gtag('consent', 'update', {{
+        ad_storage: w.marketing ? 'granted' : 'denied', ad_user_data: w.marketing ? 'granted' : 'denied',
+        ad_personalization: w.marketing ? 'granted' : 'denied', analytics_storage: w.statistik ? 'granted' : 'denied'
+      }});
+    }} catch (e) {{}}
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id={GTAG_IDS[0]}"></script>
+  <script>gtag('js', new Date());{configs}</script>
+"""
+
+
+def strukturierte_daten():
+    """Nur Angaben, die auch im Impressum stehen; areaServed laut Vorgabe des Inhabers."""
+    daten = {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "TT Fuhrparkmanagement",
+        "url": SITE + "/",
+        "logo": SITE + "/assets/logo-tt.png",
+        "image": SITE + "/assets/img/transporter-grau.jpg",
+        "telephone": TELEFON,
+        "address": {"@type": "PostalAddress", "streetAddress": "Bottroper Str. 87", "postalCode": "46117", "addressLocality": "Oberhausen", "addressCountry": "DE"},
+        "areaServed": [{"@type": "City", "name": "Duisburg"}, {"@type": "Place", "name": "Ruhrgebiet"}, {"@type": "Place", "name": "Niederrhein"}],
+        "description": BESCHREIBUNG,
+    }
+    return f'  <script type="application/ld+json">{json.dumps(daten, ensure_ascii=False)}</script>\n'
+
+
+def kopf(titel, beschreibung, aktiv, robots=False, pfad=None, extra=""):
     meta_robots = '\n  <meta name="robots" content="noindex">' if robots else ""
+    url = SITE + "/" + ("" if pfad == "index.html" else pfad) if pfad else None
+    seo = ""
+    if url:
+        seo = f"""
+  <link rel="canonical" href="{url}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="TT Fuhrparkmanagement">
+  <meta property="og:title" content="{titel}">
+  <meta property="og:description" content="{beschreibung}">
+  <meta property="og:url" content="{url}">
+  <meta property="og:image" content="{SITE}/assets/img/transporter-grau.jpg">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="750">
+  <meta name="twitter:card" content="summary_large_image">"""
     links = []
     for href, name in NAV:
         cur = ' aria-current="page"' if href == aktiv else ""
@@ -116,16 +212,16 @@ def kopf(titel, beschreibung, aktiv, robots=False):
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+{google_tag()}{extra}  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{titel}</title>
-  <meta name="description" content="{beschreibung}">{meta_robots}
+  <meta name="description" content="{beschreibung}">{meta_robots}{seo}
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="/favicon-48x48.png" sizes="48x48">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.classList.add('js')</script>
-</head>
+{strukturierte_daten() if pfad == "index.html" else ""}</head>
 <body>
 <header class="kopf" id="kopf">
   <div class="container kopf__innen">
@@ -133,7 +229,7 @@ def kopf(titel, beschreibung, aktiv, robots=False):
     <button class="menue-knopf" type="button" aria-expanded="false" aria-controls="hauptnav" aria-label="Menü"><span></span></button>
     <nav class="kopf__nav" id="hauptnav" aria-label="Hauptnavigation">
       {''.join(links)}
-      <a class="btn btn--primary" href="index.html#kontakt">Kostenlose Analyse</a>
+      <a class="btn btn--primary" href="index.html#kontakt">Fuhrpark-Check anfragen</a>
     </nav>
   </div>
 </header>
@@ -179,25 +275,29 @@ def fuss():
     <div class="fuss__zeile"><span>© 2026 TT Fuhrparkmanagement</span><span>Ihr Fuhrpark, unser Antrieb.</span></div>
   </div>
 </footer>
+<nav class="mobil-leiste" aria-label="Schnellkontakt">
+  <a class="btn btn--ghost" href="{TEL_LINK}">{icon('telefon')} Anrufen</a>
+  <a class="btn btn--primary" href="index.html#kontakt">Anfragen</a>
+</nav>
 <div class="einwilligung" id="einwilligung" role="region" aria-label="Cookie-Einstellungen" hidden>
   <h2>Ihre Privatsphäre</h2>
-  <p>Wir verwenden nur, was für den Betrieb der Website nötig ist. Statistik- oder Marketing-Dienste setzen wir derzeit nicht ein. Sie entscheiden, ob wir sie künftig nutzen dürfen. Mehr in der <a href="datenschutz.html#cookies">Datenschutzerklärung</a>.</p>
+  <p>Mit Ihrer Einwilligung setzen wir Cookies von Google Ads ein, um zu messen, ob eine Anfrage über unsere Anzeigen zustande kam. Ohne Einwilligung werden keine Werbe- oder Analyse-Cookies gesetzt. Sie können Ihre Wahl jederzeit unter „Cookie-Einstellungen“ ändern. Mehr in der <a href="datenschutz.html#cookies">Datenschutzerklärung</a>.</p>
   <div class="einwilligung__knoepfe">
-    <button type="button" class="btn btn--ghost" data-einwilligung="nur-noetig">Nur notwendige</button>
-    <button type="button" class="btn btn--primary" data-einwilligung="alle">Alle akzeptieren</button>
+    <button type="button" class="btn btn--wahl" data-einwilligung="nur-noetig">Nur notwendige</button>
+    <button type="button" class="btn btn--wahl" data-einwilligung="alle">Alle akzeptieren</button>
     <button type="button" class="einwilligung__link" data-einwilligung="einstellungen">Einstellungen</button>
   </div>
 </div>
 <dialog class="einstellungen" id="einstellungen" aria-labelledby="einstellungen-titel">
   <form method="dialog" class="einstellungen__form">
     <h2 id="einstellungen-titel">Cookie-Einstellungen</h2>
-    <p>Wählen Sie, welche Dienste wir verwenden dürfen. Sie können Ihre Auswahl jederzeit über „Cookie-Einstellungen“ im Fußbereich ändern.</p>
-    <div class="kategorie"><div><b>Notwendig</b><p>Speichert Ihre Auswahl in diesem Fenster. Immer aktiv.</p></div><input type="checkbox" class="schalter-feld" checked disabled aria-label="Notwendig, immer aktiv"></div>
-    <div class="kategorie"><div><b>Statistik</b><p>Anonyme Auswertung, wie die Website genutzt wird. Derzeit nicht im Einsatz.</p></div><input type="checkbox" class="schalter-feld" name="statistik" aria-label="Statistik erlauben"></div>
-    <div class="kategorie"><div><b>Marketing</b><p>Messung von Werbeanzeigen. Derzeit nicht im Einsatz.</p></div><input type="checkbox" class="schalter-feld" name="marketing" aria-label="Marketing erlauben"></div>
+    <p>Wählen Sie, welche Dienste wir verwenden dürfen. Sie können Ihre Auswahl jederzeit über „Cookie-Einstellungen“ im Fußbereich ändern oder widerrufen.</p>
+    <div class="kategorie"><div><b>Notwendig</b><p>Speichert Ihre Auswahl im lokalen Speicher Ihres Browsers. Immer aktiv.</p></div><input type="checkbox" class="schalter-feld" checked disabled aria-label="Notwendig, immer aktiv"></div>
+    <div class="kategorie"><div><b>Statistik</b><p>Auswertung, wie die Website genutzt wird. Derzeit nicht im Einsatz.</p></div><input type="checkbox" class="schalter-feld" name="statistik" aria-label="Statistik erlauben"></div>
+    <div class="kategorie"><div><b>Marketing</b><p>Google Ads Conversion-Tracking (Google Ireland Ltd.): misst, ob eine Anfrage oder ein Anruf über eine Anzeige zustande kam. Setzt Cookies.</p></div><input type="checkbox" class="schalter-feld" name="marketing" aria-label="Marketing erlauben"></div>
     <div class="einwilligung__knoepfe">
-      <button type="submit" class="btn btn--ghost" value="auswahl">Auswahl speichern</button>
-      <button type="submit" class="btn btn--primary" value="alle">Alle akzeptieren</button>
+      <button type="submit" class="btn btn--wahl" value="auswahl">Auswahl speichern</button>
+      <button type="submit" class="btn btn--wahl" value="alle">Alle akzeptieren</button>
     </div>
   </form>
 </dialog>
@@ -212,12 +312,12 @@ def aufruf():
   <div class="container">
     <div class="aufruf" data-auf>
       <div>
-        <h2 id="aufruf-titel">Weniger Aufwand mit Ihrem Fuhrpark?</h2>
-        <p>Wir sichten Ihren Fuhrpark kostenlos und zeigen Ihnen, was wir Ihnen abnehmen können. Unverbindlich.</p>
+        <h2 id="aufruf-titel">Mehr Zeit fürs Kerngeschäft?</h2>
+        <p>Im kostenlosen Fuhrpark-Check zeigen wir Ihnen, was wir Ihnen abnehmen können. Unverbindlich.</p>
       </div>
       <div class="aufruf__knoepfe">
-        <a class="btn btn--primary" href="index.html#kontakt">Kostenlose Analyse anfragen {icon('pfeil')}</a>
-        <a class="btn btn--ghost" href="{TEL_LINK}">{icon('telefon')} Anrufen</a>
+        <a class="btn btn--primary" href="index.html#kontakt">Kostenlosen Fuhrpark-Check anfragen {icon('pfeil')}</a>
+        <a class="btn btn--ghost" href="{TEL_LINK}">{icon('telefon')} {TELEFON}</a>
       </div>
     </div>
   </div>
@@ -244,25 +344,27 @@ def startseite():
     schritte = "\n".join(
         f'      <li class="schritt" data-auf style="--i:{i}"><span class="schritt__nr">{i + 1}</span><h3>{n}</h3><p>{t}</p></li>'
         for i, (n, t) in enumerate(SCHRITTE))
+    branchen = "\n".join(f'      <div class="karte" data-auf style="--i:{i}">{icon_box(ic)}<h3>{n}</h3><p>{t}</p></div>' for i, (ic, n, t) in enumerate(BRANCHEN))
+    fragen = faq_liste([f for f in FRAGEN if f[2]])
     return f"""<main id="top">
 <section class="hero">
   <div class="container hero__raster">
     <div>
-      <p class="marke" data-auf>Fuhrparkverwaltung aus Oberhausen</p>
-      <h1 data-auf style="--i:1">Fuhrpark&shy;management, das Ihnen Arbeit abnimmt.</h1>
-      <p class="lead" data-auf style="--i:2">Wir übernehmen Fristen, Führerscheinkontrolle, Werkstatt, Schäden, Tankkarten und Kosten Ihrer Firmenfahrzeuge. Zum festen Preis pro Fahrzeug, mit einem festen Ansprechpartner.</p>
+      <p class="marke" data-auf>Externes Fuhrparkmanagement für Duisburg, Ruhrgebiet und Niederrhein</p>
+      <h1 data-auf style="--i:1">Wir übernehmen die Fuhrpark&shy;verwaltung für Ihren Betrieb.</h1>
+      <p class="lead" data-auf style="--i:2">Für Handwerk, Pflegedienste und Bau mit 5 bis 50 Fahrzeugen: Führerscheinkontrolle, Fristen, Werkstatt, Schäden und Kosten in einer Hand, mit festem Ansprechpartner. So bleibt Ihnen mehr Zeit fürs Kerngeschäft.</p>
       <div class="hero__aktionen" data-auf style="--i:3">
-        <a class="btn btn--primary" href="#kontakt">Kostenlose Analyse anfragen {icon('pfeil')}</a>
-        <a class="btn btn--ghost" href="#leistungen">Leistungen ansehen</a>
+        <a class="btn btn--primary" href="#kontakt">Kostenlosen Fuhrpark-Check anfragen {icon('pfeil')}</a>
+        <a class="btn btn--ghost" href="{TEL_LINK}">{icon('telefon')} {TELEFON}</a>
       </div>
       <ul class="haken-liste" data-auf style="--i:4">
-        <li>{icon('check')} Fester Preis pro Fahrzeug</li>
-        <li>{icon('check')} Alle Leistungen inklusive</li>
-        <li>{icon('check')} Analyse kostenlos</li>
+        <li>{icon('check')} Kostenloser Fuhrpark-Check</li>
+        <li>{icon('check')} Fester Ansprechpartner</li>
+        <li>{icon('check')} Mehr Zeit fürs Kerngeschäft</li>
       </ul>
     </div>
     <div class="hero__bild" data-auf style="--i:2">
-      <div class="hero__foto"><img src="assets/img/transporter-grau.jpg" alt="Grauer Transporter auf einem Parkplatz" width="1280" height="750"></div>
+      <div class="hero__foto">{bild('transporter-grau', 'Grauer Transporter auf einem Parkplatz', 1280, 750, lazy=False)}</div>
       <div class="schwebe schwebe--2"><span class="schwebe__icon">{icon('glocke')}</span><div><b>Fristen im Blick</b><span>HU, AU und UVV rechtzeitig vereinbart</span></div></div>
       <div class="schwebe schwebe--1"><span class="schwebe__icon">{icon('person')}</span><div><b>Fester Ansprechpartner</b><span>Persönlich statt Hotline</span></div></div>
     </div>
@@ -280,41 +382,37 @@ def startseite():
   </div>
 </section>
 
-<section class="section" id="leistungen" aria-labelledby="leistungen-titel">
+<section class="section" id="fuer-wen" aria-labelledby="fuer-wen-titel">
+  <div class="container">
+    <div class="section__kopf section__kopf--mitte" data-auf>
+      <p class="marke">Für wen</p>
+      <h2 id="fuer-wen-titel">Für Betriebe mit 5 bis 50 Fahrzeugen</h2>
+      <p class="lead">Zu groß, um den Fuhrpark nebenbei zu verwalten, zu klein für eine eigene Fuhrparkabteilung.</p>
+    </div>
+    <div class="karten">
+{branchen}
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft" id="leistungen" aria-labelledby="leistungen-titel">
   <div class="container">
     <div class="section__kopf section__kopf--mitte" data-auf>
       <p class="marke">Leistungen</p>
-      <h2 id="leistungen-titel">Acht Leistungen. Ein Paket.</h2>
+      <h2 id="leistungen-titel">Neun Bausteine. Ein Paket.</h2>
       <p class="lead">Alle Bausteine sind immer enthalten. Sie geben die Arbeit ab, wir kümmern uns.</p>
     </div>
-    <div class="karten">
+    <div class="karten karten--drei">
 {karten}
     </div>
   </div>
 </section>
 
-<section class="section section--soft" id="analyse" aria-labelledby="analyse-titel">
-  <div class="container teilung">
-    <div class="teilung__bild" data-auf><img src="assets/img/transporter-weiss.jpg" alt="Weißer Transporter von hinten auf einem Parkplatz" width="1280" height="720" loading="lazy"></div>
-    <div data-auf style="--i:1">
-      <p class="marke">Kostenlos und unverbindlich</p>
-      <h2 id="analyse-titel">Die kostenlose Fuhrpark-Analyse</h2>
-      <p class="lead">Bevor Sie sich entscheiden, schauen wir uns Ihren Fuhrpark an und zeigen Ihnen, wo Sie Aufwand sparen.</p>
-      <ul class="punkte">
-        <li>{icon_box('lupe')}<div><b>Bestand und Fristen sichten</b><span>Welche Fahrzeuge, welche Termine stehen an?</span></div></li>
-        <li>{icon_box('dokument')}<div><b>Verträge und Policen prüfen</b><span>Leasing, Versicherungen, Tankkarten</span></div></li>
-        <li>{icon_box('euro')}<div><b>Ihr Angebot zum Festpreis</b><span>Ein Preis pro Fahrzeug, alles inklusive</span></div></li>
-      </ul>
-      <a class="btn btn--primary" href="#kontakt">Analyse anfragen {icon('pfeil')}</a>
-    </div>
-  </div>
-</section>
-
-<section class="section" aria-labelledby="start-titel">
+<section class="section" id="ablauf" aria-labelledby="start-titel">
   <div class="container">
     <div class="section__kopf section__kopf--mitte" data-auf>
-      <p class="marke">So einfach geht's</p>
-      <h2 id="start-titel">In vier Schritten startklar</h2>
+      <p class="marke">Ablauf</p>
+      <h2 id="start-titel">In drei Schritten zur externen Fuhrparkverwaltung</h2>
     </div>
     <ol class="schritte">
 {schritte}
@@ -322,12 +420,65 @@ def startseite():
   </div>
 </section>
 
-<section class="section section--soft" id="kontakt" aria-labelledby="kontakt-titel">
+<section class="section section--soft" id="check" aria-labelledby="analyse-titel">
+  <div class="container teilung">
+    <div class="teilung__bild" data-auf>{bild('transporter-weiss', 'Weißer Transporter von hinten auf einem Parkplatz', 1280, 720)}</div>
+    <div data-auf style="--i:1">
+      <p class="marke">Kostenlos und unverbindlich</p>
+      <h2 id="analyse-titel">Der kostenlose Fuhrpark-Check</h2>
+      <p class="lead">Bevor Sie sich entscheiden, schauen wir uns Ihren Fuhrpark an und zeigen Ihnen, wo Sie Aufwand sparen.</p>
+      <ul class="punkte">
+        <li>{icon_box('lupe')}<div><b>Bestand und Fristen sichten</b><span>Welche Fahrzeuge, welche Termine stehen an?</span></div></li>
+        <li>{icon_box('dokument')}<div><b>Verträge und Unterlagen sichten</b><span>Leasing, Versicherungen, Tankkarten</span></div></li>
+        <li>{icon_box('euro')}<div><b>Ihr Angebot zum Festpreis</b><span>Ein Preis pro Fahrzeug, alles inklusive</span></div></li>
+      </ul>
+      <a class="btn btn--primary" href="#kontakt">Kostenlosen Fuhrpark-Check anfragen {icon('pfeil')}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ansprechpartner" aria-labelledby="ansprechpartner-titel">
+  <div class="container teilung">
+    <div class="foto-platzhalter" data-auf>{icon('person')}{todo('Foto von Tolga Topal einfügen (Hochformat oder 4:3, mind. 1000 px breit)')}</div>
+    <div data-auf style="--i:1">
+      <p class="marke">Ihr Ansprechpartner</p>
+      <h2 id="ansprechpartner-titel">Ein fester Ansprechpartner statt Hotline</h2>
+      <p class="lead">Ihr Ansprechpartner ist Tolga Topal, zertifizierter Fuhrparkverwalter. Er kennt Ihren Fuhrpark, Ihre Fahrer:innen und Ihre Fristen.</p>
+      <p style="margin-top:1rem;color:var(--ink-2)">Vieles klären wir schnell per Telefon oder E-Mail, ohne Ticketsystem und Warteschleife. Wir kennen die Pflichten rund um Halterhaftung, Führerscheinkontrolle, HU, AU und UVV-Prüfung und sorgen dafür, dass nichts liegen bleibt.</p>
+      <a class="link" href="ueber-uns.html" style="margin-top:1.25rem">Mehr über uns {icon('pfeil')}</a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="werkzeug" data-auf>
+      {icon_box('monitor')}
+      <div>
+        <h3>Unser Werkzeug: Flottero</h3>
+        <p>Für die Verwaltung setzen wir unsere eigene Fuhrparksoftware Flottero ein. Darin laufen Fahrzeuge, Fristen, Dokumente und Kosten Ihres Fuhrparks an einer Stelle zusammen.</p>
+      </div>
+      <a class="btn btn--ghost" href="{FLOTTERO}" target="_blank" rel="noopener">flottero.de {icon('extern')}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft" id="fragen" aria-labelledby="fragen-titel">
+  <div class="container">
+    <div class="section__kopf section__kopf--mitte" data-auf>
+      <p class="marke">FAQ</p>
+      <h2 id="fragen-titel">Häufige Fragen</h2>
+    </div>
+    <div class="faq">
+{fragen}
+      <a class="link" href="faq.html" style="justify-self:center;margin-top:.75rem">Alle Fragen ansehen {icon('pfeil')}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="kontakt" aria-labelledby="kontakt-titel">
   <div class="container kontakt__raster">
     <div data-auf>
       <p class="marke">Kontakt</p>
-      <h2 id="kontakt-titel">Lassen Sie uns sprechen</h2>
-      <p class="lead" style="margin-top:1rem">Erzählen Sie uns kurz von Ihrem Fuhrpark. Analyse und Erstgespräch sind kostenlos und unverbindlich.</p>
+      <h2 id="kontakt-titel">Kostenlosen Fuhrpark-Check anfragen</h2>
+      <p class="lead" style="margin-top:1rem">Erzählen Sie uns kurz von Ihrem Fuhrpark. Wir melden uns innerhalb eines Werktags. Fuhrpark-Check und Erstgespräch sind kostenlos und unverbindlich.</p>
       <div class="kontakt__daten">
         <a href="{TEL_LINK}">{icon_box('telefon')}<span><small>Telefon</small><b>{TELEFON}</b></span></a>
         <a href="mailto:{MAIL}">{icon_box('mail')}<span><small>E-Mail</small><b>{MAIL}</b></span></a>
@@ -335,21 +486,22 @@ def startseite():
       </div>
     </div>
     <form class="formular" name="kontakt" id="kontakt-form" method="POST" action="/danke.html" data-netlify="true" netlify-honeypot="bot-field" data-senden data-auf style="--i:1">
-      <h3>Kostenlose Analyse anfragen</h3>
+      <h3>Ihre Anfrage</h3>
       <input type="hidden" name="form-name" value="kontakt">
       <p class="hp"><label>Bitte nicht ausfüllen: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
       <div class="zwei">
         <div class="feld"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
-        <div class="feld"><label for="f-firma">Firma <span class="muted">(optional)</span></label><input id="f-firma" name="firma" autocomplete="organization"></div>
+        <div class="feld"><label for="f-firma">Firma</label><input id="f-firma" name="firma" autocomplete="organization" required></div>
       </div>
       <div class="zwei">
-        <div class="feld"><label for="f-mail">E-Mail</label><input id="f-mail" name="email" type="email" autocomplete="email" required></div>
-        <div class="feld"><label for="f-tel">Telefon <span class="muted">(optional)</span></label><input id="f-tel" name="telefon" type="tel" autocomplete="tel"></div>
+        <div class="feld"><label for="f-kontakt">E-Mail oder Telefon</label><input id="f-kontakt" name="email_oder_telefon" required data-mail-oder-tel></div>
+        <div class="feld"><label for="f-anz">Anzahl Fahrzeuge</label><select id="f-anz" name="fahrzeuge" required>
+          <option value="" disabled selected>Bitte wählen</option><option>1–4</option><option>5–15</option><option>16–50</option><option>über 50</option>
+        </select></div>
       </div>
-      <div class="feld"><label for="f-anz">Anzahl Fahrzeuge <span class="muted">(optional)</span></label><input id="f-anz" name="fahrzeuge" inputmode="numeric"></div>
-      <div class="feld"><label for="f-msg">Ihre Nachricht</label><textarea id="f-msg" name="nachricht" required></textarea></div>
-      <button class="btn btn--primary" type="submit">Anfrage senden</button>
-      <p class="form-hinweis" aria-live="polite">Hinweise zum Datenschutz finden Sie in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+      <div class="feld"><label for="f-msg">Nachricht <span class="muted">(optional)</span></label><textarea id="f-msg" name="nachricht"></textarea></div>
+      <button class="btn btn--primary" type="submit">Kostenlosen Fuhrpark-Check anfragen</button>
+      <p class="form-hinweis" aria-live="polite">Ihre Angaben verwenden wir nur zur Bearbeitung Ihrer Anfrage. Mehr in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
     </form>
   </div>
 </section>
@@ -364,15 +516,15 @@ def leistungen_seite():
         for a, ic, n, t, punkte in LEISTUNGEN)
     branchen = "\n".join(f'      <div class="karte" data-auf style="--i:{i}">{icon_box(ic)}<h3>{n}</h3><p>{t}</p></div>' for i, (ic, n, t) in enumerate(BRANCHEN))
     return f"""<main id="top">
-{seitenkopf('Unsere Leistungen', 'Acht Bausteine, die Ihnen die Verwaltung Ihres Fuhrparks abnehmen. Alle sind immer enthalten, zum festen Preis pro Fahrzeug.', 'Leistungen')}
-<section class="section" style="padding-top:1rem" aria-label="Die acht Leistungen">
+{seitenkopf('Leistungen der Fuhrparkverwaltung', 'Neun Bausteine, die Ihnen die Verwaltung Ihres Fuhrparks abnehmen. Alle sind immer enthalten, zum festen Preis pro Fahrzeug.', 'Leistungen')}
+<section class="section" style="padding-top:1rem" aria-label="Die neun Leistungsbausteine">
   <div class="container">
 {details}
   </div>
 </section>
 <section class="section section--soft" aria-labelledby="branchen-titel">
   <div class="container">
-    <div class="section__kopf section__kopf--mitte" data-auf><p class="marke">Für wen</p><h2 id="branchen-titel">Für jeden Fuhrpark</h2><p class="lead">Vom kleinen Verwaltungsfuhrpark bis zur Transportflotte.</p></div>
+    <div class="section__kopf section__kopf--mitte" data-auf><p class="marke">Für wen</p><h2 id="branchen-titel">Für kleine und mittlere Betriebe</h2><p class="lead">Vor allem für Handwerk, Pflegedienste und Bau mit etwa 5 bis 50 Fahrzeugen.</p></div>
     <div class="karten">
 {branchen}
     </div>
@@ -387,20 +539,20 @@ def so_arbeiten_wir_seite():
     schritte = "\n".join(f'      <li class="schritt" data-auf style="--i:{i}"><span class="schritt__nr">{i + 1}</span><h3>{n}</h3><p>{t}</p></li>' for i, (n, t) in enumerate(SCHRITTE))
     preis = "".join(f"<li><span>{n}</span><span>Inklusive</span></li>" for _, _, n, _, _ in LEISTUNGEN)
     return f"""<main id="top">
-{seitenkopf('So arbeiten wir', 'In vier Schritten startklar. Danach läuft die Verwaltung Ihres Fuhrparks, ohne dass Sie sich darum kümmern müssen.', 'So arbeiten wir')}
-<section class="section" style="padding-top:1rem" aria-label="Die vier Schritte">
+{seitenkopf('So arbeiten wir', 'In drei Schritten startklar: Erstgespräch, kostenloser Fuhrpark-Check, laufende Betreuung. Danach läuft die Verwaltung Ihres Fuhrparks, ohne dass Sie sich darum kümmern müssen.', 'So arbeiten wir')}
+<section class="section" style="padding-top:1rem" aria-label="Die drei Schritte">
   <div class="container"><ol class="schritte">
 {schritte}
   </ol></div>
 </section>
 <section class="section section--soft" id="preis" aria-labelledby="preis-titel">
   <div class="container">
-    <div class="section__kopf section__kopf--mitte" data-auf><p class="marke">Preis</p><h2 id="preis-titel">Ein Preis pro Fahrzeug</h2><p class="lead">Alle acht Leistungen sind immer enthalten. Ohne Einzelbuchung, ohne Aufpreis.</p></div>
+    <div class="section__kopf section__kopf--mitte" data-auf><p class="marke">Preis</p><h2 id="preis-titel">Ein Preis pro Fahrzeug</h2><p class="lead">Alle neun Leistungsbausteine sind immer enthalten. Ohne Einzelbuchung, ohne Aufpreis.</p></div>
     <div class="preis">
       <div class="preis__karte" data-auf>
         <h3>Das ist enthalten</h3>
         <ul>{preis}<li><span>Fester Ansprechpartner</span><span>Inklusive</span></li></ul>
-        <p class="muted" style="font-size:.9375rem">Ihr genaues Angebot erhalten Sie nach der kostenlosen Analyse. Abgerechnet wird monatlich, Laufzeit und Kündigungsfristen regelt Ihr Rahmenvertrag.</p>
+        <p class="muted" style="font-size:.9375rem">Ihr genaues Angebot erhalten Sie nach dem kostenlosen Fuhrpark-Check. Abgerechnet wird monatlich, Laufzeit und Kündigungsfristen regelt Ihr Rahmenvertrag.</p>
       </div>
       <div class="rechner" id="rechner" data-auf style="--i:1">
         <h3>Wie viele Termine hat Ihr Fuhrpark?</h3>
@@ -412,7 +564,7 @@ def so_arbeiten_wir_seite():
           <input type="range" id="r-fahrer" min="1" max="200" value="12">
         </form>
         <p class="muted" style="font-size:.9375rem">Typische Intervalle: HU und AU alle 24 Monate, UVV-Prüfung und Wartung jährlich, zwei Reifenwechsel, Führerscheinkontrolle halbjährlich je Person, monatliche Tankabrechnung, jährlicher Versicherungsvergleich.</p>
-        <a class="btn btn--primary" id="r-cta" href="index.html#kontakt">Analyse für 10 Fahrzeuge anfragen</a>
+        <a class="btn btn--primary" id="r-cta" href="index.html#kontakt">Fuhrpark-Check für 10 Fahrzeuge anfragen</a>
       </div>
     </div>
   </div>
@@ -427,14 +579,14 @@ def ueber_uns_seite():
         ("person", "Persönlich", "Ein fester Ansprechpartner, der Ihren Fuhrpark, Ihre Fahrer und Ihre Fristen kennt."),
         ("auszeichnung", "Fachkundig", "Zertifizierte Fuhrparkverwaltung, die Halterhaftung, Prüfpflichten und Dokumentation kennt."),
         ("schloss", "Sorgfältig mit Daten", "Zwei-Faktor-Anmeldung, verschlüsselte Übertragung, getrennte Ablage je Kunde."),
-        ("ort", "Aus Oberhausen", "Für Unternehmen mit Firmenfahrzeugen, vom kleinen Verwaltungsfuhrpark bis zur Transportflotte."),
+        ("ort", "Aus der Region", "Sitz in Oberhausen, im Einsatz für Betriebe in Duisburg, im Ruhrgebiet und am Niederrhein."),
     ]
     karten = "\n".join(f'      <div class="karte" data-auf style="--i:{i}">{icon_box(ic)}<h3>{n}</h3><p>{t}</p></div>' for i, (ic, n, t) in enumerate(werte))
     return f"""<main id="top">
 {seitenkopf('Über uns', 'Wir nehmen Unternehmen die Verwaltung ihrer Firmenfahrzeuge ab.', 'Über uns')}
 <section class="section" style="padding-top:1rem" aria-labelledby="wer-titel">
   <div class="container teilung">
-    <div class="teilung__bild" data-auf><img src="assets/img/dienstwagen.jpg" alt="Dunkler Dienstwagen auf einem Parkplatz" width="1280" height="960" loading="lazy"></div>
+    <div class="teilung__bild" data-auf>{bild('dienstwagen', 'Dunkler Dienstwagen auf einem Parkplatz', 1280, 960)}</div>
     <div data-auf style="--i:1">
       <h2 id="wer-titel">Wer sich um Ihren Fuhrpark kümmert</h2>
       <p class="lead">TT Fuhrparkmanagement übernimmt für Unternehmen die Verwaltung ihrer Firmenfahrzeuge. Geleitet wird das Unternehmen von Tolga Topal, zertifizierter Fuhrparkverwalter.</p>
@@ -456,9 +608,9 @@ def ueber_uns_seite():
 
 
 def faq_seite():
-    items = "\n".join(f'    <details class="frage"{" open" if i == 0 else ""} data-auf><summary>{q}{icon("runter")}</summary><p>{a}</p></details>' for i, (q, a) in enumerate(FRAGEN))
+    items = faq_liste(FRAGEN)
     return f"""<main id="top">
-{seitenkopf('Häufige Fragen', 'Kurze Antworten auf das, was wir am häufigsten gefragt werden. Ihre Frage ist nicht dabei? Rufen Sie uns an.', 'FAQ')}
+{seitenkopf('Häufige Fragen zur Fuhrparkverwaltung','Kurze Antworten auf das, was wir am häufigsten gefragt werden. Ihre Frage ist nicht dabei? Rufen Sie uns an.', 'FAQ')}
 <section class="section" style="padding-top:1rem" aria-label="Fragen und Antworten">
   <div class="container"><div class="faq">
 {items}
@@ -485,29 +637,64 @@ DANKE = f"""<main id="top">
 <section class="seitenkopf" style="min-height:50vh">
   <div class="container">
     <h1>Danke für Ihre Anfrage</h1>
-    <p class="lead">Sie ist angekommen. Wir melden uns persönlich und zeitnah.</p>
-    <a class="btn btn--primary" href="index.html" style="margin-top:2rem">Zur Startseite</a>
+    <p class="lead">Ihre Anfrage ist angekommen. Wir melden uns innerhalb eines Werktags bei Ihnen.</p>
+    <p>Eilig? Rufen Sie uns an: <a class="link" href="{TEL_LINK}">{TELEFON}</a></p>
+    <a class="btn btn--primary" href="index.html" style="margin-top:2rem">Zurück zur Startseite</a>
   </div>
 </section>
 </main>
 """
 
-BESCHREIBUNG = "TT Fuhrparkmanagement übernimmt die Verwaltung Ihrer Firmenfahrzeuge: Fristen, Führerscheinkontrolle, Werkstatt, Schäden, Tankkarten und Kosten – zum festen Preis pro Fahrzeug, mit einem festen Ansprechpartner."
+NICHT_GEFUNDEN = f"""<main id="top">
+<section class="seitenkopf" style="min-height:50vh">
+  <div class="container">
+    <h1>Diese Seite gibt es nicht</h1>
+    <p class="lead">Die Adresse ist falsch oder die Seite wurde verschoben. Von der Startseite aus finden Sie alles Wichtige.</p>
+    <div class="hero__aktionen">
+      <a class="btn btn--primary" href="index.html">Zur Startseite</a>
+      <a class="btn btn--ghost" href="index.html#kontakt">Fuhrpark-Check anfragen</a>
+    </div>
+  </div>
+</section>
+</main>
+"""
 
+BESCHREIBUNG = "Externes Fuhrparkmanagement für kleine Betriebe in Duisburg, im Ruhrgebiet und am Niederrhein: Wir übernehmen Ihre Fuhrparkverwaltung mit festem Ansprechpartner. Jetzt kostenlosen Fuhrpark-Check anfragen."
+
+# (Datei, Titel, Beschreibung, Inhalt, aktiver Menüpunkt, noindex, in Sitemap, zusätzlicher <head>-Inhalt)
 SEITEN = [
-    ("index.html", "TT Fuhrparkmanagement – Fuhrparkverwaltung für Unternehmen", BESCHREIBUNG, startseite(), "", False),
-    ("leistungen.html", "Leistungen – TT Fuhrparkmanagement", "Acht Leistungen in einem Paket: Führerscheinkontrolle, Terminüberwachung, Dokumente, Werkstatt, Schäden, Versicherungen, Tankkarten und Kosten-Reporting.", leistungen_seite(), "leistungen.html", False),
-    ("so-arbeiten-wir.html", "So arbeiten wir – TT Fuhrparkmanagement", "In vier Schritten startklar. Ein fester Preis pro Fahrzeug, alle Leistungen inklusive.", so_arbeiten_wir_seite(), "so-arbeiten-wir.html", False),
-    ("ueber-uns.html", "Über uns – TT Fuhrparkmanagement", "TT Fuhrparkmanagement übernimmt für Unternehmen die Verwaltung ihrer Firmenfahrzeuge, persönlich und fachkundig.", ueber_uns_seite(), "ueber-uns.html", False),
-    ("faq.html", "Häufige Fragen – TT Fuhrparkmanagement", "Antworten auf häufige Fragen zur Fuhrparkverwaltung durch TT Fuhrparkmanagement.", faq_seite(), "faq.html", False),
-    ("impressum.html", "Impressum – TT Fuhrparkmanagement", "Impressum von TT Fuhrparkmanagement.", recht_seite("Impressum", "impressum.html"), "", False),
-    ("datenschutz.html", "Datenschutz – TT Fuhrparkmanagement", "Datenschutzerklärung von TT Fuhrparkmanagement.", recht_seite("Datenschutzerklärung", "datenschutz.html"), "", False),
-    ("agb.html", "AGB – TT Fuhrparkmanagement", "Allgemeine Geschäftsbedingungen von TT Fuhrparkmanagement.", recht_seite("Allgemeine Geschäftsbedingungen", "agb.html"), "", False),
-    ("danke.html", "Danke – TT Fuhrparkmanagement", "Ihre Anfrage ist angekommen.", DANKE, "", True),
+    ("index.html", "Fuhrparkverwaltung für kleine Betriebe in Duisburg | TT Fuhrparkmanagement", BESCHREIBUNG, startseite(), "", False, True, ""),
+    ("leistungen.html", "Leistungen der Fuhrparkverwaltung | TT Fuhrparkmanagement", "Neun Bausteine in einem Paket: Führerscheinkontrolle, Termine, Dokumente, Werkstatt, Schäden, Versicherungsfristen, Tankkarten, Kosten-Reporting und Firmenwagen-Angebote.", leistungen_seite(), "leistungen.html", False, True, ""),
+    ("so-arbeiten-wir.html", "So arbeiten wir: Ablauf und Preis | TT Fuhrparkmanagement", "In drei Schritten zur externen Fuhrparkverwaltung: Erstgespräch, kostenloser Fuhrpark-Check, laufende Betreuung. Ein fester Preis pro Fahrzeug.", so_arbeiten_wir_seite(), "so-arbeiten-wir.html", False, True, ""),
+    ("ueber-uns.html", "Über uns | TT Fuhrparkmanagement", "TT Fuhrparkmanagement übernimmt für Betriebe in Duisburg, im Ruhrgebiet und am Niederrhein die Verwaltung ihrer Firmenfahrzeuge, persönlich und fachkundig.", ueber_uns_seite(), "ueber-uns.html", False, True, ""),
+    ("faq.html", "Häufige Fragen zur Fuhrparkverwaltung | TT Fuhrparkmanagement", "Was kostet externes Fuhrparkmanagement, bin ich an einen Versicherer gebunden, wie schnell geht der Start? Antworten auf häufige Fragen.", faq_seite(), "faq.html", False, True, ""),
+    ("impressum.html", "Impressum | TT Fuhrparkmanagement", "Impressum von TT Fuhrparkmanagement, Oberhausen.", recht_seite("Impressum", "impressum.html"), "", False, True, ""),
+    ("datenschutz.html", "Datenschutzerklärung | TT Fuhrparkmanagement", "Datenschutzerklärung von TT Fuhrparkmanagement: Hosting, Kontaktformular, Google Ads und Cookie-Einwilligung.", recht_seite("Datenschutzerklärung", "datenschutz.html"), "", False, True, ""),
+    ("agb.html", "AGB | TT Fuhrparkmanagement", "Allgemeine Geschäftsbedingungen von TT Fuhrparkmanagement.", recht_seite("Allgemeine Geschäftsbedingungen", "agb.html"), "", False, True, ""),
+    ("danke.html", "Danke für Ihre Anfrage | TT Fuhrparkmanagement", "Ihre Anfrage ist angekommen.", DANKE, "", True, False, CONVERSION),
+    ("404.html", "Seite nicht gefunden | TT Fuhrparkmanagement", "Diese Seite gibt es nicht.", NICHT_GEFUNDEN, "", True, False, ""),
 ]
 
+# Interne Links und Dateien absolut machen, damit auch die 404-Seite unter jeder Adresse funktioniert.
+_RELATIV = re.compile(r'(href|src|srcset)="(?!https?:|mailto:|tel:|#|/|data:)')
+
+
+def absolut(html):
+    html = _RELATIV.sub(r'\1="/', html)
+    return html.replace('href="/index.html#', 'href="/#').replace('href="/index.html"', 'href="/"').replace('href="/index.html?', 'href="/?')
+
+
 if __name__ == "__main__":
-    for datei, titel, beschr, inhalt, aktiv, robots in SEITEN:
-        html = kopf(titel, beschr, aktiv, robots) + inhalt + fuss()
+    heute = date.today().isoformat()
+    sitemap = []
+    for datei, titel, beschr, inhalt, aktiv, robots, in_sitemap, extra in SEITEN:
+        pfad = None if robots else datei
+        html = absolut(kopf(titel, beschr, aktiv, robots, pfad, extra) + inhalt + fuss())
         (ROOT / datei).write_text(html, encoding="utf-8")
+        if in_sitemap:
+            loc = SITE + "/" + ("" if datei == "index.html" else datei)
+            sitemap.append(f"  <url><loc>{loc}</loc><lastmod>{heute}</lastmod></url>")
         print("gebaut:", datei)
+    (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(sitemap) + "\n</urlset>\n", encoding="utf-8")
+    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
+    print("gebaut: sitemap.xml, robots.txt")

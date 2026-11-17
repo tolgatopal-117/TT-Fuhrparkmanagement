@@ -2,31 +2,57 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500});
+    gtag('set', 'ads_data_redaction', true);
+    try {
+      var w = JSON.parse(localStorage.getItem('tt-einwilligung'));
+      if (w) gtag('consent', 'update', {
+        ad_storage: w.marketing ? 'granted' : 'denied', ad_user_data: w.marketing ? 'granted' : 'denied',
+        ad_personalization: w.marketing ? 'granted' : 'denied', analytics_storage: w.statistik ? 'granted' : 'denied'
+      });
+    } catch (e) {}
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18501646213"></script>
+  <script>gtag('js', new Date());gtag('config','AW-18501646213');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Datenschutz – TT Fuhrparkmanagement</title>
-  <meta name="description" content="Datenschutzerklärung von TT Fuhrparkmanagement.">
+  <title>Datenschutzerklärung | TT Fuhrparkmanagement</title>
+  <meta name="description" content="Datenschutzerklärung von TT Fuhrparkmanagement: Hosting, Kontaktformular, Google Ads und Cookie-Einwilligung.">
+  <link rel="canonical" href="https://ttfuhrparkmanagement.com/datenschutz.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="TT Fuhrparkmanagement">
+  <meta property="og:title" content="Datenschutzerklärung | TT Fuhrparkmanagement">
+  <meta property="og:description" content="Datenschutzerklärung von TT Fuhrparkmanagement: Hosting, Kontaktformular, Google Ads und Cookie-Einwilligung.">
+  <meta property="og:url" content="https://ttfuhrparkmanagement.com/datenschutz.html">
+  <meta property="og:image" content="https://ttfuhrparkmanagement.com/assets/img/transporter-grau.jpg">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="750">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="/favicon-48x48.png" sizes="48x48">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
   <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <header class="kopf" id="kopf">
   <div class="container kopf__innen">
-    <a class="kopf__logo" href="index.html" aria-label="TT Fuhrparkmanagement, zur Startseite"><img src="assets/logo-tt.png" alt="TT Fuhrparkmanagement" width="600" height="167"></a>
+    <a class="kopf__logo" href="/" aria-label="TT Fuhrparkmanagement, zur Startseite"><img src="/assets/logo-tt.png" alt="TT Fuhrparkmanagement" width="600" height="167"></a>
     <button class="menue-knopf" type="button" aria-expanded="false" aria-controls="hauptnav" aria-label="Menü"><span></span></button>
     <nav class="kopf__nav" id="hauptnav" aria-label="Hauptnavigation">
-      <a href="leistungen.html">Leistungen</a><a href="so-arbeiten-wir.html">So arbeiten wir</a><a href="ueber-uns.html">Über uns</a><a href="faq.html">FAQ</a><a href="index.html#kontakt">Kontakt</a>
-      <a class="btn btn--primary" href="index.html#kontakt">Kostenlose Analyse</a>
+      <a href="/leistungen.html">Leistungen</a><a href="/so-arbeiten-wir.html">So arbeiten wir</a><a href="/ueber-uns.html">Über uns</a><a href="/faq.html">FAQ</a><a href="/#kontakt">Kontakt</a>
+      <a class="btn btn--primary" href="/#kontakt">Fuhrpark-Check anfragen</a>
     </nav>
   </div>
 </header>
 <main id="top">
 <section class="seitenkopf">
   <div class="container">
-    <p class="krumen"><a href="index.html">Start</a> / Datenschutzerklärung</p>
+    <p class="krumen"><a href="/">Start</a> / Datenschutzerklärung</p>
     <h1>Datenschutzerklärung</h1>
     
   </div>
@@ -38,14 +64,35 @@
       <p>Tolga Topal – TT Fuhrparkmanagement<br>Bottroper Str. 87, 46117 Oberhausen<br>E-Mail: <a href="mailto:tolga.topal@ttfuhrparkmanagement.com">tolga.topal@ttfuhrparkmanagement.com</a></p>
       <h2>Hosting</h2>
       <p>Diese Website wird bei Netlify, Inc. gehostet. Beim Aufruf der Seite erfasst Netlify automatisch technische Zugriffsdaten (u. a. IP-Adresse, Browsertyp, Datum und Uhrzeit des Zugriffs) in Server-Log-Files. Diese Daten dienen ausschließlich dem technisch fehlerfreien Betrieb der Website (Art. 6 Abs. 1 lit. f DSGVO).</p>
+      <!-- von Claude ergänzt – rechtlich prüfen lassen -->
+      <p>Netlify, Inc. hat seinen Sitz in den USA. Bei der Nutzung kann es daher zu einer Übermittlung personenbezogener Daten in die USA kommen. Die Übermittlung stützt sich auf die Zertifizierung des Anbieters nach dem EU-US Data Privacy Framework (Art. 45 DSGVO), soweit diese besteht, und im Übrigen auf die EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO), die Bestandteil des Auftragsverarbeitungsvertrags mit Netlify sind. Die Server-Log-Files werden von Netlify nach kurzer Zeit automatisch gelöscht.</p>
+      <!-- Ende: von Claude ergänzt -->
       <h2>Kontakt- und Anfrageformulare</h2>
       <p>Wenn Sie eines unserer Formulare (Kontaktformular oder Anfrage zur kostenlosen Analyse) nutzen, werden Ihre Angaben (Name, ggf. Firma, E-Mail-Adresse, Telefon, Anzahl Fahrzeuge, Nachricht) über den Formular-Dienst von Netlify, Inc. verarbeitet und per E-Mail an uns weitergeleitet, um Ihre Anfrage zu bearbeiten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO. Die Daten werden gelöscht, sobald sie für die Bearbeitung Ihrer Anfrage nicht mehr erforderlich sind.</p>
+      <!-- von Claude ergänzt – rechtlich prüfen lassen -->
+      <h3>Kontaktformular über Netlify Forms</h3>
+      <p>Das Kontaktformular auf unserer Startseite fragt folgende Angaben ab: Name, Firma, E-Mail-Adresse oder Telefonnummer, Anzahl der Fahrzeuge und optional eine Nachricht. Die Angaben werden beim Absenden an den Dienst „Netlify Forms“ von Netlify, Inc. übertragen, dort gespeichert und uns per E-Mail sowie im Netlify-Konto zur Verfügung gestellt. Zur Abwehr von Spam enthält das Formular ein für Menschen unsichtbares Feld (Honeypot); Netlify prüft eingehende Nachrichten zudem automatisch auf Spam. Nach dem Absenden werden Sie auf eine Bestätigungsseite weitergeleitet.</p>
+      <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung eines Vertrags) bzw. Art. 6 Abs. 1 lit. f DSGVO (unser Interesse, Anfragen zu beantworten). Zur Übermittlung in die USA siehe den Abschnitt „Hosting“. Wir löschen die Anfragen im Netlify-Konto, sobald sie bearbeitet sind und keine Aufbewahrungspflicht besteht.</p>
+      <!-- Ende: von Claude ergänzt -->
       <h2>Schriften und Inhalte Dritter</h2>
       <p>Diese Website verwendet die Schrift Inter, die zusammen mit allen Bildern auf unserem eigenen Webspace gespeichert ist. Es werden keine Inhalte von Drittanbietern wie Google Fonts nachgeladen.</p>
       <h2 id="cookies">Cookies, Einwilligung und Tracking</h2>
-      <p>Diese Website setzt keine Cookies ein und verwendet derzeit keine Analyse-, Tracking- oder Marketing-Dienste.</p>
+      <!-- von Claude ergänzt – rechtlich prüfen lassen -->
+      <p>Diese Website setzt selbst keine Cookies ein. Cookies von Google Ads (siehe unten) werden nur gesetzt, wenn Sie im Cookie-Fenster einwilligen. Analyse-Dienste (Kategorie „Statistik“) verwenden wir derzeit nicht.</p>
+      <!-- Ende: von Claude ergänzt -->
+      <!-- ursprünglicher Satz, durch den Absatz oben ersetzt: „Diese Website setzt keine Cookies ein und verwendet derzeit keine Analyse-, Tracking- oder Marketing-Dienste.“ -->
       <p>Beim ersten Besuch fragen wir Sie in einem Hinweisfenster, ob wir solche Dienste künftig verwenden dürfen. Ihre Auswahl speichern wir im lokalen Speicher Ihres Browsers (Schlüssel „tt-einwilligung“, mit Datum der Auswahl), damit das Fenster nicht bei jedem Besuch erneut erscheint. Diese Speicherung ist für die von Ihnen gewünschte Funktion unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG). Die Angaben verlassen Ihr Gerät nicht.</p>
       <p>Sie können Ihre Auswahl jederzeit über „Cookie-Einstellungen“ im Fußbereich jeder Seite ändern oder widerrufen. Sollten wir künftig Statistik- oder Marketing-Dienste einsetzen, werden diese nur nach Ihrer Einwilligung geladen (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG), und wir ergänzen diese Erklärung vorher.</p>
+      <!-- von Claude ergänzt – rechtlich prüfen lassen -->
+      <h3>Einwilligung und Widerruf</h3>
+      <p>Im Cookie-Fenster können Sie „Alle akzeptieren“, „Nur notwendige“ wählen oder unter „Einstellungen“ einzelne Kategorien freigeben. Ihre Einwilligung ist freiwillig und für die Nutzung der Website nicht erforderlich. Sie können sie jederzeit mit Wirkung für die Zukunft widerrufen, indem Sie unten auf jeder Seite „Cookie-Einstellungen“ öffnen und die Kategorie abwählen. Bereits gesetzte Google-Cookies löschen wir dabei, soweit technisch möglich; Sie können Cookies außerdem jederzeit in Ihrem Browser löschen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt unberührt (Art. 7 Abs. 3 DSGVO).</p>
+      <h2 id="google-ads">Google Ads Conversion-Tracking und Google Consent Mode</h2>
+      <p>Wir schalten Anzeigen bei Google Ads. Um zu messen, ob eine Anfrage über das Kontaktformular oder ein Klick auf unsere Telefonnummer auf eine Anzeige zurückgeht, verwenden wir das Conversion-Tracking von Google Ads. Anbieter ist Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland („Google“). Dazu wird auf jeder Seite der Google-Tag (gtag.js) von Google geladen.</p>
+      <p>Wir nutzen den Einwilligungsmodus von Google („Consent Mode v2“). Er ist standardmäßig so eingestellt, dass keine Werbe- und Analyse-Cookies gesetzt und keine Daten für personalisierte Werbung verwendet werden. Ohne Ihre Einwilligung übermittelt der Google-Tag lediglich cookielose Signale an Google (z. B. dass eine Seite aufgerufen oder eine Anfrage abgeschickt wurde, Zeitpunkt, Browser- und Geräteinformationen sowie Ihre IP-Adresse, die dabei technisch zwangsläufig übertragen wird); Kennungen aus Anzeigenklicks in der Adresse werden dabei geschwärzt. Google nutzt diese Signale nach eigenen Angaben für zusammengefasste, nicht personenbezogene Modellierungen von Conversions.</p>
+      <p>Nur wenn Sie in die Kategorie „Marketing“ einwilligen, setzt Google Cookies (z. B. „_gcl_au“, Speicherdauer bis zu 90 Tage), mit denen Google erkennen kann, dass Sie über eine Anzeige auf unsere Website gekommen sind und anschließend eine Anfrage gesendet oder auf die Telefonnummer getippt haben. Wir erhalten von Google nur statistische Auswertungen, keine Angaben, mit denen wir Sie persönlich identifizieren könnten.</p>
+      <p>Rechtsgrundlage für das Setzen und Auslesen von Cookies und die damit verbundene Verarbeitung ist Ihre Einwilligung (§ 25 Abs. 1 TDDDG, Art. 6 Abs. 1 lit. a DSGVO). Rechtsgrundlage für das Laden des Google-Tags und die cookielosen Signale ohne Einwilligung ist unser berechtigtes Interesse an einer datensparsamen Erfolgsmessung unserer Werbung (Art. 6 Abs. 1 lit. f DSGVO). Es kann zu einer Übermittlung von Daten an Google LLC in den USA kommen; Google LLC ist nach dem EU-US Data Privacy Framework zertifiziert (Art. 45 DSGVO). Weitere Informationen: <a href="https://policies.google.com/privacy?hl=de">Datenschutzerklärung von Google</a> und <a href="https://business.safety.google/privacy/">Informationen zu Googles Datenschutz für Werbekunden</a>.</p>
+      <p>Google Analytics setzen wir derzeit nicht ein. Sollten wir es künftig einsetzen, geschieht dies ebenfalls nur unter dem Einwilligungsmodus und nach Ergänzung dieser Erklärung.</p>
+      <!-- Ende: von Claude ergänzt -->
       <h2>Datenverarbeitung im Rahmen unserer Dienstleistungen</h2>
       <p>Wenn wir für Unternehmen den Fuhrpark verwalten, verarbeiten wir personenbezogene Daten der Fahrerinnen und Fahrer sowie der Ansprechpartner unserer Kunden. Dazu gehören Name und dienstliche Kontaktdaten, Führerscheindaten (Führerscheinklassen, Ausstellungs- und Ablaufdatum, Führerscheinnummer, Nachweis der Führerscheinkontrolle), die Zuordnung zu Fahrzeugen, Tankkarten- und Tankdaten sowie Angaben zu Schadensfällen.</p>
       <p>Bei dieser Verarbeitung handeln wir als Auftragsverarbeiter im Auftrag unserer Kunden (Art. 28 DSGVO). Verantwortlich ist das jeweilige Unternehmen, für das wir tätig sind. Wir verarbeiten die Daten ausschließlich nach dessen Weisung und auf Grundlage eines Auftragsverarbeitungsvertrags. Betroffene Fahrerinnen und Fahrer wenden sich mit Anfragen zu ihren Daten bitte an ihren Arbeitgeber; wir unterstützen diesen bei der Beantwortung.</p>
@@ -75,18 +122,18 @@
       <div>
         <h2>Unternehmen</h2>
         <ul>
-          <li><a href="leistungen.html">Leistungen</a></li>
-          <li><a href="so-arbeiten-wir.html">So arbeiten wir</a></li>
-          <li><a href="ueber-uns.html">Über uns</a></li>
-          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="/leistungen.html">Leistungen</a></li>
+          <li><a href="/so-arbeiten-wir.html">So arbeiten wir</a></li>
+          <li><a href="/ueber-uns.html">Über uns</a></li>
+          <li><a href="/faq.html">FAQ</a></li>
         </ul>
       </div>
       <div>
         <h2>Rechtliches</h2>
         <ul>
-          <li><a href="impressum.html">Impressum</a></li>
-          <li><a href="datenschutz.html">Datenschutz</a></li>
-          <li><a href="agb.html">AGB</a></li>
+          <li><a href="/impressum.html">Impressum</a></li>
+          <li><a href="/datenschutz.html">Datenschutz</a></li>
+          <li><a href="/agb.html">AGB</a></li>
           <li><button type="button" class="fuss__knopf" data-einwilligung-oeffnen>Cookie-Einstellungen</button></li>
         </ul>
       </div>
@@ -102,28 +149,32 @@
     <div class="fuss__zeile"><span>© 2026 TT Fuhrparkmanagement</span><span>Ihr Fuhrpark, unser Antrieb.</span></div>
   </div>
 </footer>
+<nav class="mobil-leiste" aria-label="Schnellkontakt">
+  <a class="btn btn--ghost" href="tel:+4915630158503"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Anrufen</a>
+  <a class="btn btn--primary" href="/#kontakt">Anfragen</a>
+</nav>
 <div class="einwilligung" id="einwilligung" role="region" aria-label="Cookie-Einstellungen" hidden>
   <h2>Ihre Privatsphäre</h2>
-  <p>Wir verwenden nur, was für den Betrieb der Website nötig ist. Statistik- oder Marketing-Dienste setzen wir derzeit nicht ein. Sie entscheiden, ob wir sie künftig nutzen dürfen. Mehr in der <a href="datenschutz.html#cookies">Datenschutzerklärung</a>.</p>
+  <p>Mit Ihrer Einwilligung setzen wir Cookies von Google Ads ein, um zu messen, ob eine Anfrage über unsere Anzeigen zustande kam. Ohne Einwilligung werden keine Werbe- oder Analyse-Cookies gesetzt. Sie können Ihre Wahl jederzeit unter „Cookie-Einstellungen“ ändern. Mehr in der <a href="/datenschutz.html#cookies">Datenschutzerklärung</a>.</p>
   <div class="einwilligung__knoepfe">
-    <button type="button" class="btn btn--ghost" data-einwilligung="nur-noetig">Nur notwendige</button>
-    <button type="button" class="btn btn--primary" data-einwilligung="alle">Alle akzeptieren</button>
+    <button type="button" class="btn btn--wahl" data-einwilligung="nur-noetig">Nur notwendige</button>
+    <button type="button" class="btn btn--wahl" data-einwilligung="alle">Alle akzeptieren</button>
     <button type="button" class="einwilligung__link" data-einwilligung="einstellungen">Einstellungen</button>
   </div>
 </div>
 <dialog class="einstellungen" id="einstellungen" aria-labelledby="einstellungen-titel">
   <form method="dialog" class="einstellungen__form">
     <h2 id="einstellungen-titel">Cookie-Einstellungen</h2>
-    <p>Wählen Sie, welche Dienste wir verwenden dürfen. Sie können Ihre Auswahl jederzeit über „Cookie-Einstellungen“ im Fußbereich ändern.</p>
-    <div class="kategorie"><div><b>Notwendig</b><p>Speichert Ihre Auswahl in diesem Fenster. Immer aktiv.</p></div><input type="checkbox" class="schalter-feld" checked disabled aria-label="Notwendig, immer aktiv"></div>
-    <div class="kategorie"><div><b>Statistik</b><p>Anonyme Auswertung, wie die Website genutzt wird. Derzeit nicht im Einsatz.</p></div><input type="checkbox" class="schalter-feld" name="statistik" aria-label="Statistik erlauben"></div>
-    <div class="kategorie"><div><b>Marketing</b><p>Messung von Werbeanzeigen. Derzeit nicht im Einsatz.</p></div><input type="checkbox" class="schalter-feld" name="marketing" aria-label="Marketing erlauben"></div>
+    <p>Wählen Sie, welche Dienste wir verwenden dürfen. Sie können Ihre Auswahl jederzeit über „Cookie-Einstellungen“ im Fußbereich ändern oder widerrufen.</p>
+    <div class="kategorie"><div><b>Notwendig</b><p>Speichert Ihre Auswahl im lokalen Speicher Ihres Browsers. Immer aktiv.</p></div><input type="checkbox" class="schalter-feld" checked disabled aria-label="Notwendig, immer aktiv"></div>
+    <div class="kategorie"><div><b>Statistik</b><p>Auswertung, wie die Website genutzt wird. Derzeit nicht im Einsatz.</p></div><input type="checkbox" class="schalter-feld" name="statistik" aria-label="Statistik erlauben"></div>
+    <div class="kategorie"><div><b>Marketing</b><p>Google Ads Conversion-Tracking (Google Ireland Ltd.): misst, ob eine Anfrage oder ein Anruf über eine Anzeige zustande kam. Setzt Cookies.</p></div><input type="checkbox" class="schalter-feld" name="marketing" aria-label="Marketing erlauben"></div>
     <div class="einwilligung__knoepfe">
-      <button type="submit" class="btn btn--ghost" value="auswahl">Auswahl speichern</button>
-      <button type="submit" class="btn btn--primary" value="alle">Alle akzeptieren</button>
+      <button type="submit" class="btn btn--wahl" value="auswahl">Auswahl speichern</button>
+      <button type="submit" class="btn btn--wahl" value="alle">Alle akzeptieren</button>
     </div>
   </form>
 </dialog>
-<script src="main.js" defer></script>
+<script src="/main.js" defer></script>
 </body>
 </html>

@@ -2,31 +2,57 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500});
+    gtag('set', 'ads_data_redaction', true);
+    try {
+      var w = JSON.parse(localStorage.getItem('tt-einwilligung'));
+      if (w) gtag('consent', 'update', {
+        ad_storage: w.marketing ? 'granted' : 'denied', ad_user_data: w.marketing ? 'granted' : 'denied',
+        ad_personalization: w.marketing ? 'granted' : 'denied', analytics_storage: w.statistik ? 'granted' : 'denied'
+      });
+    } catch (e) {}
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18501646213"></script>
+  <script>gtag('js', new Date());gtag('config','AW-18501646213');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Über uns – TT Fuhrparkmanagement</title>
-  <meta name="description" content="TT Fuhrparkmanagement übernimmt für Unternehmen die Verwaltung ihrer Firmenfahrzeuge, persönlich und fachkundig.">
+  <title>Über uns | TT Fuhrparkmanagement</title>
+  <meta name="description" content="TT Fuhrparkmanagement übernimmt für Betriebe in Duisburg, im Ruhrgebiet und am Niederrhein die Verwaltung ihrer Firmenfahrzeuge, persönlich und fachkundig.">
+  <link rel="canonical" href="https://ttfuhrparkmanagement.com/ueber-uns.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="TT Fuhrparkmanagement">
+  <meta property="og:title" content="Über uns | TT Fuhrparkmanagement">
+  <meta property="og:description" content="TT Fuhrparkmanagement übernimmt für Betriebe in Duisburg, im Ruhrgebiet und am Niederrhein die Verwaltung ihrer Firmenfahrzeuge, persönlich und fachkundig.">
+  <meta property="og:url" content="https://ttfuhrparkmanagement.com/ueber-uns.html">
+  <meta property="og:image" content="https://ttfuhrparkmanagement.com/assets/img/transporter-grau.jpg">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="750">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="/favicon-48x48.png" sizes="48x48">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
   <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <header class="kopf" id="kopf">
   <div class="container kopf__innen">
-    <a class="kopf__logo" href="index.html" aria-label="TT Fuhrparkmanagement, zur Startseite"><img src="assets/logo-tt.png" alt="TT Fuhrparkmanagement" width="600" height="167"></a>
+    <a class="kopf__logo" href="/" aria-label="TT Fuhrparkmanagement, zur Startseite"><img src="/assets/logo-tt.png" alt="TT Fuhrparkmanagement" width="600" height="167"></a>
     <button class="menue-knopf" type="button" aria-expanded="false" aria-controls="hauptnav" aria-label="Menü"><span></span></button>
     <nav class="kopf__nav" id="hauptnav" aria-label="Hauptnavigation">
-      <a href="leistungen.html">Leistungen</a><a href="so-arbeiten-wir.html">So arbeiten wir</a><a href="ueber-uns.html" aria-current="page">Über uns</a><a href="faq.html">FAQ</a><a href="index.html#kontakt">Kontakt</a>
-      <a class="btn btn--primary" href="index.html#kontakt">Kostenlose Analyse</a>
+      <a href="/leistungen.html">Leistungen</a><a href="/so-arbeiten-wir.html">So arbeiten wir</a><a href="/ueber-uns.html" aria-current="page">Über uns</a><a href="/faq.html">FAQ</a><a href="/#kontakt">Kontakt</a>
+      <a class="btn btn--primary" href="/#kontakt">Fuhrpark-Check anfragen</a>
     </nav>
   </div>
 </header>
 <main id="top">
 <section class="seitenkopf">
   <div class="container">
-    <p class="krumen"><a href="index.html">Start</a> / Über uns</p>
+    <p class="krumen"><a href="/">Start</a> / Über uns</p>
     <h1>Über uns</h1>
     <p class="lead">Wir nehmen Unternehmen die Verwaltung ihrer Firmenfahrzeuge ab.</p>
   </div>
@@ -34,7 +60,7 @@
 
 <section class="section" style="padding-top:1rem" aria-labelledby="wer-titel">
   <div class="container teilung">
-    <div class="teilung__bild" data-auf><img src="assets/img/dienstwagen.jpg" alt="Dunkler Dienstwagen auf einem Parkplatz" width="1280" height="960" loading="lazy"></div>
+    <div class="teilung__bild" data-auf><picture><source type="image/webp" srcset="/assets/img/dienstwagen-768.webp 768w, /assets/img/dienstwagen-1280.webp 1280w" sizes="(max-width: 64em) 100vw, 50vw"><img src="/assets/img/dienstwagen.jpg" alt="Dunkler Dienstwagen auf einem Parkplatz" width="1280" height="960" loading="lazy" decoding="async"></picture></div>
     <div data-auf style="--i:1">
       <h2 id="wer-titel">Wer sich um Ihren Fuhrpark kümmert</h2>
       <p class="lead">TT Fuhrparkmanagement übernimmt für Unternehmen die Verwaltung ihrer Firmenfahrzeuge. Geleitet wird das Unternehmen von Tolga Topal, zertifizierter Fuhrparkverwalter.</p>
@@ -50,7 +76,7 @@
       <div class="karte" data-auf style="--i:0"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></span><h3>Persönlich</h3><p>Ein fester Ansprechpartner, der Ihren Fuhrpark, Ihre Fahrer und Ihre Fristen kennt.</p></div>
       <div class="karte" data-auf style="--i:1"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg></span><h3>Fachkundig</h3><p>Zertifizierte Fuhrparkverwaltung, die Halterhaftung, Prüfpflichten und Dokumentation kennt.</p></div>
       <div class="karte" data-auf style="--i:2"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><h3>Sorgfältig mit Daten</h3><p>Zwei-Faktor-Anmeldung, verschlüsselte Übertragung, getrennte Ablage je Kunde.</p></div>
-      <div class="karte" data-auf style="--i:3"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span><h3>Aus Oberhausen</h3><p>Für Unternehmen mit Firmenfahrzeugen, vom kleinen Verwaltungsfuhrpark bis zur Transportflotte.</p></div>
+      <div class="karte" data-auf style="--i:3"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span><h3>Aus der Region</h3><p>Sitz in Oberhausen, im Einsatz für Betriebe in Duisburg, im Ruhrgebiet und am Niederrhein.</p></div>
     </div>
   </div>
 </section>
@@ -58,12 +84,12 @@
   <div class="container">
     <div class="aufruf" data-auf>
       <div>
-        <h2 id="aufruf-titel">Weniger Aufwand mit Ihrem Fuhrpark?</h2>
-        <p>Wir sichten Ihren Fuhrpark kostenlos und zeigen Ihnen, was wir Ihnen abnehmen können. Unverbindlich.</p>
+        <h2 id="aufruf-titel">Mehr Zeit fürs Kerngeschäft?</h2>
+        <p>Im kostenlosen Fuhrpark-Check zeigen wir Ihnen, was wir Ihnen abnehmen können. Unverbindlich.</p>
       </div>
       <div class="aufruf__knoepfe">
-        <a class="btn btn--primary" href="index.html#kontakt">Kostenlose Analyse anfragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-        <a class="btn btn--ghost" href="tel:+4915630158503"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Anrufen</a>
+        <a class="btn btn--primary" href="/#kontakt">Kostenlosen Fuhrpark-Check anfragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="btn btn--ghost" href="tel:+4915630158503"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +49 156 30158503</a>
       </div>
     </div>
   </div>
@@ -80,18 +106,18 @@
       <div>
         <h2>Unternehmen</h2>
         <ul>
-          <li><a href="leistungen.html">Leistungen</a></li>
-          <li><a href="so-arbeiten-wir.html">So arbeiten wir</a></li>
-          <li><a href="ueber-uns.html">Über uns</a></li>
-          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="/leistungen.html">Leistungen</a></li>
+          <li><a href="/so-arbeiten-wir.html">So arbeiten wir</a></li>
+          <li><a href="/ueber-uns.html">Über uns</a></li>
+          <li><a href="/faq.html">FAQ</a></li>
         </ul>
       </div>
       <div>
         <h2>Rechtliches</h2>
         <ul>
-          <li><a href="impressum.html">Impressum</a></li>
-          <li><a href="datenschutz.html">Datenschutz</a></li>
-          <li><a href="agb.html">AGB</a></li>
+          <li><a href="/impressum.html">Impressum</a></li>
+          <li><a href="/datenschutz.html">Datenschutz</a></li>
+          <li><a href="/agb.html">AGB</a></li>
           <li><button type="button" class="fuss__knopf" data-einwilligung-oeffnen>Cookie-Einstellungen</button></li>
         </ul>
       </div>
@@ -107,28 +133,32 @@
     <div class="fuss__zeile"><span>© 2026 TT Fuhrparkmanagement</span><span>Ihr Fuhrpark, unser Antrieb.</span></div>
   </div>
 </footer>
+<nav class="mobil-leiste" aria-label="Schnellkontakt">
+  <a class="btn btn--ghost" href="tel:+4915630158503"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Anrufen</a>
+  <a class="btn btn--primary" href="/#kontakt">Anfragen</a>
+</nav>
 <div class="einwilligung" id="einwilligung" role="region" aria-label="Cookie-Einstellungen" hidden>
   <h2>Ihre Privatsphäre</h2>
-  <p>Wir verwenden nur, was für den Betrieb der Website nötig ist. Statistik- oder Marketing-Dienste setzen wir derzeit nicht ein. Sie entscheiden, ob wir sie künftig nutzen dürfen. Mehr in der <a href="datenschutz.html#cookies">Datenschutzerklärung</a>.</p>
+  <p>Mit Ihrer Einwilligung setzen wir Cookies von Google Ads ein, um zu messen, ob eine Anfrage über unsere Anzeigen zustande kam. Ohne Einwilligung werden keine Werbe- oder Analyse-Cookies gesetzt. Sie können Ihre Wahl jederzeit unter „Cookie-Einstellungen“ ändern. Mehr in der <a href="/datenschutz.html#cookies">Datenschutzerklärung</a>.</p>
   <div class="einwilligung__knoepfe">
-    <button type="button" class="btn btn--ghost" data-einwilligung="nur-noetig">Nur notwendige</button>
-    <button type="button" class="btn btn--primary" data-einwilligung="alle">Alle akzeptieren</button>
+    <button type="button" class="btn btn--wahl" data-einwilligung="nur-noetig">Nur notwendige</button>
+    <button type="button" class="btn btn--wahl" data-einwilligung="alle">Alle akzeptieren</button>
     <button type="button" class="einwilligung__link" data-einwilligung="einstellungen">Einstellungen</button>
   </div>
 </div>
 <dialog class="einstellungen" id="einstellungen" aria-labelledby="einstellungen-titel">
   <form method="dialog" class="einstellungen__form">
     <h2 id="einstellungen-titel">Cookie-Einstellungen</h2>
-    <p>Wählen Sie, welche Dienste wir verwenden dürfen. Sie können Ihre Auswahl jederzeit über „Cookie-Einstellungen“ im Fußbereich ändern.</p>
-    <div class="kategorie"><div><b>Notwendig</b><p>Speichert Ihre Auswahl in diesem Fenster. Immer aktiv.</p></div><input type="checkbox" class="schalter-feld" checked disabled aria-label="Notwendig, immer aktiv"></div>
-    <div class="kategorie"><div><b>Statistik</b><p>Anonyme Auswertung, wie die Website genutzt wird. Derzeit nicht im Einsatz.</p></div><input type="checkbox" class="schalter-feld" name="statistik" aria-label="Statistik erlauben"></div>
-    <div class="kategorie"><div><b>Marketing</b><p>Messung von Werbeanzeigen. Derzeit nicht im Einsatz.</p></div><input type="checkbox" class="schalter-feld" name="marketing" aria-label="Marketing erlauben"></div>
+    <p>Wählen Sie, welche Dienste wir verwenden dürfen. Sie können Ihre Auswahl jederzeit über „Cookie-Einstellungen“ im Fußbereich ändern oder widerrufen.</p>
+    <div class="kategorie"><div><b>Notwendig</b><p>Speichert Ihre Auswahl im lokalen Speicher Ihres Browsers. Immer aktiv.</p></div><input type="checkbox" class="schalter-feld" checked disabled aria-label="Notwendig, immer aktiv"></div>
+    <div class="kategorie"><div><b>Statistik</b><p>Auswertung, wie die Website genutzt wird. Derzeit nicht im Einsatz.</p></div><input type="checkbox" class="schalter-feld" name="statistik" aria-label="Statistik erlauben"></div>
+    <div class="kategorie"><div><b>Marketing</b><p>Google Ads Conversion-Tracking (Google Ireland Ltd.): misst, ob eine Anfrage oder ein Anruf über eine Anzeige zustande kam. Setzt Cookies.</p></div><input type="checkbox" class="schalter-feld" name="marketing" aria-label="Marketing erlauben"></div>
     <div class="einwilligung__knoepfe">
-      <button type="submit" class="btn btn--ghost" value="auswahl">Auswahl speichern</button>
-      <button type="submit" class="btn btn--primary" value="alle">Alle akzeptieren</button>
+      <button type="submit" class="btn btn--wahl" value="auswahl">Auswahl speichern</button>
+      <button type="submit" class="btn btn--wahl" value="alle">Alle akzeptieren</button>
     </div>
   </form>
 </dialog>
-<script src="main.js" defer></script>
+<script src="/main.js" defer></script>
 </body>
 </html>

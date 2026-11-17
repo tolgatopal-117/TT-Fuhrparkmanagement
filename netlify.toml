@@ -1,5 +1,5 @@
 # Nur die Website-Dateien veröffentlichen, nicht die Skill-Ordner unter .claude/ und nicht src/ oder tools/.
 # Die HTML-Seiten sind fertig gebaut eingecheckt (python3 tools/build.py), Netlify kopiert sie nur.
 [build]
-  command = "rm -rf public && mkdir public && cp *.html styles.css main.js favicon-48x48.png apple-touch-icon.png icon-192.png public/ && cp -r assets public/ && rm -f public/assets/img/CREDITS.md"
+  command = "rm -rf public && mkdir public && cp *.html styles.css main.js robots.txt sitemap.xml favicon-48x48.png apple-touch-icon.png icon-192.png public/ && cp -r assets public/ && rm -f public/assets/img/CREDITS.md"
   publish = "public"

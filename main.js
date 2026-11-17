@@ -1,4 +1,8 @@
-// TT Fuhrparkmanagement v4 – Navigation, Einblenden, Rechner, Formulare, Cookie-Einstellungen.
+// TT Fuhrparkmanagement v4 – Navigation, Einblenden, Rechner, Formulare, Cookie-Einstellungen, Google-Tag.
+
+// gtag() ist im <head> definiert (Consent Mode v2). Fallback, falls der Kopf fehlt oder gekürzt wurde.
+window.dataLayer = window.dataLayer || [];
+if (typeof window.gtag !== 'function') window.gtag = function () { dataLayer.push(arguments); };
 
 const ruhig = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -44,42 +48,53 @@ const ruhig = matchMedia('(prefers-reduced-motion: reduce)').matches;
     document.getElementById('o-fahrzeuge').textContent = f;
     document.getElementById('o-fahrer').textContent = p;
     summe.textContent = (Math.ceil(f / 2) + f + f + f * 2 + p * 2 + 12 + 1).toLocaleString('de-DE');
-    cta.textContent = `Analyse für ${f} ${f === 1 ? 'Fahrzeug' : 'Fahrzeuge'} anfragen`;
-    cta.href = `index.html?fahrzeuge=${f}#kontakt`;
+    cta.textContent = `Fuhrpark-Check für ${f} ${f === 1 ? 'Fahrzeug' : 'Fahrzeuge'} anfragen`;
+    cta.href = `/?fahrzeuge=${f}#kontakt`;
   };
   fz.addEventListener('input', rechnen); fa.addEventListener('input', rechnen);
   rechnen();
 })();
 
-// Fahrzeugzahl aus dem Rechner ins Formular übernehmen.
+// Fahrzeugzahl aus dem Rechner ins Auswahlfeld des Formulars übernehmen.
 (() => {
   const anz = document.getElementById('f-anz');
   const n = new URLSearchParams(location.search).get('fahrzeuge');
-  if (anz && n && /^\d{1,4}$/.test(n)) anz.value = n;
+  if (!anz || !n || !/^\d{1,4}$/.test(n)) return;
+  const z = Number(n);
+  anz.value = z <= 4 ? '1–4' : z <= 15 ? '5–15' : z <= 50 ? '16–50' : 'über 50';
 })();
 
-// Formulare: an Netlify senden, ohne die Seite zu verlassen. Ohne Skript greift action="/danke.html".
+// Formulare: normal an Netlify senden. Netlify leitet danach auf action="/danke.html" weiter,
+// dort zählt der Google-Tag die Conversion. Hier nur Prüfung „E-Mail oder Telefon“ und Schutz vor Doppelklick.
 document.querySelectorAll('form[data-senden]').forEach((form) => {
-  if (!window.fetch) return;
-  const hinweis = form.querySelector('[aria-live]');
   const knopf = form.querySelector('button[type="submit"]');
   const text = knopf.textContent;
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (!form.reportValidity()) return;
+  const feld = form.querySelector('[data-mail-oder-tel]');
+  const pruefen = () => {
+    if (!feld) return;
+    const v = feld.value.trim();
+    const ok = v === '' || /^\S+@\S+\.\S+$/.test(v) || v.replace(/\D/g, '').length >= 6;
+    feld.setCustomValidity(ok ? '' : 'Bitte eine E-Mail-Adresse oder Telefonnummer angeben.');
+  };
+  if (feld) feld.addEventListener('input', pruefen);
+  form.addEventListener('submit', (e) => {
+    pruefen();
+    if (!form.checkValidity()) { e.preventDefault(); form.reportValidity(); return; }
     knopf.disabled = true; knopf.textContent = 'Wird gesendet …';
-    try {
-      const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() });
-      if (!res.ok) throw new Error(res.status);
-      form.reset();
-      hinweis.textContent = 'Danke, Ihre Anfrage ist angekommen. Wir melden uns persönlich und zeitnah.';
-      hinweis.classList.add('form-status');
-      knopf.textContent = 'Gesendet';
-    } catch {
-      hinweis.innerHTML = 'Das hat leider nicht geklappt. Schreiben Sie uns bitte direkt an <a href="mailto:info@ttfuhrparkmanagement.com">info@ttfuhrparkmanagement.com</a>.';
-      knopf.disabled = false; knopf.textContent = text;
-    }
   });
+  // Zurück-Taste (Seiten-Cache): Knopf wieder freigeben
+  addEventListener('pageshow', () => { knopf.disabled = false; knopf.textContent = text; });
+});
+
+// Klicks auf Telefonnummern als eigenes Ereignis an Google senden.
+// Soll der Anruf-Klick in Google Ads als Conversion zählen: dort eine Conversion-Aktion anlegen und
+// deren „send_to“ (AW-…/Label) hier eintragen.
+const TELEFON_CONVERSION = ''; // TODO: z. B. 'AW-18501646213/xxxxxxxx'
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href^="tel:"]');
+  if (!a) return;
+  gtag('event', 'phone_click', { link_url: a.getAttribute('href'), link_text: a.textContent.trim() });
+  if (TELEFON_CONVERSION) gtag('event', 'conversion', { send_to: TELEFON_CONVERSION });
 });
 
 // Cookie-Einstellungen: Auswahl im lokalen Speicher, kein Cookie. Künftige Dienste stehen als
@@ -90,7 +105,21 @@ document.querySelectorAll('form[data-senden]').forEach((form) => {
   const dialog = document.getElementById('einstellungen');
   if (!banner || !dialog) return;
   const lesen = () => { try { return JSON.parse(localStorage.getItem(SCHLUESSEL)); } catch { return null; } };
+  const janein = (x) => (x ? 'granted' : 'denied');
+  // Google-Cookies nach Widerruf entfernen (für diese Domain und die Hauptdomain)
+  const googleCookiesLoeschen = (muster) => {
+    const domains = ['', location.hostname, '.' + location.hostname.replace(/^www\./, '')];
+    document.cookie.split(';').map((c) => c.split('=')[0].trim()).filter((n) => muster.test(n)).forEach((n) => {
+      domains.forEach((d) => { document.cookie = `${n}=; Max-Age=0; path=/${d ? '; domain=' + d : ''}`; });
+    });
+  };
   const anwenden = (w) => {
+    gtag('consent', 'update', {
+      ad_storage: janein(w.marketing), ad_user_data: janein(w.marketing), ad_personalization: janein(w.marketing),
+      analytics_storage: janein(w.statistik),
+    });
+    if (!w.marketing) googleCookiesLoeschen(/^_gcl/);
+    if (!w.statistik) googleCookiesLoeschen(/^(_ga|_gid)/);
     document.querySelectorAll('script[type="text/plain"][data-kategorie]').forEach((alt) => {
       if (!w[alt.dataset.kategorie]) return;
       const neu = document.createElement('script');
