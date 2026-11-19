@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<!-- Google Consent Mode v2: Standard „denied“, gespeicherte Auswahl übernehmen, dann Google-Tag laden -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500});
+  gtag('set', 'ads_data_redaction', true);
+  try {
+    var w = JSON.parse(localStorage.getItem('tt-einwilligung'));
+    if (w) gtag('consent', 'update', {
+      ad_storage: w.marketing ? 'granted' : 'denied', ad_user_data: w.marketing ? 'granted' : 'denied',
+      ad_personalization: w.marketing ? 'granted' : 'denied', analytics_storage: w.statistik ? 'granted' : 'denied'
+    });
+  } catch (e) {}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18501646213"></script>
+<script>gtag('js', new Date()); gtag('config', 'AW-18501646213');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seite nicht gefunden | TT Fuhrparkmanagement</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root{
+    --ink:#1D1D1F;
+    --gray:#6E6E73;
+    --gray-2:#86868B;
+    --line:#D2D2D7;
+    --bg:#FFFFFF;
+    --bg-2:#F5F5F7;
+    --green:#52E40E;
+    --green-hover:#48CF0B;
+    --green-text:#237A00;
+    --night:#0B0D0C;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:17px; line-height:1.47; letter-spacing:-0.01em;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ margin:0; font-weight:600; letter-spacing:-0.02em; text-wrap:balance; }
+  p{ margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  :focus-visible{ outline:2px solid var(--green-text); outline-offset:3px; border-radius:6px; }
+  .wrap{ max-width:1024px; margin:0 auto; padding:0 22px; }
+  .wide{ max-width:1180px; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } *{ transition:none !important; animation:none !important; } }
+
+  /* Navigation */
+  .nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.8); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid rgba(0,0,0,.08); }
+  .nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:56px; }
+  .nav .logo img{ height:34px; width:auto; display:block; }
+  .nav ul{ display:flex; gap:32px; list-style:none; margin:0; padding:0; font-size:13px; }
+  .nav ul a, .nav ul button{ color:var(--ink); opacity:.85; background:none; border:0; padding:0; font:inherit; cursor:pointer; }
+  .nav ul a:hover, .nav ul button:hover{ opacity:1; }
+  .nav .cta{ font-size:13px; font-weight:500; background:var(--green); color:var(--ink); padding:7px 15px; border-radius:980px; }
+  .nav .cta:hover{ background:var(--green-hover); }
+  @media (max-width:760px){ .nav ul{ display:none; } .nav .logo img{ height:30px; } }
+
+  /* Buttons & Links */
+  .btn{ display:inline-flex; align-items:center; justify-content:center; background:var(--green); color:var(--ink); font-size:17px; font-weight:500; padding:12px 24px; border-radius:980px; border:0; cursor:pointer; font-family:inherit; transition:background .2s; }
+  .btn:hover{ background:var(--green-hover); }
+  .more{ color:var(--green-text); font-size:17px; }
+  .more:hover{ text-decoration:underline; }
+  .more::after{ content:" \203A"; }
+
+  /* Hero */
+  .hero{ text-align:center; padding:48px 0 0; }
+  .hero .kicker{ font-size:21px; font-weight:600; color:var(--green-text); }
+  .hero h1{ font-size:clamp(44px, 7.4vw, 88px); line-height:1.04; letter-spacing:-0.035em; margin-top:10px; }
+  .hero .sub{ font-size:clamp(19px, 2.2vw, 24px); color:var(--gray); max-width:680px; margin:22px auto 0; line-height:1.35; letter-spacing:-0.015em; }
+  .hero .actions{ display:flex; gap:30px; justify-content:center; align-items:center; margin-top:34px; flex-wrap:wrap; }
+
+  .stage{
+    margin:64px auto 0; max-width:1180px; border-radius:28px; overflow:hidden; position:relative;
+    background:radial-gradient(120% 90% at 50% 0%, #1F2A1B 0%, #0E120D 55%, var(--night) 100%);
+    padding:72px 22px 80px;
+  }
+  .stage::before{ content:""; position:absolute; left:50%; top:-160px; width:720px; height:420px; transform:translateX(-50%); background:radial-gradient(closest-side, rgba(82,228,14,.28), transparent); pointer-events:none; }
+  .stack{ position:relative; max-width:420px; margin:0 auto; display:grid; gap:10px; }
+  .note{
+    display:grid; grid-template-columns:38px 1fr auto; gap:12px; align-items:center;
+    background:rgba(245,245,247,.9); border-radius:20px; padding:13px 16px; text-align:left;
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.6);
+  }
+  .note .app{ width:38px; height:38px; border-radius:9px; background:var(--green); display:flex; align-items:center; justify-content:center; }
+  .note .app svg{ width:20px; height:20px; }
+  .note b{ display:block; font-size:14px; font-weight:600; line-height:1.25; }
+  .note span{ display:block; font-size:14px; color:#3A3A3C; line-height:1.3; }
+  .note time{ align-self:start; font-size:12px; color:var(--gray-2); }
+  .note:nth-child(2){ transform:scale(.97); opacity:.94; }
+  .note:nth-child(3){ transform:scale(.94); opacity:.85; }
+  .stage-caption{ position:relative; text-align:center; color:#A1A1A6; font-size:14px; margin-top:28px; }
+  @media (max-width:560px){ .stage{ border-radius:0; padding:48px 16px 56px; margin-top:48px; } .hero{ padding-top:36px; } }
+
+  /* Section base */
+  section{ padding:100px 0; }
+  .sec-head{ text-align:center; max-width:760px; margin:0 auto; }
+  .sec-head h2{ font-size:clamp(34px, 5vw, 56px); line-height:1.07; letter-spacing:-0.03em; }
+  .sec-head p{ font-size:clamp(18px, 2vw, 21px); color:var(--gray); margin-top:16px; line-height:1.4; }
+  .gray{ background:var(--bg-2); }
+  #highlights{ padding-bottom:56px; }
+  #leistungen{ padding-top:64px; padding-bottom:56px; }
+  #ablauf{ padding-top:64px; padding-bottom:56px; }
+  #kontakt{ padding-top:64px; }
+  @media (max-width:700px){ #highlights{ padding-bottom:44px; } #leistungen{ padding-top:48px; padding-bottom:44px; } #ablauf{ padding-top:48px; padding-bottom:44px; } #kontakt{ padding-top:48px; } }
+  @media (max-width:700px){ section{ padding:72px 0; } }
+
+  /* Highlights */
+  .tiles{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:56px; }
+  .tile{ background:#fff; border-radius:28px; padding:40px 36px; min-height:300px; display:flex; flex-direction:column; justify-content:space-between; }
+  .tile.span2{ grid-column:span 2; }
+  .tile.dark{ background:var(--night); color:#F5F5F7; }
+  .tile.green{ background:var(--green); }
+  .tile .big{ font-size:clamp(34px, 4.2vw, 48px); font-weight:600; line-height:1.06; letter-spacing:-0.03em; }
+  .tile .num{ font-size:96px; font-weight:600; line-height:1; letter-spacing:-0.05em; color:var(--green-text); }
+  .tile p{ font-size:17px; color:var(--gray); margin-top:18px; max-width:440px; }
+  .tile.dark p{ color:#A1A1A6; }
+  .tile.green p{ color:#1D3A0E; }
+  .tile.green .more{ color:var(--ink); font-weight:500; }
+  .tile p.big{ color:var(--ink); margin:0; max-width:none; }
+  .tile.dark p.big{ color:#F5F5F7; }
+  .tile p.num{ margin:0; }
+  .tile .grad{ background:linear-gradient(90deg,#52E40E,#B8F58F); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  @media (max-width:860px){ .tiles{ grid-template-columns:1fr; } .tile.span2{ grid-column:auto; } .tile{ min-height:0; gap:28px; padding:34px 28px; } }
+
+  /* Leistungen */
+  .features{ display:grid; grid-template-columns:repeat(4,1fr); gap:56px 36px; margin-top:72px; }
+  .feature svg{ width:36px; height:36px; color:var(--green-text); }
+  .feature h3{ font-size:19px; margin-top:18px; letter-spacing:-0.015em; }
+  .feature p{ font-size:15px; color:var(--gray); margin-top:8px; line-height:1.47; }
+  .package{ margin:72px auto 0; max-width:760px; text-align:center; border-top:1px solid var(--line); padding-top:40px; }
+  .package p{ font-size:21px; line-height:1.38; letter-spacing:-0.015em; }
+  .package p span{ color:var(--gray); }
+  @media (max-width:900px){ .features{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:520px){ .features{ grid-template-columns:1fr; gap:40px; } }
+
+  /* Ablauf */
+  .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:56px; counter-reset:s; }
+  .step{ background:#fff; border-radius:24px; padding:30px 26px 32px; }
+  .step .n{ font-size:15px; font-weight:600; color:var(--green-text); }
+  .step h3{ font-size:21px; margin-top:26px; }
+  .step p{ font-size:15px; color:var(--gray); margin-top:8px; }
+  .audience{ margin-top:56px; text-align:center; }
+  .audience p{ font-size:17px; color:var(--gray); }
+  .chips{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:16px; }
+  .chips span{ background:#fff; border-radius:980px; padding:9px 18px; font-size:15px; }
+  @media (max-width:900px){ .steps{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:520px){ .steps{ grid-template-columns:1fr; } }
+
+  /* Kontakt */
+  .contact-form{ max-width:640px; margin:48px auto 0; }
+  .row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .field{ position:relative; margin-top:14px; }
+  .field input, .field textarea{
+    width:100%; font:inherit; font-size:17px; color:var(--ink); background:#fff;
+    border:1px solid var(--line); border-radius:12px; padding:22px 16px 8px; transition:border-color .2s, box-shadow .2s;
+  }
+  .field textarea{ min-height:150px; resize:vertical; padding-top:26px; }
+  .field label{ position:absolute; left:17px; top:16px; font-size:17px; color:var(--gray-2); pointer-events:none; transition:all .15s ease; }
+  .field input:focus, .field textarea:focus{ outline:none; border-color:var(--green-text); box-shadow:0 0 0 4px rgba(82,228,14,.22); }
+  .field input:focus + label, .field input:not(:placeholder-shown) + label,
+  .field textarea:focus + label, .field textarea:not(:placeholder-shown) + label{ top:7px; font-size:12px; color:var(--gray); }
+  .form-foot{ text-align:center; margin-top:28px; }
+  .form-foot .btn{ min-width:240px; }
+  .hint{ font-size:13px; color:var(--gray-2); margin-top:16px; }
+  .hint.ok{ color:var(--green-text); font-weight:500; font-size:15px; }
+  .hint.err{ color:#C0392B; font-weight:500; font-size:15px; }
+  .linkbtn{ background:none; border:0; padding:0; font:inherit; color:var(--green-text); cursor:pointer; }
+  .linkbtn:hover{ text-decoration:underline; }
+  .direct{ text-align:center; margin-top:36px; font-size:17px; color:var(--gray); }
+  .direct a{ color:var(--green-text); }
+  .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  @media (max-width:560px){ .row{ grid-template-columns:1fr; gap:0; } }
+
+  /* Footer */
+  footer{ background:var(--bg-2); font-size:12px; color:var(--gray); padding:28px 0 36px; }
+  footer .top{ display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; padding-bottom:18px; border-bottom:1px solid var(--line); }
+  footer .top img{ height:30px; width:auto; display:block; }
+  footer .bottom{ display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; padding-top:16px; }
+  footer nav{ display:flex; gap:0; flex-wrap:wrap; }
+  footer nav button, footer nav a{ background:none; border:0; font:inherit; color:var(--ink); cursor:pointer; padding:0 10px; border-right:1px solid var(--line); opacity:.8; }
+  footer nav > :last-child{ border-right:0; }
+  footer nav > :first-child{ padding-left:0; }
+  footer nav button:hover, footer nav a:hover{ opacity:1; text-decoration:underline; }
+
+  /* Modals */
+  .modal{ display:none; position:fixed; inset:0; z-index:100; background:rgba(0,0,0,.4); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); padding:20px; overflow-y:auto; align-items:flex-start; justify-content:center; }
+  .modal.open{ display:flex; }
+  .sheet{ background:#fff; border-radius:22px; width:100%; max-width:680px; margin:min(64px,6vh) 0 40px; padding:40px 40px 44px; box-shadow:0 30px 80px -20px rgba(0,0,0,.4); }
+  .sheet-head{ display:flex; justify-content:space-between; align-items:center; gap:16px; }
+  .sheet h2{ font-size:32px; letter-spacing:-0.025em; }
+  .close{ width:36px; height:36px; border-radius:50%; border:0; background:var(--bg-2); cursor:pointer; font-size:20px; line-height:1; color:var(--ink); flex:none; }
+  .close:hover{ background:#E8E8ED; }
+  .sheet h3{ font-size:17px; margin:26px 0 6px; letter-spacing:-0.01em; }
+  .sheet p{ font-size:15px; color:#3A3A3C; line-height:1.55; }
+  .sheet a{ color:var(--green-text); }
+  .sheet p + p{ margin-top:8px; }
+  .faq details{ border-bottom:1px solid var(--line); }
+  .faq summary{ list-style:none; cursor:pointer; display:flex; justify-content:space-between; gap:16px; align-items:center; padding:20px 0; font-size:17px; font-weight:500; }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary::after{ content:"+"; font-size:24px; font-weight:300; color:var(--gray); transition:transform .2s; }
+  .faq details[open] summary::after{ transform:rotate(45deg); }
+  .faq details p{ padding:0 30px 20px 0; }
+  @media (max-width:560px){ .sheet{ padding:28px 22px 32px; } .sheet h2{ font-size:26px; } }
+
+  /* ===== Ergänzungen November 2026 ===== */
+  .hero h1 .kicker{ display:block; font-size:21px; line-height:1.3; letter-spacing:-0.01em; margin-bottom:10px; }
+  .features{ grid-template-columns:repeat(3,1fr); }
+  .steps{ grid-template-columns:repeat(3,1fr); }
+  @media (max-width:900px){ .features{ grid-template-columns:repeat(2,1fr); } .steps{ grid-template-columns:1fr; } }
+  @media (max-width:520px){ .features{ grid-template-columns:1fr; } }
+  .tool{ margin-top:18px; font-size:17px; color:var(--gray); }
+  .tool a{ color:var(--green-text); }
+  .field select{
+    width:100%; font:inherit; font-size:17px; color:var(--ink); background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2386868B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center;
+    border:1px solid var(--line); border-radius:12px; padding:22px 44px 8px 16px; -webkit-appearance:none; appearance:none; cursor:pointer; transition:border-color .2s, box-shadow .2s;
+  }
+  .field select:focus{ outline:none; border-color:var(--green-text); box-shadow:0 0 0 4px rgba(82,228,14,.22); }
+  .field select + label{ top:7px; font-size:12px; color:var(--gray); }
+  .btn.dunkel{ background:var(--ink); color:#fff; }
+  .btn.dunkel:hover{ background:#000; }
+  .consent{ position:fixed; z-index:90; left:16px; right:16px; bottom:16px; max-width:520px; background:#fff; border-radius:22px; padding:24px; box-shadow:0 30px 80px -20px rgba(0,0,0,.4); border:1px solid rgba(0,0,0,.06); }
+  .consent[hidden]{ display:none; }
+  .consent h2{ font-size:19px; letter-spacing:-0.015em; }
+  .consent p{ font-size:14px; color:#3A3A3C; line-height:1.5; margin-top:8px; }
+  .consent-btns{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:18px; }
+  .consent-btns .btn{ font-size:15px; padding:11px 8px; min-height:46px; white-space:nowrap; }
+  @media (max-width:400px){ .consent{ padding:20px 18px; } .consent-btns .btn{ font-size:14px; } }
+  .consent .einst{ display:block; margin:12px auto 0; font-size:14px; }
+  .kat{ display:flex; justify-content:space-between; align-items:center; gap:16px; padding:16px 0; border-bottom:1px solid var(--line); }
+  .kat b{ display:block; font-size:15px; font-weight:600; }
+  .kat span{ display:block; font-size:14px; color:var(--gray); margin-top:2px; }
+  .schalter{ -webkit-appearance:none; appearance:none; flex:none; width:51px; height:31px; border-radius:31px; background:#E9E9EA; position:relative; cursor:pointer; transition:background .2s; margin:0; }
+  .schalter::after{ content:""; position:absolute; top:2px; left:2px; width:27px; height:27px; border-radius:50%; background:#fff; box-shadow:0 3px 8px rgba(0,0,0,.15); transition:transform .2s; }
+  .schalter:checked{ background:var(--green); }
+  .schalter:checked::after{ transform:translateX(20px); }
+  .schalter:disabled{ opacity:.5; cursor:not-allowed; }
+  .sheet .consent-btns{ margin-top:24px; }
+  .mobil-leiste{ display:none; }
+  @media (max-width:760px){
+    .mobil-leiste{ display:grid; grid-template-columns:1fr 1fr; gap:10px; position:fixed; z-index:60; left:0; right:0; bottom:0; padding:10px 16px calc(10px + env(safe-area-inset-bottom)); background:rgba(255,255,255,.85); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-top:1px solid rgba(0,0,0,.08); }
+    .mobil-leiste .btn{ font-size:16px; padding:12px 10px; }
+    .mobil-leiste .btn.hell{ background:var(--bg-2); }
+    .mobil-leiste .btn.hell:hover{ background:#E8E8ED; }
+    body{ padding-bottom:calc(68px + env(safe-area-inset-bottom)); }
+    .consent{ bottom:calc(80px + env(safe-area-inset-bottom)); max-height:calc(100vh - 110px); overflow-y:auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap wide">
+    <a class="logo" href="/" aria-label="TT Fuhrparkmanagement – Startseite"><img src="/logo-tt.png" alt="TT Fuhrparkmanagement" width="420" height="117" fetchpriority="high"></a>
+    <ul>
+      <li><a href="/#highlights">Überblick</a></li>
+      <li><a href="/#leistungen">Leistungen</a></li>
+      <li><a href="/#ablauf">Ablauf</a></li>
+      <li><button type="button" data-modal="m-faq">FAQ</button></li>
+    </ul>
+    <a class="cta" href="/#kontakt">Kontakt</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Seite nicht gefunden" style="padding:96px 0 120px">
+    <div class="wrap">
+      <h1><span class="kicker">Fehler 404</span>Diese Seite gibt es nicht.</h1>
+      <p class="sub">Die Adresse ist falsch oder die Seite wurde verschoben. Auf der Startseite finden Sie alles Wichtige.</p>
+      <div class="actions">
+        <a class="btn" href="/">Zur Startseite</a>
+        <a class="more" href="/#kontakt">Fuhrpark-Check anfragen</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap wide">
+    <div class="top">
+      <img src="/logo-tt.png" alt="TT Fuhrparkmanagement" width="420" height="117" loading="lazy" decoding="async">
+      <a href="mailto:info@ttfuhrparkmanagement.com" style="color:var(--ink)">info@ttfuhrparkmanagement.com</a>
+    </div>
+    <div class="bottom">
+      <span>Copyright © 2026 TT Fuhrparkmanagement. Alle Rechte vorbehalten.</span>
+      <nav aria-label="Rechtliches">
+        <button type="button" data-modal="m-about">Über uns</button>
+        <button type="button" data-modal="m-faq">FAQ</button>
+        <button type="button" data-modal="m-imp">Impressum</button>
+        <button type="button" data-modal="m-ds">Datenschutz</button>
+        <button type="button" data-modal="m-agb">AGB</button>
+        <button type="button" data-modal="m-cookies">Cookie-Einstellungen</button>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="m-about" aria-hidden="true">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="t-about">
+    <div class="sheet-head"><h2 id="t-about">Über uns</h2><button type="button" class="close" data-close aria-label="Schließen">&times;</button></div>
+    <h3>Wer sich um Ihren Fuhrpark kümmert</h3>
+    <p>TT Fuhrparkmanagement ist ein kleines Team, das Unternehmen die Verwaltung ihrer Firmenfahrzeuge abnimmt. Gegründet und geleitet wird es von Tolga Topal, zertifizierter Fuhrparkverwalter. Er kennt die Pflichten, die mit einem Fuhrpark verbunden sind: von der Halterhaftung und der regelmäßigen Führerscheinkontrolle über HU, AU und UVV-Prüfung bis zur sauberen Dokumentation.</p>
+    <p>Dass wir ein kleines Team sind, ist für unsere Kunden ein Vorteil. Bei uns gibt es keine Hotline und kein Ticketsystem, sondern kurze Wege und direkte Absprachen. Sie haben einen festen Ansprechpartner, der Ihren Fuhrpark, Ihre Fahrer und Ihre Fristen kennt und nicht bei jeder Frage von vorn anfangen muss.</p>
+    <p>Wir übernehmen die Aufgaben, die im Alltag schnell liegen bleiben, und sorgen dafür, dass Fristen eingehalten, Unterlagen vollständig und Kosten nachvollziehbar sind. So bleibt Ihnen die Zeit für Ihr eigentliches Geschäft. Wenn Sie wissen möchten, wie das bei Ihrem Fuhrpark aussehen könnte, melden Sie sich einfach für eine kostenlose Analyse.</p>
+  </div>
+</div>
+
+<div class="modal" id="m-faq" aria-hidden="true">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="t-faq">
+    <div class="sheet-head"><h2 id="t-faq">Häufige Fragen</h2><button type="button" class="close" data-close aria-label="Schließen">&times;</button></div>
+    <div class="faq" style="margin-top:12px">
+      <details><summary>Was kostet das?</summary><p>Sie zahlen einen festen Preis pro Fahrzeug, alle neun Leistungen sind enthalten. Ihr genaues Angebot erhalten Sie nach dem Fuhrpark-Check. Der Check selbst ist kostenlos und unverbindlich.</p></details>
+      <details><summary>Bin ich an einen Versicherer gebunden?</summary><p>Nein. Sie behalten Ihre bestehenden Versicherungsverträge und entscheiden selbst, bei wem Sie versichert sind. Wir vermitteln keine Versicherungen. Wir überwachen die Fristen Ihrer Verträge und übernehmen im Schadenfall die Kommunikation mit dem Versicherer.</p></details>
+      <details><summary>Holen Sie auch Angebote für neue Firmenwagen ein?</summary><p>Ja. Wenn Sie ein Fahrzeug brauchen, holen wir in Ihrem Auftrag Angebote ein – für Kauf oder Leasing – und stellen sie übersichtlich nebeneinander. Ob und wo Sie abschließen, entscheiden Sie selbst. Fahrzeuge oder Leasingverträge vermitteln wir nicht.</p></details>
+      <details><summary>Wie schnell geht der Start?</summary><p>Auf Ihre Anfrage melden wir uns innerhalb eines Werktags und vereinbaren das Erstgespräch. Danach folgt der kostenlose Fuhrpark-Check. Die Übergabe kann sehr kurzfristig stattfinden: Sobald Fahrzeugscheine, Policen und Verträge vorliegen, übernehmen wir die laufende Betreuung.</p></details>
+      <details><summary>Arbeiten Sie auch außerhalb von Duisburg?</summary><p>Ja. Wir betreuen Betriebe in Duisburg und im Umkreis von rund 70 Kilometern, also im Ruhrgebiet und am Niederrhein. Vieles läuft ohnehin per Telefon und E-Mail.</p></details>
+      <details><summary>Welche Leistungen sind im Paket enthalten?</summary><p>Alle neun: Führerscheinkontrolle, Terminüberwachung, Dokumentenverwaltung, Werkstattkoordination, Schadenmanagement, Versicherungsmanagement, Tankkartenverwaltung, Kosten-Reporting und die Beschaffung von Angeboten für Firmenwagen. Sie erhalten immer das komplette Paket.</p></details>
+      <details><summary>Lohnt sich das auch für wenige Fahrzeuge?</summary><p>Ja. Auch bei wenigen Fahrzeugen fallen Fristen, Führerscheinkontrollen, Schäden und Unterlagen an. Wir nehmen Ihnen diese Arbeit ab – unabhängig von der Größe Ihres Fuhrparks.</p></details>
+      <details><summary>Wie schnell bekomme ich eine Antwort?</summary><p>Innerhalb eines Werktags. Sie erhalten die Rückmeldung direkt von Ihrem Ansprechpartner – ohne Warteschleife und Callcenter.</p></details>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="m-imp" aria-hidden="true">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="t-imp">
+    <div class="sheet-head"><h2 id="t-imp">Impressum</h2><button type="button" class="close" data-close aria-label="Schließen">&times;</button></div>
+    <h3>Angaben gemäß § 5 DDG</h3>
+    <p>TT Fuhrparkmanagement<br>Inhaber: Tolga Topal<br>Bottroper Str. 87<br>46117 Oberhausen</p>
+    <h3>Kontakt</h3>
+    <p>Telefon: <a href="tel:+4915630158503">+49 156 30158503</a><br>E-Mail: <a href="mailto:tolga.topal@ttfuhrparkmanagement.com">tolga.topal@ttfuhrparkmanagement.com</a></p>
+    <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
+    <p>Tolga Topal<br>Bottroper Str. 87<br>46117 Oberhausen</p>
+  </div>
+</div>
+
+<div class="modal" id="m-ds" aria-hidden="true">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="t-ds">
+    <div class="sheet-head"><h2 id="t-ds">Datenschutz</h2><button type="button" class="close" data-close aria-label="Schließen">&times;</button></div>
+    <h3>Verantwortlicher</h3>
+    <p>Tolga Topal – TT Fuhrparkmanagement<br>Bottroper Str. 87, 46117 Oberhausen<br>E-Mail: <a href="mailto:tolga.topal@ttfuhrparkmanagement.com">tolga.topal@ttfuhrparkmanagement.com</a></p>
+    <h3>Hosting</h3>
+    <p>Diese Website wird bei Netlify, Inc. gehostet. Beim Aufruf der Seite erfasst Netlify automatisch technische Zugriffsdaten (u. a. IP-Adresse, Browsertyp, Datum und Uhrzeit des Zugriffs) in Server-Log-Files. Diese Daten dienen ausschließlich dem technisch fehlerfreien Betrieb der Website (Art. 6 Abs. 1 lit. f DSGVO).</p>
+    <!-- von Claude ergänzt – rechtlich prüfen lassen -->
+    <p>Netlify, Inc. hat seinen Sitz in den USA. Bei der Nutzung kann es daher zu einer Übermittlung personenbezogener Daten in die USA kommen. Die Übermittlung stützt sich auf die Zertifizierung des Anbieters nach dem EU-US Data Privacy Framework (Art. 45 DSGVO), soweit diese besteht, und im Übrigen auf die EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO), die Bestandteil des Auftragsverarbeitungsvertrags mit Netlify sind.</p>
+    <!-- Ende: von Claude ergänzt -->
+    <h3>Kontaktformular</h3>
+    <!-- von Claude ergänzt – rechtlich prüfen lassen --><!-- Feldliste an das neue Formular angepasst -->
+    <p>Wenn Sie das Kontaktformular nutzen, werden Ihre Angaben (Name, Firma, E-Mail-Adresse oder Telefonnummer, Anzahl Fahrzeuge, ggf. Nachricht) über den Formular-Dienst von Netlify, Inc. („Netlify Forms“) verarbeitet und per E-Mail an uns weitergeleitet, um Ihre Anfrage zu bearbeiten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO. Die Daten werden gelöscht, sobald sie für die Bearbeitung Ihrer Anfrage nicht mehr erforderlich sind.</p>
+    <p>Die Angaben werden bei Netlify gespeichert und uns per E-Mail sowie im Netlify-Konto zur Verfügung gestellt. Zur Abwehr von Spam enthält das Formular ein für Menschen unsichtbares Feld (Honeypot); Netlify prüft eingehende Nachrichten zudem automatisch auf Spam. Nach dem Absenden werden Sie auf eine Bestätigungsseite weitergeleitet. Zur Übermittlung in die USA siehe „Hosting“.</p>
+    <!-- Ende: von Claude ergänzt -->
+    <h3>Schriften und Inhalte Dritter</h3>
+    <p>Diese Website verwendet die auf Ihrem Gerät installierten Systemschriften und lädt keine Inhalte von Drittanbietern wie Google Fonts nach.</p>
+    <!-- von Claude ergänzt – rechtlich prüfen lassen --><p>Ausgenommen ist der Google-Tag für Google Ads (siehe „Google Ads Conversion-Tracking“).</p><!-- Ende: von Claude ergänzt -->
+    <!-- von Claude ergänzt – rechtlich prüfen lassen -->
+    <!-- ursprünglich: „Diese Website setzt keine Cookies ein und verwendet keine Analyse- oder Tracking-Tools.“ -->
+    <h3 id="cookies">Cookies, Einwilligung und Widerruf</h3>
+    <p>Diese Website setzt selbst keine Cookies ein. Cookies von Google Ads (siehe unten) werden nur gesetzt, wenn Sie im Cookie-Hinweis einwilligen. Analyse-Dienste (Kategorie „Statistik“) verwenden wir derzeit nicht.</p>
+    <p>Ihre Auswahl im Cookie-Hinweis speichern wir im lokalen Speicher Ihres Browsers (Schlüssel „tt-einwilligung“, mit Datum der Auswahl), damit der Hinweis nicht bei jedem Besuch erneut erscheint. Diese Speicherung ist unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG); die Angaben verlassen Ihr Gerät nicht.</p>
+    <p>Ihre Einwilligung ist freiwillig und für die Nutzung der Website nicht erforderlich. Sie können sie jederzeit mit Wirkung für die Zukunft widerrufen, indem Sie unten auf der Seite „Cookie-Einstellungen“ öffnen und die Kategorie abwählen. Bereits gesetzte Google-Cookies löschen wir dabei, soweit technisch möglich; Sie können Cookies außerdem jederzeit in Ihrem Browser löschen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt unberührt (Art. 7 Abs. 3 DSGVO).</p>
+    <h3 id="google-ads">Google Ads Conversion-Tracking und Google Consent Mode</h3>
+    <p>Wir schalten Anzeigen bei Google Ads. Um zu messen, ob eine Anfrage über das Kontaktformular oder ein Tippen auf unsere Telefonnummer auf eine Anzeige zurückgeht, verwenden wir das Conversion-Tracking von Google Ads. Anbieter ist Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland („Google“). Dazu wird der Google-Tag (gtag.js) von Google geladen.</p>
+    <p>Wir nutzen den Einwilligungsmodus von Google („Consent Mode v2“). Er ist standardmäßig so eingestellt, dass keine Werbe- und Analyse-Cookies gesetzt und keine Daten für personalisierte Werbung verwendet werden. Ohne Ihre Einwilligung übermittelt der Google-Tag lediglich cookielose Signale an Google (z. B. dass eine Seite aufgerufen oder eine Anfrage abgeschickt wurde, Zeitpunkt, Browser- und Geräteinformationen sowie Ihre IP-Adresse, die dabei technisch zwangsläufig übertragen wird); Kennungen aus Anzeigenklicks in der Adresse werden dabei geschwärzt.</p>
+    <p>Nur wenn Sie in die Kategorie „Marketing“ einwilligen, setzt Google Cookies (z. B. „_gcl_au“, Speicherdauer bis zu 90 Tage), mit denen Google erkennen kann, dass Sie über eine Anzeige auf unsere Website gekommen sind und anschließend eine Anfrage gesendet oder auf die Telefonnummer getippt haben. Wir erhalten von Google nur statistische Auswertungen, keine Angaben, mit denen wir Sie persönlich identifizieren könnten.</p>
+    <p>Rechtsgrundlage für das Setzen und Auslesen von Cookies und die damit verbundene Verarbeitung ist Ihre Einwilligung (§ 25 Abs. 1 TDDDG, Art. 6 Abs. 1 lit. a DSGVO). Rechtsgrundlage für das Laden des Google-Tags und die cookielosen Signale ohne Einwilligung ist unser berechtigtes Interesse an einer datensparsamen Erfolgsmessung unserer Werbung (Art. 6 Abs. 1 lit. f DSGVO). Es kann zu einer Übermittlung von Daten an Google LLC in den USA kommen; Google LLC ist nach dem EU-US Data Privacy Framework zertifiziert (Art. 45 DSGVO). Weitere Informationen: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>.</p>
+    <p>Google Analytics setzen wir derzeit nicht ein.</p>
+    <!-- Ende: von Claude ergänzt -->
+    <h3>Datenverarbeitung im Rahmen unserer Dienstleistungen</h3>
+    <p>Wenn wir für Unternehmen den Fuhrpark verwalten, verarbeiten wir personenbezogene Daten der Fahrerinnen und Fahrer sowie der Ansprechpartner unserer Kunden. Dazu gehören Name und dienstliche Kontaktdaten, Führerscheindaten (Führerscheinklassen, Ausstellungs- und Ablaufdatum, Führerscheinnummer, Nachweis der Führerscheinkontrolle), die Zuordnung zu Fahrzeugen, Tankkarten- und Tankdaten sowie Angaben zu Schadensfällen.</p>
+    <p>Bei dieser Verarbeitung handeln wir als Auftragsverarbeiter im Auftrag unserer Kunden (Art. 28 DSGVO). Verantwortlich ist das jeweilige Unternehmen, für das wir tätig sind. Wir verarbeiten die Daten ausschließlich nach dessen Weisung und auf Grundlage eines Auftragsverarbeitungsvertrags. Betroffene Fahrerinnen und Fahrer wenden sich mit Anfragen zu ihren Daten bitte an ihren Arbeitgeber; wir unterstützen diesen bei der Beantwortung.</p>
+    <p>Die Daten unserer Geschäftskunden selbst (Ansprechpartner, Vertrags- und Abrechnungsdaten) verarbeiten wir als Verantwortlicher zur Erfüllung des Vertrags (Art. 6 Abs. 1 lit. b DSGVO) und zur Erfüllung gesetzlicher Aufbewahrungspflichten (Art. 6 Abs. 1 lit. c DSGVO).</p>
+    <h3>Eingesetzte Dienstleister</h3>
+    <p>Für E-Mail-Kommunikation und digitale Dokumentenablage nutzen wir Google Workspace (Google Ireland Ltd., Gordon House, Barrow Street, Dublin 4, Irland). Für Rechnungsstellung und Buchhaltung nutzen wir sevDesk (sevDesk GmbH, Offenburg). Mit diesen Anbietern bestehen Verträge zur Auftragsverarbeitung.</p>
+    <h3>Speicherdauer</h3>
+    <p>Daten aus der Fuhrparkverwaltung geben wir nach Vertragsende an unsere Kunden zurück oder löschen sie innerhalb von 30 Tagen, sofern keine gesetzliche Aufbewahrungspflicht besteht. Rechnungen und steuerlich relevante Unterlagen bewahren wir für die Dauer der gesetzlichen Aufbewahrungsfristen auf (bis zu zehn Jahre).</p>
+    <h3>Datensicherheit</h3>
+    <p>Wir schützen die uns anvertrauten Daten durch passwortgeschützte Zugänge mit Zwei-Faktor-Authentifizierung, verschlüsselte Datenübertragung, getrennte Ablage je Kunde und regelmäßige Datensicherung.</p>
+    <h3>Ihre Rechte</h3>
+    <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer personenbezogenen Daten sowie ein Widerspruchsrecht. Zudem steht Ihnen ein Beschwerderecht bei der zuständigen Datenschutz-Aufsichtsbehörde zu.</p>
+    <h3>SSL-/TLS-Verschlüsselung</h3>
+    <p>Diese Seite nutzt eine SSL-/TLS-Verschlüsselung, erkennbar an „https://“ in der Adresszeile Ihres Browsers.</p>
+  </div>
+</div>
+
+<div class="modal" id="m-agb" aria-hidden="true">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="t-agb">
+    <div class="sheet-head"><h2 id="t-agb">AGB</h2><button type="button" class="close" data-close aria-label="Schließen">&times;</button></div>
+    <p style="margin-top:12px">Allgemeine Geschäftsbedingungen von TT Fuhrparkmanagement, Inhaber Tolga Topal, Bottroper Str. 87, 46117 Oberhausen, E-Mail: <a href="mailto:tolga.topal@ttfuhrparkmanagement.com">tolga.topal@ttfuhrparkmanagement.com</a> – nachfolgend „Auftragnehmer“.</p>
+    <h3>§ 1 Geltungsbereich</h3>
+    <p>(1) Diese AGB gelten für alle Fuhrparkmanagement-Dienstleistungen des Auftragnehmers.</p>
+    <p>(2) Das Angebot richtet sich ausschließlich an Unternehmer im Sinne von § 14 BGB, juristische Personen des öffentlichen Rechts und öffentlich-rechtliche Sondervermögen („Auftraggeber“).</p>
+    <p>(3) Abweichende oder ergänzende Bedingungen des Auftraggebers gelten nur, wenn der Auftragnehmer ihnen ausdrücklich in Textform zustimmt.</p>
+    <p>(4) Individuelle Vereinbarungen, insbesondere ein Rahmenvertrag, haben Vorrang vor diesen AGB.</p>
+    <h3>§ 2 Vertragsschluss</h3>
+    <p>(1) Angebote des Auftragnehmers sind freibleibend und unverbindlich.</p>
+    <p>(2) Ein Vertrag kommt durch Unterzeichnung eines Rahmenvertrags oder durch Auftragsbestätigung des Auftragnehmers in Textform zustande.</p>
+    <h3>§ 3 Leistungen</h3>
+    <p>(1) Art und Umfang der Leistungen ergeben sich aus dem Rahmenvertrag und dem Leistungsverzeichnis.</p>
+    <p>(2) Der Auftragnehmer erbringt Dienstleistungen (§§ 611 ff. BGB). Ein bestimmter wirtschaftlicher Erfolg ist nicht geschuldet.</p>
+    <p>(3) Der Auftragnehmer übernimmt organisatorische und koordinierende Tätigkeiten. Er erbringt keine Versicherungsvermittlung (§ 34d GewO) und keine Rechts- oder Steuerberatung.</p>
+    <p>(4) Die Halter- und Unternehmerpflichten für die Fahrzeuge verbleiben beim Auftraggeber.</p>
+    <p>(5) Der Auftragnehmer darf zur Leistungserbringung geeignete Software und Dienstleister einsetzen.</p>
+    <h3>§ 4 Mitwirkungspflichten des Auftraggebers</h3>
+    <p>(1) Der Auftraggeber stellt alle für die Leistung nötigen Unterlagen und Informationen rechtzeitig, vollständig und richtig zur Verfügung.</p>
+    <p>(2) Er benennt einen Ansprechpartner und teilt Änderungen am Fahrzeugbestand unverzüglich in Textform mit.</p>
+    <p>(3) Folgen fehlender oder verspäteter Mitwirkung gehen nicht zulasten des Auftragnehmers.</p>
+    <h3>§ 5 Vergütung und Zahlung</h3>
+    <p>(1) Es gelten die im Rahmenvertrag oder Angebot vereinbarten Preise.</p>
+    <p>(2) Die Vergütung wird monatlich im Voraus abgerechnet. Rechnungen sind innerhalb von 14 Tagen ohne Abzug zahlbar.</p>
+    <p>(3) Gemäß § 19 UStG wird keine Umsatzsteuer berechnet (Kleinunternehmerregelung).</p>
+    <p>(4) Fremdkosten Dritter (z. B. Werkstatt-, Gutachter- und Prüfgebühren) trägt der Auftraggeber.</p>
+    <p>(5) Bei Zahlungsverzug gelten die gesetzlichen Verzugszinsen (§ 288 Abs. 2 BGB). Der Auftragnehmer darf seine Leistungen nach vorheriger Mahnung bis zum Ausgleich zurückhalten.</p>
+    <h3>§ 6 Laufzeit und Kündigung</h3>
+    <p>(1) Laufzeit und Kündigungsfristen richten sich nach dem Rahmenvertrag.</p>
+    <p>(2) Ist nichts vereinbart, kann der Vertrag mit einer Frist von einem Monat zum Monatsende gekündigt werden.</p>
+    <p>(3) Das Recht zur außerordentlichen Kündigung aus wichtigem Grund bleibt unberührt.</p>
+    <p>(4) Kündigungen bedürfen der Textform (z. B. E-Mail).</p>
+    <h3>§ 7 Haftung</h3>
+    <p>(1) Der Auftragnehmer haftet unbeschränkt bei Vorsatz und grober Fahrlässigkeit, bei Verletzung von Leben, Körper oder Gesundheit sowie nach dem Produkthaftungsgesetz.</p>
+    <p>(2) Bei leicht fahrlässiger Verletzung wesentlicher Vertragspflichten ist die Haftung auf den vertragstypischen, vorhersehbaren Schaden begrenzt. Im Übrigen ist die Haftung für leichte Fahrlässigkeit ausgeschlossen.</p>
+    <p>(3) Für Leistungen Dritter, etwa von Werkstätten, Versicherern oder Gutachtern, haftet der Auftragnehmer nicht.</p>
+    <h3>§ 8 Vertraulichkeit und Datenschutz</h3>
+    <p>(1) Beide Parteien behandeln vertrauliche Informationen der anderen Partei auch nach Vertragsende vertraulich.</p>
+    <p>(2) Verarbeitet der Auftragnehmer personenbezogene Daten im Auftrag, schließen die Parteien einen Auftragsverarbeitungsvertrag nach Art. 28 DSGVO.</p>
+    <p>(3) Im Übrigen gilt die Datenschutzerklärung auf dieser Website.</p>
+    <h3>§ 9 Änderungen dieser AGB</h3>
+    <p>Der Auftragnehmer kann diese AGB mit einer Ankündigung von mindestens sechs Wochen in Textform ändern. Widerspricht der Auftraggeber nicht innerhalb dieser Frist, gelten die Änderungen als angenommen. Auf diese Folge weist der Auftragnehmer in der Ankündigung hin.</p>
+    <h3>§ 10 Schlussbestimmungen</h3>
+    <p>(1) Es gilt das Recht der Bundesrepublik Deutschland.</p>
+    <p>(2) Gerichtsstand ist der Sitz des Auftragnehmers.</p>
+    <p>(3) Sollte eine Bestimmung unwirksam sein, bleiben die übrigen Bestimmungen wirksam.</p>
+    <p>Stand: Oktober 2026</p>
+  </div>
+</div>
+
+<div class="modal" id="m-cookies" aria-hidden="true">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="t-cookies">
+    <div class="sheet-head"><h2 id="t-cookies">Cookie-Einstellungen</h2><button type="button" class="close" data-close aria-label="Schließen">&times;</button></div>
+    <p style="margin-top:12px">Wählen Sie, welche Dienste wir verwenden dürfen. Sie können Ihre Auswahl jederzeit hier ändern oder widerrufen.</p>
+    <div class="kat"><div><b>Notwendig</b><span>Speichert Ihre Auswahl im lokalen Speicher Ihres Browsers. Immer aktiv.</span></div><input type="checkbox" class="schalter" checked disabled aria-label="Notwendig, immer aktiv"></div>
+    <div class="kat"><div><b>Statistik</b><span>Auswertung, wie die Website genutzt wird. Derzeit nicht im Einsatz.</span></div><input type="checkbox" class="schalter" id="c-statistik" aria-label="Statistik erlauben"></div>
+    <div class="kat"><div><b>Marketing</b><span>Google Ads Conversion-Tracking: misst, ob eine Anfrage oder ein Anruf über eine Anzeige zustande kam. Setzt Cookies.</span></div><input type="checkbox" class="schalter" id="c-marketing" aria-label="Marketing erlauben"></div>
+    <div class="consent-btns">
+      <button type="button" class="btn dunkel" data-consent="auswahl">Auswahl speichern</button>
+      <button type="button" class="btn dunkel" data-consent="alle">Alle akzeptieren</button>
+    </div>
+  </div>
+</div>
+
+<div class="consent" id="consent" role="region" aria-label="Cookie-Hinweis" hidden>
+  <h2>Ihre Privatsphäre</h2>
+  <p>Mit Ihrer Einwilligung setzen wir Cookies von Google Ads ein, um zu messen, ob eine Anfrage über unsere Anzeigen zustande kam. Ohne Einwilligung werden keine Werbe- oder Analyse-Cookies gesetzt. Ihre Wahl können Sie jederzeit unter „Cookie-Einstellungen“ ändern. Mehr in der <button type="button" class="linkbtn" data-modal="m-ds">Datenschutzerklärung</button>.</p>
+  <div class="consent-btns">
+    <button type="button" class="btn dunkel" data-consent="keine">Nur notwendige</button>
+    <button type="button" class="btn dunkel" data-consent="alle">Alle akzeptieren</button>
+  </div>
+  <button type="button" class="linkbtn einst" data-modal="m-cookies">Einstellungen</button>
+</div>
+
+<nav class="mobil-leiste" aria-label="Schnellkontakt">
+  <a class="btn hell" href="tel:+4915630158503">Anrufen</a>
+  <a class="btn" href="/#kontakt">Anfragen</a>
+</nav>
+
+<script>
+  // Falls der Kopf gekürzt wurde: gtag() trotzdem verfügbar halten
+  window.dataLayer = window.dataLayer || [];
+  if (typeof window.gtag !== 'function') window.gtag = function(){ dataLayer.push(arguments); };
+
+  // Formular: normal an Netlify senden, Netlify leitet auf /danke.html weiter (dort zählt die Conversion).
+  (function(){
+    var form = document.getElementById('contact-form');
+    if (!form) return;
+    var knopf = form.querySelector('button[type="submit"]'), text = knopf.textContent;
+    var feld = form.querySelector('[data-mail-oder-tel]');
+    function pruefen(){
+      var v = feld.value.trim();
+      var ok = v === '' || /^\S+@\S+\.\S+$/.test(v) || v.replace(/\D/g, '').length >= 6;
+      feld.setCustomValidity(ok ? '' : 'Bitte eine E-Mail-Adresse oder Telefonnummer angeben.');
+    }
+    feld.addEventListener('input', pruefen);
+    form.addEventListener('submit', function(e){
+      pruefen();
+      if (!form.checkValidity()) { e.preventDefault(); form.reportValidity(); return; }
+      knopf.disabled = true; knopf.textContent = 'Wird gesendet …';
+    });
+    window.addEventListener('pageshow', function(){ knopf.disabled = false; knopf.textContent = text; });
+  })();
+
+  // Klicks auf Telefonnummern als Ereignis an Google senden.
+  // Soll der Anruf in Google Ads als Conversion zählen: dort eine Conversion-Aktion anlegen und „send_to“ hier eintragen.
+  var TELEFON_CONVERSION = ''; // z. B. 'AW-18501646213/xxxxxxxx'
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="tel:"]');
+    if (!a) return;
+    gtag('event', 'phone_click', { link_url: a.getAttribute('href'), link_text: a.textContent.trim() });
+    if (TELEFON_CONVERSION) gtag('event', 'conversion', { send_to: TELEFON_CONVERSION });
+  });
+
+  // Cookie-Einwilligung (Google Consent Mode v2). Auswahl im lokalen Speicher, kein Cookie.
+  (function(){
+    var SCHLUESSEL = 'tt-einwilligung';
+    var hinweis = document.getElementById('consent');
+    var stat = document.getElementById('c-statistik'), mark = document.getElementById('c-marketing');
+    function lesen(){ try { return JSON.parse(localStorage.getItem(SCHLUESSEL)); } catch (e) { return null; } }
+    function jn(x){ return x ? 'granted' : 'denied'; }
+    function cookiesLoeschen(muster){
+      var domains = ['', location.hostname, '.' + location.hostname.replace(/^www\./, '')];
+      document.cookie.split(';').forEach(function(c){
+        var n = c.split('=')[0].trim();
+        if (!muster.test(n)) return;
+        domains.forEach(function(d){ document.cookie = n + '=; Max-Age=0; path=/' + (d ? '; domain=' + d : ''); });
+      });
+    }
+    function anwenden(w){
+      gtag('consent', 'update', { ad_storage: jn(w.marketing), ad_user_data: jn(w.marketing), ad_personalization: jn(w.marketing), analytics_storage: jn(w.statistik) });
+      if (!w.marketing) cookiesLoeschen(/^_gcl/);
+      if (!w.statistik) cookiesLoeschen(/^(_ga|_gid)/);
+    }
+    function speichern(statistik, marketing){
+      var w = { v: 1, notwendig: true, statistik: statistik, marketing: marketing, datum: new Date().toISOString() };
+      try { localStorage.setItem(SCHLUESSEL, JSON.stringify(w)); } catch (e) {}
+      hinweis.hidden = true;
+      anwenden(w);
+      var m = document.getElementById('m-cookies');
+      if (m.classList.contains('open')) m.querySelector('[data-close]').click();
+    }
+    document.querySelectorAll('[data-modal="m-cookies"]').forEach(function(b){
+      b.addEventListener('click', function(){ var w = lesen() || {}; stat.checked = !!w.statistik; mark.checked = !!w.marketing; });
+    });
+    document.querySelectorAll('[data-consent]').forEach(function(b){
+      b.addEventListener('click', function(){
+        var a = b.getAttribute('data-consent');
+        if (a === 'alle') speichern(true, true);
+        else if (a === 'keine') speichern(false, false);
+        else speichern(stat.checked, mark.checked);
+      });
+    });
+    var w = lesen();
+    if (w) anwenden(w); else hinweis.hidden = false;
+  })();
+
+  (function(){
+    function open(id){ var m=document.getElementById(id); m.classList.add('open'); m.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; m.querySelector('.close').focus(); }
+    function close(m){ m.classList.remove('open'); m.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+    document.querySelectorAll('[data-modal]').forEach(function(b){ b.addEventListener('click', function(e){ e.preventDefault(); open(b.getAttribute('data-modal')); }); });
+    document.querySelectorAll('.modal').forEach(function(m){
+      m.addEventListener('click', function(e){ if(e.target===m) close(m); });
+      m.querySelector('[data-close]').addEventListener('click', function(){ close(m); });
+    });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') document.querySelectorAll('.modal.open').forEach(close); });
+  })();
+</script>
+</body>
+</html>
